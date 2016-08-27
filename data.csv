@@ -1,21 +1,1 @@
-Country,Search interest,Indexed incidence rate
-Honduras,50,100
-Puerto Rico,56,79
-Colombia,20,57
-Venezuela,37,49
-Jamaica,100,44
-Brazil,27,33
-Dominican Republic,51,14
-Panama,25,11
-Costa Rica,22,9
-Ecuador,13,4
-Guatemala,22,4
-Trinidad and Tobago,64,3
-Argentina,8,1
-Mexico,13,0
-Bolivia,20,0
-United States,17,0
-Peru,10,0
-Canada,16,0
-Uruguay,15,0
-Chile,10,0
+Country,search_interest,indexed_incidence_rateHonduras,50,100Puerto Rico,56,79Colombia,20,57Venezuela,37,49Jamaica,100,44Brazil,27,33Dominican Republic,51,14Panama,25,11Costa Rica,22,9Ecuador,13,4Guatemala,22,4Trinidad and Tobago,64,3Argentina,8,1Mexico,13,0Bolivia,20,0United States,17,0Peru,10,0Canada,16,0Uruguay,15,0Chile,10,0
