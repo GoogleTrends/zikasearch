@@ -3,11 +3,11 @@ body{
 }
 h1 {
     text-align: center;
-    font-size: 2em;
+    font-size: 2.2em;
 }
 p {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 #intro {
     width: 55%;
@@ -18,4 +18,14 @@ p {
     border: 2px solid green;
     width: 90%;
     margin: 0 auto;
+    font-size: 0.8em;
+}
+line.slope-line{
+    stroke:green
+}
+text.slope-label{
+    fill:red;
+    font: 20px Arial;
+}
+.chart-title {
 }

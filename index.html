@@ -19,19 +19,119 @@
         <script type="text/javascript">
             
             var url = "/visible-data/data/census/bachelors-degrees.csv"
-                      , margin = {top: 30, right: 10, bottom: 30, left: 10}
+                      , margin = {top: 10, right: 35, bottom: 10, left: 35}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
                       , height = 200 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
+            
+            var leftScale = d3.scaleLinear()
+                .domain([0.0, 100.0])
+                .range([height - margin.top, margin.bottom]);
+
+            var rightScale = d3.scaleLinear()
+                .domain([0.0, 100.0])
+                .range([height - margin.top, margin.bottom]);
         
             // create the chart
-            var chart = d3.select('#chart').append('svg')
+            var svg = d3.select('#chart').append('svg')
                 .style('width', (width + margin.left + margin.right) + 'px')
                 .append('g')
                 .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
+            
+            d3.csv('data.csv', function(d) {
+                data = d;
+
+                var lines = svg.selectAll("line")
+                    .data(data);
+
+                lines.enter()
+                    .append("line")
+                    .attr("x1", margin.left)
+                    .attr("x2", width - margin.right)
+                    .attr("y1", function(d) {
+                        return leftScale(parseFloat(d['search_interest']));
+                    })
+                    .attr("y2", function(d) {
+                        return rightScale(parseFloat(d['indexed_incidence_rate']));
+                    })
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 1);
+
+                var rightLabels = svg.selectAll(".labels")
+                    .data(data);
+
+                rightLabels.enter()
+                    .append("text")
+                    .attr("class","labels")
+                    .attr("x", width - margin.right + 3)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['indexed_incidence_rate'])) + 4;
+                    })
+                    .text(function (d) {
+                        return d['Country'];
+                    });
+
+                var leftLabels = svg.selectAll(".left-labels")
+                    .data(data);
+
+                leftLabels.enter()
+                    .append("text")
+                    .attr("class","left-labels")
+                    .attr("x", margin.left - 65)
+                    .attr("y", function(d) {
+                        return leftScale(parseFloat(d['search_interest'])) + 4;
+                    })
+                    .text(function (d) {
+                        return d['country'];
+                    })
+                    .style("text-anchor","begin");
+
+                svg.append("text")
+                    .attr("x", width / 3)
+                    .attr("y", margin.top)
+                    .attr("class", "chart-title")
+                    .text("Zika searches");
+            });      
+            
+        //Resize
+            
+        d3.select(window).on('resize', resize); 
+
+        function resize() {
+            // update width
+            width = parseInt(d3.select('#chart').style('width'), 10);
+            width = width - margin.left - margin.right;
+
+            // resize the chart
+            x.range([0, width]);
+            d3.select(chart.node().parentNode)
+                .style('height', (y.rangeExtent()[1] + margin.top + margin.bottom) + 'px')
+                .style('width', (width + margin.left + margin.right) + 'px');
+
+            chart.selectAll('rect.background')
+                .attr('width', width);
+
+            chart.selectAll('rect.percent')
+                .attr('width', function(d) { return x(d.percent); });
+
+            // update median ticks
+            var median = d3.median(chart.selectAll('.bar').data(), 
+                function(d) { return d.percent; });
+
+            chart.selectAll('line.median')
+                .attr('x1', x(median))
+                .attr('x2', x(median));
+
+
+            // update axes
+            chart.select('.x.axis.top').call(xAxis.orient('top'));
+            chart.select('.x.axis.bottom').call(xAxis.orient('bottom'));
+
+        }
+            
             
         </script>
         
