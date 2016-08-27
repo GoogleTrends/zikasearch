@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+   <head>
+       <link rel="stylesheet" type="text/css" href="style.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <script src="https://d3js.org/d3.v4.min.js"></script>
+   </head>
+    <body>
+        <div id="intro" class="container">
+            <h1>ZIKA</h1>
+            <p>Intro Text Intro Text Intro Text Intro Text </p>
+        </div>
+        
+        
+        <div id="chart" class="container">
+        
+        </div>
+        
+        <script type="text/javascript">
+            
+            var url = "/visible-data/data/census/bachelors-degrees.csv"
+                      , margin = {top: 30, right: 10, bottom: 30, left: 10}
+                      , width = parseInt(d3.select('#chart').style('width'), 10)
+                      , width = width - margin.left - margin.right
+                      , height = 200 // placeholder
+                      , barHeight = 20
+                      , spacing = 3
+                      , percent = d3.format('%');
+        
+            // create the chart
+            var chart = d3.select('#chart').append('svg')
+                .style('width', (width + margin.left + margin.right) + 'px')
+                .append('g')
+                .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
+            
+        </script>
+        
+    </body>
 </html>
