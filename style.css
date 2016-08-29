@@ -55,3 +55,6 @@ text.slope-label{
     margin: 0 auto;
     border-radius: 10px;
 }
+*:focus {
+    outline: none;
+}

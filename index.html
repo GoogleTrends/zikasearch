@@ -5,6 +5,7 @@
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <script src="https://d3js.org/d3.v4.min.js"></script>
        
+       
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -19,7 +20,8 @@
         </div>
         <div id="selectors2">
             <p>Choose a Country</p>
-            <input type="text" id="tbCountries" />
+            <!--<input type="text" id="tbCountries" />-->
+            <div id="tbCountries"></div> 
         </div>
         <br>
         
@@ -28,11 +30,14 @@
         <script type="text/javascript">
             
             var optionsData;
+            var dropDown;
+            
+            var color = d3.scaleOrdinal(d3.schemeCategory20);
             
             var margin = {top: 30, right: 45, bottom: 30, left: 45}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
-                      , height = 400 // placeholder
+                      , height = 380 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
@@ -76,8 +81,16 @@
                     
                         return rightScale(parseFloat(d['indexed_incidence_rate']));
                     })
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 1);
+                    //.style("fill", )
+                    //.attr("stroke", function(d) { 
+                        //console.log(d.Country, color(d.Country));
+                        //return color(d.Country); })
+                    //.attr("stroke", "green")
+                    .attr("stroke", function(d) {
+                    console.log(d.search_interest-d.indexed_incidence_rate);
+                        return color(d.search_interest-d.indexed_incidence_rate);
+                    })
+                    .attr("stroke-width", 1.5);
                 
                 var //x_domain = d3.extent(data, function(d) { return d.search_interest; }),
                     //y_domain = d3.extent(data, function(d) { return d['search_interest']; })
@@ -128,9 +141,59 @@
                 
                 optionsData = $.unique(data.map(function(d) {return d.Country;}));
                 optionsData.sort();
+                
+                data2 = data.sort(function (a, b) {
+					return d3.ascending(a.Country, b.Country);
+				});
+                
+                //console.log(data2);
+                
+                dropDown = d3.select("#tbCountries").append("select")
+                    .attr("name", "country-list");
+                
+                var options = dropDown.selectAll("option")
+                           .data(data2)
+                         .enter()
+                           .append("option");
+
+                options.text(function (d) { return d.Country; })
+                       .attr("value", function (d) { return d.Country; });
                     
                 
-            });      
+                dropDown.on("change", function() {
+                      var selected = this.value;
+                      displayOthers = this.checked ? "inline" : "none";
+                      display = this.checked ? "none" : "inline";
+
+                    
+
+                     // doubleChart.selectAll(".circle")
+                    svg.selectAll("line").filter(function(d) {
+                        //console.log(d.Country);
+                        return selected != d.Country;})
+                          //.attr("display", displayOthers);
+                          //.attr("fill", "#884dff")
+                            //.style("stroke", "#884dff")
+                            //.attr("stroke", "green")
+                            .style("stroke-width", 1.5); 
+                            //.style("opacity", .2);
+
+                      //doubleChart.selectAll(".circle")
+                    svg.selectAll("line").filter(function(d) {return selected == d.Country;})
+                          //.attr("display", display);
+                            //.attr("fill", "white");
+                            //.style("stroke", "red")
+                            //.attr("stroke", "red")
+                            .style("stroke-width", 6); 
+                            //.style("opacity", 1);
+                    
+                    console.log(selected, display);
+                  });
+                
+                
+            }); 
+            
+            
             
         //Resize
         
