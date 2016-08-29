@@ -4,21 +4,32 @@
        <link rel="stylesheet" type="text/css" href="style.css">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <script src="https://d3js.org/d3.v4.min.js"></script>
+       
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+
    </head>
     <body>
         <div id="intro" class="container">
             <h1>ZIKA</h1>
-            <p>'Slider' &nbsp;&nbsp;&nbsp;&nbsp; 'Dropdown'</p>
         </div>
-        
-        
-        <div id="chart" class="container">
-        
+        <div id="selectors1">
+            <p>(date range)</p>
         </div>
+        <div id="selectors2">
+            <p>Choose a Country</p>
+            <input type="text" id="tbCountries" />
+        </div>
+        <br>
+        
+        <div id="chart" class="container"></div>
         
         <script type="text/javascript">
             
-            var margin = {top: 30, right: 50, bottom: 30, left: 50}
+            var optionsData;
+            
+            var margin = {top: 30, right: 45, bottom: 30, left: 45}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
                       , height = 400 // placeholder
@@ -45,6 +56,7 @@
             d3.csv('data.csv', function(d) {
                 data = d;
                 
+                
                 //data.sort(function (a, b) {
 				//	return b.search_interest-a.search_interest;
 				//});
@@ -61,73 +73,63 @@
                         return leftScale(parseFloat(d['search_interest']));
                     })
                     .attr("y2", function(d) {
+                    
                         return rightScale(parseFloat(d['indexed_incidence_rate']));
                     })
                     .attr("stroke", "black")
                     .attr("stroke-width", 1);
                 
-                var x_domain = d3.extent(data, function(d) { return d.search_interest; }),
-                    y_domain = d3.extent(data, function(d) { return d['search_interest']; })
-                    y_domain2 = d3.extent(data, function(d) { return d['indexed_incidence_rate']; });
+                var //x_domain = d3.extent(data, function(d) { return d.search_interest; }),
+                    //y_domain = d3.extent(data, function(d) { return d['search_interest']; })
+                    y_domain2 = d3.extent(data, function(d) {return d['indexed_incidence_rate']; });
 
                 var yScale = d3.scaleLinear()
-                    .domain(y_domain).nice()
-                    .range([height -  margin.top, margin.bottom]);  
+                    .domain([0,100])
+                    .range([height -  margin.top, margin.bottom], 0);  
                 
                 var yScale2 = d3.scaleLinear()
-                    .domain(y_domain2).nice()
-                    .range([height -  margin.top, margin.bottom]); 
+                    .domain([0,100])
+                    .range([height -  margin.top, margin.bottom], 0); 
                 
                 var axisScale = d3.scaleLinear()
                          .domain([0,100])
                          .range([0,100]);
 
-                var yAxisLeft = d3.svg.axisLeft()
-                    .scale(axisScale);
+                var yAxisLeft = d3.axisLeft()
+                    .ticks(2)
+                    .scale(yScale);
+                
+                var yAxisRight = d3.axisRight()
+                    .ticks(2)
+                    .scale(yScale2);
                     
-                console.log(axisScale);
-                typeof(yAxisLeft);
                 
+                svg.append("svg:g")
+                    .attr("transform", "translate(" + (margin.left - 10) +  ",0)")
+                    .attr("class", "y axis")
+                    .call(yAxisLeft);
                 
-                /*
-                var rightLabels = svg.selectAll(".labels")
-                    .data(data);
-
-                rightLabels.enter()
-                    .append("text")
-                    .attr("class","labels")
-                    .attr("x", width - margin.right + 3)
-                    .attr("y", function(d) {
-                        return rightScale(parseFloat(d['indexed_incidence_rate'])) + 4;
-                    })
-                    .text(function (d) {
-                        return d['Country'];
-                    });
+                svg.append("svg:g")
+                    .attr("transform", "translate(" + (width-margin.left + 10) + " ,0)")	
+                    .attr("class", "y axis")
+                    .call(yAxisRight);
                 
-
-                var leftLabels = svg.selectAll(".left-labels")
-                    .data(data);
-
-                leftLabels.enter()
-                    .append("text")
-                    .attr("class","left-labels")
-                    .attr("x", margin.left - 65)
-                    .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 4;
-                    })
-                    .text(function (d) {
-                        return d['country'];
-                    })
-                    .style("text-anchor","begin");
-                    */
-
-                /*
                 svg.append("text")
-                    .attr("x", width / 3)
-                    .attr("y", margin.top)
-                    .attr("class", "chart-title")
-                    .text("Zika searches");
-                */
+                    .attr("text-anchor", "middle")
+                    .attr("transform", "translate("+ (margin.left) +","+(10)+")")
+                    .text("Search Interest");
+                
+                svg.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("transform", "translate("+ (width -margin.left) +","+(10)+")")
+                    .text("Indexed Incidence Rate");
+                
+                console.log(y_domain2);
+                
+                optionsData = $.unique(data.map(function(d) {return d.Country;}));
+                optionsData.sort();
+                    
+                
             });      
             
         //Resize
@@ -250,9 +252,49 @@
 
         //})
         //}
-         
+            /*
+        
+         $(document).ready(function() {
+                BindControls();
+            });
             
+            
+        
+        
+       
+
+            function BindControls() {
+                /*
+                var Countries = ['ARGENTINA', 
+                    'AUSTRALIA', 
+                    'BRAZIL', 
+                    'BELARUS', 
+                    'BHUTAN',
+                    'CHILE', 
+                    'CAMBODIA', 
+                    'CANADA', 
+                    'CHILE', 
+                    'DENMARK', 
+                    'DOMINICA'];
+                   
+                
+                console.log(optionsData);
+                
+                //var Countries = optionsData;
+                    
+
+                $('#tbCountries').autocomplete({
+                    source: Countries,
+                    minLength: 0,
+                    scroll: true
+                }).focus(function() {
+                    $(this).autocomplete("search", "");
+                });
+                
+            }
+            */
         </script>
+        
         
     </body>
 </html>

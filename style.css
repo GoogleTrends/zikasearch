@@ -10,9 +10,20 @@ p {
     font-size: 1em;
 }
 #intro {
-    width: 55%;
+    width: 90vw;
     margin: 0 auto;
     border: 2px solid red;
+}
+#selectors1 {
+    width:42vw;
+    border: 2px solid yellow;
+    float: left;
+    margin-left:3vw;
+}
+#selectors2 {
+    width:42vw;
+    border: 2px solid yellow;
+    margin-left:50vw;
 }
 #chart {
     border: 2px solid green;
@@ -29,4 +40,18 @@ text.slope-label{
     font: 20px Arial;
 }
 .chart-title {
+}
+.axis path {
+  display: none;
+}
+.ui-autocomplete { 
+    cursor:pointer; 
+    margin: 0 auto;
+    overflow-y:scroll;
+} 
+#tbCountries {
+    border: 2px solid green;
+    width: 42vw;
+    margin: 0 auto;
+    border-radius: 10px;
 }
