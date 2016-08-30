@@ -6,6 +6,7 @@
        <script src="https://d3js.org/d3.v4.min.js"></script>
        
        
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 
@@ -31,12 +32,16 @@
             var optionsData;
             var dropDown;
             
-            var color = d3.scaleOrdinal(d3.schemeCategory20);
+            //var color = d3.scaleOrdinal(d3.schemeCategory20);
+            
+            var color = d3.scaleThreshold()
+                .domain([true, false])
+                .range(["#F2B940", "#4E7BB2"]);
             
             var margin = {top: 30, right: 45, bottom: 30, left: 45}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
-                      , height = 380 // placeholder
+                      , height = 350 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
@@ -77,22 +82,16 @@
                         return leftScale(parseFloat(d['search_interest']));
                     })
                     .attr("y2", function(d) {
-                    
+                        console.log(d.search_interest-d.indexed_incidence_rate < 0 );
                         return rightScale(parseFloat(d['indexed_incidence_rate']));
                     })
-                    //.style("fill", )
-                    //.attr("stroke", function(d) { 
-                        //console.log(d.Country, color(d.Country));
-                        //return color(d.Country); })
-                    //.attr("stroke", "green")
                     .attr("stroke", function(d) {
-                    console.log(d.search_interest-d.indexed_incidence_rate);
-                        return color(d.search_interest-d.indexed_incidence_rate);
+                    //.attr("class", function(d){return d.search_interest-d.indexed_incidence_rate < 0 ? "negative" : "positive";})
+                        return color(d.search_interest-d.indexed_incidence_rate < 0);
                     })
                     .attr("stroke-width", 1.5);
                 
-                var //x_domain = d3.extent(data, function(d) { return d.search_interest; }),
-                    //y_domain = d3.extent(data, function(d) { return d['search_interest']; })
+                var 
                     y_domain2 = d3.extent(data, function(d) {return d['indexed_incidence_rate']; });
 
                 var yScale = d3.scaleLinear()
@@ -118,20 +117,24 @@
                 
                 svg.append("svg:g")
                     .attr("transform", "translate(" + (margin.left - 10) +  ",0)")
-                    .attr("class", "y axis")
+                    .attr("class", "y axis whiteText")
                     .call(yAxisLeft);
                 
                 svg.append("svg:g")
                     .attr("transform", "translate(" + (width-margin.left + 10) + " ,0)")	
-                    .attr("class", "y axis")
+                    .attr("class", "y axis whiteText")
                     .call(yAxisRight);
                 
                 svg.append("text")
+                    .attr("class", "whiteText")
+                    .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
                     .attr("transform", "translate("+ (margin.left) +","+(10)+")")
                     .text("Search Interest");
                 
                 svg.append("text")
+                    .attr("class", "whiteText")
+                    .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
                     .attr("transform", "translate("+ (width -margin.left) +","+(10)+")")
                     .text("Indexed Incidence Rate");
@@ -174,8 +177,8 @@
                           //.attr("fill", "#884dff")
                             //.style("stroke", "#884dff")
                             //.attr("stroke", "green")
-                            .style("stroke-width", 1.5); 
-                            //.style("opacity", .2);
+                            .style("stroke-width", 1.5)
+                            .style("opacity", .8);
 
                       //doubleChart.selectAll(".circle")
                     svg.selectAll("line").filter(function(d) {return selected == d.Country;})
