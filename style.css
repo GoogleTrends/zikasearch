@@ -95,3 +95,10 @@ select {
 *:focus {
     outline: none;
 }
+#footer {
+    font-size: 0.6em;
+    text-align: center;
+}
+#trendsLogo {
+    width: 15vw;
+}
