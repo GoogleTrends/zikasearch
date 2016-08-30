@@ -28,9 +28,9 @@
         <div id="chart" class="container"></div>
         
         <div id="footer">
-            <p>Designed by Sevika Singh and Alberto Cairo</p>
-            <p style="float:left;margin-left:32vw;margin-top:0px;">Powered by: </p>
-            <img src="trendslogo.png" alt="Google Trends" id="trendsLogo" style="float:right;margin-right:32vw">
+            <p id="designed">Designed by Sevika Singh and Alberto Cairo</p>
+            <p id="powered">Powered by: </p>
+            <img src="trendslogo.png" alt="Google Trends" id="trendsLogo">
         </div>
         
         <script type="text/javascript">
@@ -47,7 +47,7 @@
             var margin = {top: 30, right: 45, bottom: 30, left: 45}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
-                      , height = 350 // placeholder
+                      , height = width*1.3 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
@@ -64,6 +64,7 @@
             var svg = d3.select('#chart').append('svg')
                 .style('width', (width + margin.left + margin.right) + 'px')
                 .style('height', (height + margin.top + margin.bottom) + 'px')
+                .attr('class', 'chartclass')
                 .append('g')
                 .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
             
