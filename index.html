@@ -98,6 +98,65 @@
                     })
                     .attr("stroke-width", 1.5);
                 
+                var rightLabels = svg.selectAll(".labels")
+                    .data(data);
+
+                rightLabels.enter()
+                    .append("text")
+                    .attr("class","labels")
+                    .attr("x", 10)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['search_interest'])) + 17;
+                    })
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return (d['Country'] + "Interest " + d['search_interest'] + "Rate " + d['indexed_incidence_rate']);
+                    })
+                .call(wrap,20);
+                
+                
+                function wrap(text, width) {
+                      text.each(function() {
+                        var text = d3.select(this),
+                            words = text.text().split(/\s+/).reverse(),
+                            word,
+                            line = [],
+                            lineNumber = 0,
+                            lineHeight = 1.1, // ems
+                            y = text.attr("y"),
+                            //dy = parseFloat(text.attr("dy")),
+                            dy=parseFloat(d['search_interest']) + 170,
+                            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+                        while (word = words.pop()) {
+                          line.push(word);
+                          tspan.text(line.join(" "));
+                          if (tspan.node().getComputedTextLength() > width) {
+                            line.pop();
+                            tspan.text(line.join(" "));
+                            line = [word];
+                            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                          }
+                        }
+                      });
+                    }
+
+                /*
+                var leftLabels = svg.selectAll(".left-labels")
+                    .data(data);
+
+                leftLabels.enter()
+                    .append("text")
+                    .attr("class","left-labels")
+                    .attr("x", margin.left - 65)
+                    .attr("y", function(d) {
+                        return leftScale(parseFloat(d['search_interest'])) + 4;
+                    })
+                    .text(function (d) {
+                        return d['country'];
+                    })
+                    .style("text-anchor","begin");
+                    */
+                
                 var 
                     y_domain2 = d3.extent(data, function(d) {return d['indexed_incidence_rate']; });
 
