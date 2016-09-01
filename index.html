@@ -19,6 +19,7 @@
             <img src="zika.png" alt="ZIKA" id="zikaHeader">
         </div>
         <div id="selectors1">
+           <p>8/18 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8/25</p>
             <div id="slider"></div>
         </div>
         <div id="selectors2">
@@ -40,28 +41,10 @@
             
             var optionsData;
             var dropDown;
+            var dateSelected;
             
             //var valMap = ["8/15", "8/28"];
-            var steps = [
-                "very sad",
-                "sad",
-                "not so sad",
-                "happy",
-                "very happy"
-            ];
-
-            $(function() {
-                $("#slider").slider({
-                    value: 1,
-                    min: 0,
-                    max: 4,
-                    step: 1,
-                    slide: function(event, ui) {
-                        $("#amount").val(steps[ui.value]);
-                    }
-                });
-                $("#amount").val(steps[$("#slider").slider("value")]);
-            });
+            
             
             //$( "#slider" ).on( "slidechange", function( event, ui ) {} );
             
@@ -135,6 +118,14 @@
                         return color(d.search_interest-d.raw_incidence_rate < 0);
                     })
                     .attr("stroke-width", 1.5);
+                
+                svg.selectAll("line").filter(function(d) {
+                                return "8/18" != d.Date;})
+                                    .attr("display", "inline");
+                svg.selectAll("line").filter(function(d) {
+                                return "8/18" == d.Date;})
+                                    .attr("display", "none");
+                
                 /*
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
@@ -326,7 +317,7 @@
                             //.style("stroke", "#884dff")
                             //.attr("stroke", "green")
                             .style("stroke-width", 1.5)
-                            .style("opacity", .5);
+                            .style("opacity", .5 );
 
                       //doubleChart.selectAll(".circle")
                     svg.selectAll("line").filter(function(d) {return selected == d.Country;})
@@ -348,6 +339,43 @@
                     
                     
                   });
+                
+                var steps = [
+                    "8/18",
+                    "8/25"
+                ];
+
+                $(function() {
+                    $("#slider").slider({
+                        value: 1,
+                        min: 0,
+                        max: 1,
+                        step: 1,
+                        slide: function(event, ui) {
+                            $("#amount").val(steps[ui.value]);
+                            dateSelected= steps[ui.value];
+                            console.log(dateSelected);
+                            
+                            
+                            var selected = dateSelected;
+                            
+                            svg.selectAll("line").filter(function(d) {
+                                return selected != d.Date;})
+                                    .transition()
+                                    //.style("stroke", "red");
+                                    .attr("display", "none");
+                            svg.selectAll("line").filter(function(d) {
+                                return selected == d.Date;})
+                                    .transition()
+                                    //.style("stroke", "green");
+                                    .attr("display", "inline");
+                            
+                            
+                            
+                        }
+                    });
+                    $("#amount").val(steps[$("#slider").slider("value")]);
+                });
                 
                 
             }); 
