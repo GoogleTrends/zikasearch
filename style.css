@@ -153,13 +153,11 @@ select {
     }
     #selectors1 {
         width:35vw;
-        border: 2px solid yellow;
         float: left;
         margin-left:7vw;
     }
     #selectors2 {
         width:35vw;
-        border: 2px solid yellow;
         margin-left:7vw;
         margin-top: 10vh;
     }
