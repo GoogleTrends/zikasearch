@@ -9,6 +9,9 @@
         <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+        
+        <script src="d3.slider.js"></script>
+        
 
    </head>
     <body>
@@ -16,7 +19,7 @@
             <img src="zika.png" alt="ZIKA" id="zikaHeader">
         </div>
         <div id="selectors1">
-            <p>(date range)</p>
+            <div id="slider"></div>
         </div>
         <div id="selectors2">
             <p>Choose a Country</p>
@@ -38,6 +41,30 @@
             var optionsData;
             var dropDown;
             
+            //var valMap = ["8/15", "8/28"];
+            var steps = [
+                "very sad",
+                "sad",
+                "not so sad",
+                "happy",
+                "very happy"
+            ];
+
+            $(function() {
+                $("#slider").slider({
+                    value: 1,
+                    min: 0,
+                    max: 4,
+                    step: 1,
+                    slide: function(event, ui) {
+                        $("#amount").val(steps[ui.value]);
+                    }
+                });
+                $("#amount").val(steps[$("#slider").slider("value")]);
+            });
+            
+            //$( "#slider" ).on( "slidechange", function( event, ui ) {} );
+            
             //var color = d3.scaleOrdinal(d3.schemeCategory20);
             
             var color = d3.scaleThreshold()
@@ -51,7 +78,7 @@
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
-            
+            /*
             var leftScale = d3.scaleLinear()
                 .domain([0.0, 100.0])
                 .range([height - margin.top, margin.bottom]);
@@ -59,7 +86,8 @@
             var rightScale = d3.scaleLinear()
                 .domain([0.0, 100.0])
                 .range([height - margin.top, margin.bottom]);
-        
+            */
+            
             // create the chart
             var svg = d3.select('#chart').append('svg')
                 .style('width', (width + margin.left + margin.right) + 'px')
@@ -69,9 +97,19 @@
                 .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
             
             
-            d3.csv('data.csv', function(d) {
+            d3.csv('dataFormatted2.csv', function(d) {
                 data = d;
                 
+                
+                var data_max = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
+                
+                var leftScale = d3.scaleLinear()
+                    .domain([0.0, 100.0])
+                    .range([height - margin.top, margin.bottom]);
+
+                var rightScale = d3.scaleLinear()
+                    .domain([0.0, 10000])
+                    .range([height - margin.top, margin.bottom]);
                 
                 //data.sort(function (a, b) {
 				//	return b.search_interest-a.search_interest;
@@ -89,30 +127,55 @@
                         return leftScale(parseFloat(d['search_interest']));
                     })
                     .attr("y2", function(d) {
-                        console.log(d.search_interest-d.indexed_incidence_rate < 0 );
-                        return rightScale(parseFloat(d['indexed_incidence_rate']));
+                        //console.log(d.search_interest-d.raw_incidence_rate < 0 );
+                        return rightScale(parseFloat(d['raw_incidence_rate']));
                     })
                     .attr("stroke", function(d) {
-                    //.attr("class", function(d){return d.search_interest-d.indexed_incidence_rate < 0 ? "negative" : "positive";})
-                        return color(d.search_interest-d.indexed_incidence_rate < 0);
+                    //.attr("class", function(d){return d.search_interest-d.raw_incidence_rate < 0 ? "negative" : "positive";})
+                        return color(d.search_interest-d.raw_incidence_rate < 0);
                     })
                     .attr("stroke-width", 1.5);
-                
+                /*
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
 
                 rightLabels.enter()
                     .append("text")
-                    .attr("class","labels")
+                    .attr("class","labels1 displaylabels")
+                    .attr("x", 10)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['search_interest'])) + 3;
+                    })
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return (d['Country']);
+                    });
+                rightLabels.enter()
+                    .append("text")
+                    .attr("class","labels2 displaylabels")
+                    .attr("x", 10)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['search_interest'])) + 10;
+                    })
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return ("Interest " + d['search_interest']);
+                    });
+                rightLabels.enter()
+                    .append("text")
+                    .attr("class","labels3 displaylabels")
                     .attr("x", 10)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['search_interest'])) + 17;
                     })
                     .attr("text-anchor", "middle")
                     .text(function (d) {
-                        return (d['Country'] + "Interest " + d['search_interest'] + "Rate " + d['indexed_incidence_rate']);
-                    })
-                .call(wrap,20);
+                        return ("Rate " + d['raw_incidence_rate']);
+                    });
+                    */
+                
+                /*
+                .call(wrap, 100);
                 
                 
                 function wrap(text, width) {
@@ -124,8 +187,7 @@
                             lineNumber = 0,
                             lineHeight = 1.1, // ems
                             y = text.attr("y"),
-                            //dy = parseFloat(text.attr("dy")),
-                            dy=parseFloat(d['search_interest']) + 170,
+                            dy = (d['search_interest']) + 17,
                             tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
                         while (word = words.pop()) {
                           line.push(word);
@@ -139,6 +201,7 @@
                         }
                       });
                     }
+                    */
 
                 /*
                 var leftLabels = svg.selectAll(".left-labels")
@@ -157,15 +220,20 @@
                     .style("text-anchor","begin");
                     */
                 
-                var 
-                    y_domain2 = d3.extent(data, function(d) {return d['indexed_incidence_rate']; });
+                
+                //(function (d) {return (d['raw_incidence_rate']);})
+                
+                //console.log(data_max);
+                
+                var y_domain2 = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
 
                 var yScale = d3.scaleLinear()
                     .domain([0,100])
                     .range([height -  margin.top, margin.bottom], 0);  
                 
                 var yScale2 = d3.scaleLinear()
-                    .domain([0,100])
+                    .domain([data_max[0], 10000])
+                //data_max[1]
                     .range([height -  margin.top, margin.bottom], 0); 
                 
                 var axisScale = d3.scaleLinear()
@@ -207,8 +275,15 @@
                 
                 console.log(y_domain2);
                 
-                optionsData = $.unique(data.map(function(d) {return d.Country;}));
+                optionsData = (data.map(function(d) {return d.Country;}));
                 optionsData.sort();
+                
+                Array.prototype.unique = function(a){
+                        return function(){ return this.filter(a) }
+                    }(function(a,b,c){ return c.indexOf(a,b+1) < 0 });
+                
+                
+                optionsData = optionsData.unique();
                 
                 data2 = data.sort(function (a, b) {
 					return d3.ascending(a.Country, b.Country);
@@ -220,13 +295,20 @@
                     .attr("name", "country-list");
                 
                 var options = dropDown.selectAll("option")
-                           .data(data2)
+                           .data(optionsData)
                          .enter()
-                           .append("option");
+                           .append("option")
+                            .attr("value", function(d) {return d})
+                            .text(function(d) {return d;});
 
-                options.text(function (d) { return d.Country; })
-                       .attr("value", function (d) { return d.Country; });
-                    
+                //options.text(function (d) { return d.Country; })
+                       //.attr("value", function (d) { return d.Country; });
+                
+                d3.selection.prototype.moveToFront = function() {
+                  return this.each(function(){
+                    this.parentNode.appendChild(this);
+                  });
+                };
                 
                 dropDown.on("change", function() {
                       var selected = this.value;
@@ -244,7 +326,7 @@
                             //.style("stroke", "#884dff")
                             //.attr("stroke", "green")
                             .style("stroke-width", 1.5)
-                            .style("opacity", .8);
+                            .style("opacity", .5);
 
                       //doubleChart.selectAll(".circle")
                     svg.selectAll("line").filter(function(d) {return selected == d.Country;})
@@ -252,10 +334,19 @@
                             //.attr("fill", "white");
                             //.style("stroke", "red")
                             //.attr("stroke", "red")
+                            .moveToFront()
+                            .style("opacity", 1)
                             .style("stroke-width", 6); 
-                            //.style("opacity", 1);
                     
-                    console.log(selected, display);
+                    svg.selectAll("rightLabels").filter(function(d) {return selected != d.Country;})
+                            .attr("class", "displaylabels");
+                    
+                    svg.selectAll("rightLabels").filter(function(d) {return selected == d.Country;})
+                            .attr("class", "showdisplaylabels")
+                    .attr("fill", "green");
+                    //console.log("changed");
+                    
+                    
                   });
                 
                 
@@ -308,7 +399,7 @@
                         return leftScale(parseFloat(d['search_interest']));
                     })
                     .attr("y2", function(d) {
-                        return rightScale(parseFloat(d['indexed_incidence_rate']));
+                        return rightScale(parseFloat(d['raw_incidence_rate']));
                     })
                     .attr("stroke", "black")
                     .attr("stroke-width", 1);
@@ -321,7 +412,7 @@
                     .attr("class","labels")
                     .attr("x", width - margin.right + 3)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['indexed_incidence_rate'])) + 4;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 4;
                     })
                     .text(function (d) {
                         return d['Country'];

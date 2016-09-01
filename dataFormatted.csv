@@ -1,0 +1,54 @@
+"Description of search interest data: Weekly search interest in Zika virus by country, indexed 1-100 (where 100 is maximum search interest) ",,,,,,
+"Description of Incidence data: Raw incidence data is cases per 100,000 people (according to PAHO WHO). Indexed incidence data is the raw incidence values indexed 1-100 (where 100 is maximum incidence rate for that week). ",,,,,,
+,,,,,,
+Country,8/18 Search interest,8/18 indexed incidence,8/18 raw incidence,8/25 indexed search interest,8/25 indexed incidence,8/25 raw incidence
+Trinidad and Tobago,100,0,10.92,99,0,18.61
+Puerto Rico,60,3,290.41,59,4,358.22
+Guadeloupe,52,66,5711.04,0,68,6039.07
+Jamaica,45,2,162.08,50,2,162.08
+Nicaragua,30,0,22.21,29,0,25.27
+Honduras,23,4,367.36,22,4,370.16
+Guatemala,19,0,15.29,20,0,16.82
+United States,16,0,0.00,21,0,0.00
+Costa Rica,14,0,33.60,12,0,41.55
+Canada,10,0,0.00,10,0,0.00
+Dominican Republic,10,1,49.84,9,1,50.33
+Mexico,10,0,1.26,14,0,1.46
+Venezuela,5,2,178.25,5,2,183.38
+Brazil,4,1,120.45,4,1,120.45
+Colombia,3,2,208.96,3,2,209.86
+Ecuador,3,0,16.47,3,0,16.83
+Peru,2,0,0.30,2,0,0.30
+Chile,2,0,0.00,2,0,0.00
+Argentina,1,0,4.03,1,0,4.03
+Aruba,0,0,18.42,0,0,18.42
+Anguilla,0,1,111.76,0,1,123.53
+Antigua and Barbuda,0,0,20.21,0,0,20.21
+Saint Barthelemy,0,55,4788.89,0,69,6122.22
+Belize,0,0,1.36,0,0,1.36
+Bermuda,0,0,0.00,0,0,0.00
+Bolivia,0,0,1.16,0,0,1.16
+Barbados,0,2,192.44,0,2,194.16
+Cuba,0,0,0.03,0,0,0.03
+Cayman Islands,0,0,3.51,0,0,5.26
+Dominica,0,14,1237.84,0,14,1252.70
+Grenada,0,3,250.45,0,3,285.59
+French Guiana,0,41,3555.43,0,41,3602.54
+Guyana,0,0,0.78,0,0,0.78
+Haiti,0,0,19.63,0,0,27.29
+Saint Kitts and Nevis,0,0,0.00,0,0,0.00
+Saint Lucia,0,5,448.78,0,5,448.78
+Saint Martin,0,65,5652.78,0,68,6041.67
+Montserrat,0,0,0.00,0,0,0.00
+Martinique,0,100,8667.17,0,100,8831.31
+Panama,0,0,39.22,0,0,42.21
+Paraguay,0,0,4.24,0,0,4.24
+El Salvador,0,2,179.19,0,2,180.05
+Suriname,0,7,620.80,0,7,623.91
+Turks and Caicos Islands,0,0,3.92,0,0,3.92
+Uruguay,0,0,0.00,0,0,0.00
+Saint Vincent and the Grenadines,0,2,190.20,0,2,190.20
+The Bahamas,0,0,0.25,100,0,0.76
+Curacao,0,2,139.60,0,2,139.60
+British Virgin Islands,0,0,0.00,0,0,0.00
+U.S. Virgin Islands,0,6,534.95,0,6,534.95

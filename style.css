@@ -43,7 +43,7 @@ p {
     /*border: 2px solid yellow;*/
     float: left;
     margin-left:3vw;
-    margin-top: -12px;
+    margin-top: 20px;
 }
 #selectors2 {
     width:42vw;
@@ -116,10 +116,23 @@ select {
 }
 .chartclass {
 }
-.labels {
+.labels1{
     font-size: 0.75em;
-    text-align: right;
-    width: 40px;
+    
+}
+.labels2 {
+    font-size: 0.75em;
+   
+}
+.labels3 {
+    font-size: 0.75em;
+    
+}
+.displaylabels {
+    font-size: 0.75em;
+}
+.showdisplaylabels {
+    font-size: 5.75em;
 }
 
 
