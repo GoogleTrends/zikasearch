@@ -56,7 +56,7 @@
             
             //$( "#slider" ).on( "slidechange", function( event, ui ) {} );
             
-            //var color = d3.scaleOrdinal(d3.schemeCategory20);
+            var color2 = d3.scaleOrdinal(d3.schemeCategory20);
             
             var color = d3.scaleThreshold()
                 .domain([true, false])
@@ -69,7 +69,7 @@
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
-            /*
+            
             var leftScale = d3.scaleLinear()
                 .domain([0.0, 100.0])
                 .range([height - margin.top, margin.bottom]);
@@ -77,7 +77,7 @@
             var rightScale = d3.scaleLinear()
                 .domain([0.0, 100.0])
                 .range([height - margin.top, margin.bottom]);
-            */
+            
             
             // create the chart
             var svg = d3.select('#chart').append('svg')
@@ -123,27 +123,45 @@
                     })
                     .attr("stroke", function(d) {
                     //.attr("class", function(d){return d.search_interest-d.raw_incidence_rate < 0 ? "negative" : "positive";})
-                        return color(d.search_interest-d.raw_incidence_rate < 0);
+                        //return color(d.search_interest-d.raw_incidence_rate < 0);
+                        return color2(d.Date);
                     })
                     .attr("stroke-width", 1.5);
+                /*
                 
                 svg.selectAll("line").filter(function(d) {
+                    //console.log("8/18" != d.Date, d.Country);
                                 return "8/18" != d.Date;})
+                                    
                                     .attr("display", "inline");
                 svg.selectAll("line").filter(function(d) {
                                 return "8/18" == d.Date;})
                                     .attr("display", "none");
+                */
                 
-                /*
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
+                
+                
+                rightLabels.enter()
+                    .append("text")
+                    .attr("class","labels1 displaylabels")
+                    .attr("x", 10)
+                    .attr("y", function(d) {
+                        return leftScale(parseFloat(d['search_interest'])) + 0;
+                    })
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return (d['Country'] + d['Date']);
+                    });
+                /*
 
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labels1 displaylabels")
                     .attr("x", 10)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['search_interest'])) + 3;
+                        return leftScale(parseFloat(d['search_interest'])) + 0;
                     })
                     .attr("text-anchor", "middle")
                     .text(function (d) {
@@ -154,7 +172,7 @@
                     .attr("class","labels2 displaylabels")
                     .attr("x", 10)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['search_interest'])) + 10;
+                        return leftScale(parseFloat(d['search_interest'])) + 10;
                     })
                     .attr("text-anchor", "middle")
                     .text(function (d) {
@@ -165,13 +183,13 @@
                     .attr("class","labels3 displaylabels")
                     .attr("x", 10)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['search_interest'])) + 17;
+                        return leftScale(parseFloat(d['search_interest'])) + 20;
                     })
                     .attr("text-anchor", "middle")
                     .text(function (d) {
                         return ("Rate " + d['raw_incidence_rate']);
                     });
-                    */
+                   */ 
                 
                 /*
                 .call(wrap, 100);
@@ -336,13 +354,14 @@
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
-                    
+                    /*
                     svg.selectAll("rightLabels").filter(function(d) {return selected != d.Country;})
                             .attr("class", "displaylabels");
                     
                     svg.selectAll("rightLabels").filter(function(d) {return selected == d.Country;})
                             .attr("class", "showdisplaylabels")
                     .attr("fill", "green");
+                    */
                     //console.log("changed");
                     
                     
@@ -376,16 +395,27 @@
                             var selected = dateSelected;
                             
                             svg.selectAll("line").filter(function(d) {
+                                //console.log(d.Date, d.Country);
                                 return selected != d.Date;})
-                                    .transition()
+                                    //.transition()
                                     //.style("stroke", "red");
+                                    .classed('showdisplaylabels',false)
+                                    .classed('displaylabels',true)
                                     .attr("display", "none");
                             svg.selectAll("line").filter(function(d) {
                                 return selected == d.Date;})
-                                    .transition()
+                                    //.transition()
                                     //.style("stroke", "green");
+                                .classed('showdisplaylabels',true)
+                                .classed('displaylabels',false)
                                     .attr("display", "inline");
-                            
+                            svg.selectAll(".displaylabels").filter(function(d) {
+                              return selected != d.Date;})
+                            .classed('showdisplaylabels',false);
+                          
+                          svg.selectAll(".displaylabels").filter(function(d) {
+                              return selected == d.Date;})
+                            .classed('showdisplaylabels',true);
                             
                             
                         }
@@ -407,10 +437,19 @@
                             .style("stroke-width", 1.5)
                             .style("opacity", .5 );
                           
-                          svg.selectAll("line").filter(function(d) {return selected == d.Country;})
+                          svg.selectAll("line").filter(function(d) {
+                            return selected == d.Country;})
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
+                          
+                          svg.selectAll(".displaylabels").filter(function(d) {
+                              return selected != d.Country;})
+                            .classed('showdisplaylabels',false);
+                          
+                          svg.selectAll(".displaylabels").filter(function(d) {
+                              return selected == d.Country;})
+                            .classed('showdisplaylabels',true);
                       }
                     });
                   } );
@@ -422,172 +461,7 @@
             
             
             
-        //Resize
-        
-          /*  
-        d3.select(window).on('resize', resize); 
-
-        function resize() {
-            document.getElementById('chart').innerHTML = "";
-            
-            var margin = {top: 10, right: 35, bottom: 10, left: 35}
-                      , width = parseInt(d3.select('#chart').style('width'), 10)
-                      , width = width - margin.left - margin.right
-                      , height = 500 // placeholder
-                      , barHeight = 20
-                      , spacing = 3
-                      , percent = d3.format('%');
-            
-            var leftScale = d3.scaleLinear()
-                .domain([0.0, 100.0])
-                .range([height - margin.top, margin.bottom]);
-
-            var rightScale = d3.scaleLinear()
-                .domain([0.0, 100.0])
-                .range([height - margin.top, margin.bottom]);
-        
-            // create the chart
-            var svg = d3.select('#chart').append('svg')
-                .style('width', (width + margin.left + margin.right) + 'px')
-                .append('g')
-                .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
-            
-            d3.csv('data.csv', function(d) {
-                data = d;
-
-                var lines = svg.selectAll("line")
-                    .data(data);
-
-                lines.enter()
-                    .append("line")
-                    .attr('class', 'lineclass')
-                    .attr("x1", margin.left)
-                    .attr("x2", width - margin.right)
-                    .attr("y1", function(d) {
-                        return leftScale(parseFloat(d['search_interest']));
-                    })
-                    .attr("y2", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate']));
-                    })
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 1);
-
-                var rightLabels = svg.selectAll(".labels")
-                    .data(data);
-
-                rightLabels.enter()
-                    .append("text")
-                    .attr("class","labels")
-                    .attr("x", width - margin.right + 3)
-                    .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 4;
-                    })
-                    .text(function (d) {
-                        return d['Country'];
-                    });
-
-                var leftLabels = svg.selectAll(".left-labels")
-                    .data(data);
-
-                leftLabels.enter()
-                    .append("text")
-                    .attr("class","left-labels")
-                    .attr("x", margin.left - 65)
-                    .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 4;
-                    })
-                    .text(function (d) {
-                        return d['country'];
-                    })
-                    .style("text-anchor","begin");
-                
-                /*
-            // update width
-            width = parseInt(d3.select('#chart').style('width'), 10);
-            width = width - margin.left - margin.right;
-
-            
-            //------------For Slope graph---------------
-            
-            svg.selectAll('line.lineclass')
-                .attr("x1", margin.left)
-                .attr("x2", width - margin.right);
-            
-            /*
-                // resize the chart
-            x.range([0, width]);
-            d3.select(chart.node().parentNode)
-                .style('height', (y.rangeExtent()[1] + margin.top + margin.bottom) + 'px')
-                .style('width', (width + margin.left + margin.right) + 'px');
-
-            chart.selectAll('rect.background')
-                .attr('width', width);
-
-            chart.selectAll('rect.percent')
-                .attr('width', function(d) { return x(d.percent); });
-
-            // update median ticks
-            var median = d3.median(chart.selectAll('.bar').data(), 
-                function(d) { return d.percent; });
-
-            chart.selectAll('line.median')
-                .attr('x1', x(median))
-                .attr('x2', x(median));
-
-
-            // update axes
-            chart.select('.x.axis.top').call(xAxis.orient('top'));
-            chart.select('.x.axis.bottom').call(xAxis.orient('bottom'));
-            */
-
-        //})
-        //}
-            /*
-        
-         $(document).ready(function() {
-                BindControls();
-            });
-            
-            
-        
-        
        
-
-            function BindControls() {
-                /*
-                var Countries = ['ARGENTINA', 
-                    'AUSTRALIA', 
-                    'BRAZIL', 
-                    'BELARUS', 
-                    'BHUTAN',
-                    'CHILE', 
-                    'CAMBODIA', 
-                    'CANADA', 
-                    'CHILE', 
-                    'DENMARK', 
-                    'DOMINICA'];
-                   
-                
-                console.log(optionsData);
-                
-                //var Countries = optionsData;
-                    
-
-                $('#tbCountries').autocomplete({
-                    source: Countries,
-                    minLength: 0,
-                    scroll: true
-                }).focus(function() {
-                    $(this).autocomplete("search", "");
-                });
-                
-            }
-            */
-            
-            
-            function showVal() {
-                    //console.log(this.value);
-                };
             
         </script>
         
