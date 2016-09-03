@@ -123,8 +123,8 @@
                     })
                     .attr("stroke", function(d) {
                     //.attr("class", function(d){return d.search_interest-d.raw_incidence_rate < 0 ? "negative" : "positive";})
-                        //return color(d.search_interest-d.raw_incidence_rate < 0);
-                        return color2(d.Date);
+                        return color(d.search_interest-d.raw_incidence_rate < 0);
+                        //return color2(d.Date);
                     })
                     .attr("stroke-width", 1.5);
                 /*
@@ -142,19 +142,8 @@
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
                 
+               
                 
-                rightLabels.enter()
-                    .append("text")
-                    .attr("class","labels1 displaylabels")
-                    .attr("x", 10)
-                    .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 0;
-                    })
-                    .attr("text-anchor", "middle")
-                    .text(function (d) {
-                        return (d['Country'] + d['Date']);
-                    });
-                /*
 
                 rightLabels.enter()
                     .append("text")
@@ -189,7 +178,7 @@
                     .text(function (d) {
                         return ("Rate " + d['raw_incidence_rate']);
                     });
-                   */ 
+                   
                 
                 /*
                 .call(wrap, 100);
@@ -392,30 +381,24 @@
                             console.log(dateSelected);
                             
                             
-                            var selected = dateSelected;
+                            var selected2 = dateSelected;
                             
                             svg.selectAll("line").filter(function(d) {
                                 //console.log(d.Date, d.Country);
-                                return selected != d.Date;})
+                                return selected2 != d.Date;})
                                     //.transition()
                                     //.style("stroke", "red");
                                     .classed('showdisplaylabels',false)
                                     .classed('displaylabels',true)
                                     .attr("display", "none");
                             svg.selectAll("line").filter(function(d) {
-                                return selected == d.Date;})
+                                return selected2 == d.Date;})
                                     //.transition()
                                     //.style("stroke", "green");
                                 .classed('showdisplaylabels',true)
                                 .classed('displaylabels',false)
                                     .attr("display", "inline");
-                            svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected != d.Date;})
-                            .classed('showdisplaylabels',false);
-                          
-                          svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected == d.Date;})
-                            .classed('showdisplaylabels',true);
+                            
                             
                             
                         }
@@ -430,25 +413,27 @@
                       source: availableTags,
                       select: function(event, ui) {
                           //alert(ui.item.value);
-                          selected = ui.item.value;
+                          selected3 = ui.item.value;
                           
                           svg.selectAll("line").filter(function(d) {
-                            return selected != d.Country;})
+                            return selected3 != d.Country;})
                             .style("stroke-width", 1.5)
                             .style("opacity", .5 );
                           
                           svg.selectAll("line").filter(function(d) {
-                            return selected == d.Country;})
+                            return selected3 == d.Country;})
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
                           
                           svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected != d.Country;})
+                              return selected3 != d.Country;})
+                            .classed('displaylabels',true)
                             .classed('showdisplaylabels',false);
                           
                           svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected == d.Country;})
+                              return selected3 == d.Country;})
+                            .classed('displaylabels',false)
                             .classed('showdisplaylabels',true);
                       }
                     });
