@@ -47,7 +47,7 @@
             
             var optionsData;
             var dropDown;
-            var dateSelected;
+            var dateSelected = "8/25";
             var countrySelected;
             var selected;
             
@@ -131,11 +131,11 @@
                 
                 svg.selectAll("line").filter(function(d) {
                     //console.log("8/18" != d.Date, d.Country);
-                                return "8/18" != d.Date;})
+                                return "8/18" == d.Date;})
                                     .classed('displaylabels',true)
                                     .classed('showdisplaylabels',false);
                 svg.selectAll("line").filter(function(d) {
-                                return "8/25" != d.Date;})
+                                return "8/25" == d.Date;})
                                     .classed('displaylabels',false)
                                     .classed('showdisplaylabels',true);
                 
@@ -148,8 +148,8 @@
 
                 rightLabels.enter()
                     .append("text")
-                    .attr("class","labels1 displaylabels")
-                    .attr("x", -7)
+                    .attr("class","labelsclass labels1 displaylabels")
+                    .attr("x", -10)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 0;
                     })
@@ -159,8 +159,8 @@
                     });
                 rightLabels.enter()
                     .append("text")
-                    .attr("class","labels2 displaylabels")
-                    .attr("x", -7)
+                    .attr("class","labelsclass labels2 displaylabels")
+                    .attr("x", -10)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 10;
                     })
@@ -170,8 +170,8 @@
                     });
                 rightLabels.enter()
                     .append("text")
-                    .attr("class","labels3 displaylabels")
-                    .attr("x", -7)
+                    .attr("class","labelsclass labels3 displaylabels")
+                    .attr("x", -10)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 20;
                     })
@@ -257,12 +257,12 @@
                     
                 
                 svg.append("svg:g")
-                    .attr("transform", "translate(" + (margin.left - 10) +  ",0)")
+                    .attr("transform", "translate(" + (margin.left+5) +  ",0)")
                     .attr("class", "y axis whiteText")
                     .call(yAxisLeft);
                 
                 svg.append("svg:g")
-                    .attr("transform", "translate(" + (width-margin.left + 10) + " ,0)")	
+                    .attr("transform", "translate(" + (width-margin.left-5) + " ,0)")	
                     .attr("class", "y axis whiteText")
                     .call(yAxisRight);
                 
@@ -270,14 +270,14 @@
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left) +","+(10)+")")
+                    .attr("transform", "translate("+ (margin.left) +","+(0)+")")
                     .text("Search Interest");
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left) +","+(10)+")")
+                    .attr("transform", "translate("+ (width -margin.left) +","+(0)+")")
                     .text("Indexed Incidence Rate");
                 
                 console.log(y_domain2);
@@ -317,6 +317,11 @@
                   });
                 };
                 
+                
+                
+                
+                
+                //OLD DROP DOWN SELECTION
                 dropDown.on("change", function() {
                       selected = this.value;
                       displayOthers = this.checked ? "inline" : "none";
@@ -327,7 +332,7 @@
                      // doubleChart.selectAll(".circle")
                     svg.selectAll("line").filter(function(d) {
                         //console.log(d.Country);
-                        return selected != d.Country;})
+                        return  ((selected != d.Country)&&(d.Date==dateSelected));})
                           //.attr("display", displayOthers);
                           //.attr("fill", "#884dff")
                             //.style("stroke", "#884dff")
@@ -336,26 +341,45 @@
                             .style("opacity", .5 );
 
                       //doubleChart.selectAll(".circle")
-                    svg.selectAll("line").filter(function(d) {return selected == d.Country;})
+                    svg.selectAll("line").filter(function(d) {
+                        return ((selected == d.Country)&&(d.Date==dateSelected));})
                           //.attr("display", display);
-                            //.attr("fill", "white");
+                            //.attr("fill", "white")
                             //.style("stroke", "red")
                             //.attr("stroke", "red")
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
-                    /*
-                    svg.selectAll("rightLabels").filter(function(d) {return selected != d.Country;})
-                            .attr("class", "displaylabels");
                     
-                    svg.selectAll("rightLabels").filter(function(d) {return selected == d.Country;})
-                            .attr("class", "showdisplaylabels")
-                    .attr("fill", "green");
-                    */
+                    svg.selectAll("rightLabels").filter(function(d) {
+                        console.log("not", d.Country, d.Date);
+                        return ((selected != d.Country)&&(d.Date==dateSelected));})
+                            //.attr("class", "displaylabels");
+                                    .classed('showdisplaylabels',false)
+                                    .classed('displaylabels',true)
+                                    .attr("display", "none");
+                    
+                    svg.selectAll("rightLabels").filter(function(d) {
+                        console.log(d.Country, d.Date);
+                        return ((selected == d.Country)&&(d.Date==dateSelected));})
+                            //.attr("class", "showdisplaylabels")
+                                    
+                                    .classed('showdisplaylabels',true)
+                                    .classed('displaylabels',false)
+                                    .attr("display", "inline");
+                    //.attr("fill", "green");
+                    
                     //console.log("changed");
                     
                     
                   });
+                
+                
+                
+                
+                
+                
+                
                 
                 $('#slider').change(function(){
                     
@@ -379,7 +403,7 @@
                         slide: function(event, ui) {
                             $("#amount").val(steps[ui.value]);
                             dateSelected= steps[ui.value];
-                            console.log(dateSelected);
+                            //console.log(dateSelected);
                             
                             
                             var selected2 = dateSelected;
@@ -400,6 +424,41 @@
                                 .classed('displaylabels',false)
                                     .attr("display", "inline");
                             
+                            svg.selectAll("line").filter(function(d) {
+                                //console.log(d.Country);
+                                return  ((countrySelected != d.Country)&&(d.Date==dateSelected));})
+                                  //.attr("display", displayOthers);
+                                  //.attr("fill", "#884dff")
+                                    //.style("stroke", "#884dff")
+                                    //.attr("stroke", "green")
+                                    .style("stroke-width", 1.5)
+                                    .style("opacity", 1 );
+
+                              //doubleChart.selectAll(".circle")
+                            svg.selectAll("line").filter(function(d) {
+                                return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                                  //.attr("display", display);
+                                    //.attr("fill", "white")
+                                    //.style("stroke", "red")
+                                    //.attr("stroke", "red")
+                                    .moveToFront()
+                                    .style("opacity", 1)
+                                    .style("stroke-width", 6); 
+                            
+                          svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((countrySelected != d.Country)&&(d.Date!=dateSelected));})
+                            .classed('displaylabels',true)
+                            .classed('showdisplaylabels',false);
+                          
+                          svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('displaylabels',false)
+                            .classed('showdisplaylabels',true);
+                            
+                          svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
+                            .classed('displaylabels',true)
+                            .classed('showdisplaylabels',false);
                             
                             
                         }
@@ -408,6 +467,7 @@
                 });
                 
                 
+                //REAL DROP DOWN SELECTION
                 $( function() {
                     var availableTags = optionsData;
                     $( "#tags" ).autocomplete({
@@ -415,25 +475,27 @@
                       select: function(event, ui) {
                           //alert(ui.item.value);
                           selected3 = ui.item.value;
+                          countrySelected = selected3;
                           
                           svg.selectAll("line").filter(function(d) {
-                            return selected3 != d.Country;})
+                            return ((selected3 != d.Country)&&(d.Date==dateSelected));})
                             .style("stroke-width", 1.5)
                             .style("opacity", .5 );
                           
                           svg.selectAll("line").filter(function(d) {
-                            return selected3 == d.Country;})
+                            return ((selected3 == d.Country)&&(d.Date==dateSelected));})
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
                           
-                          svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected3 != d.Country;})
+                          svg.selectAll(".labelsclass")
+                              //.filter(function(d) {
+                            //return ((selected3 != d.Country)&&(d.Date!=dateSelected));})
                             .classed('displaylabels',true)
                             .classed('showdisplaylabels',false);
                           
-                          svg.selectAll(".displaylabels").filter(function(d) {
-                              return selected3 == d.Country;})
+                          svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((selected3 == d.Country)&&(d.Date==dateSelected));})
                             .classed('displaylabels',false)
                             .classed('showdisplaylabels',true);
                       }
