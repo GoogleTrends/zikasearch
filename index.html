@@ -23,15 +23,15 @@
             <img src="zika.png" alt="ZIKA" id="zikaHeader">
         </div>
         <div id="selectors1">
-           <p>8/18 8/25</p>
+           <p id="sliderlabels" style="text-align:left;">8/18<span style="text-align:right;float: right;">8/25</span></p>
             <div id="slider" > </div>
             <!--<input type="range" name="slider-1" id="slider-1" min="1" max="90" value="1" >-->
         </div>
         <div id="selectors2">
             <p>Choose a Country</p>
-            <!--<input type="text" id="tbCountries" />-->
-            <div id="tbCountries"></div> 
-            <input id="tags">
+            <!--<input type="text" id="tbCountries" />
+            <div id="tbCountries"></div> -->
+            <input id="tags" onchange="updateInput(this.value)">
         </div>
         <br>
         
@@ -48,6 +48,8 @@
             var optionsData;
             var dropDown;
             var dateSelected;
+            var countrySelected;
+            var selected;
             
             //var valMap = ["8/15", "8/28"];
             
@@ -308,7 +310,7 @@
                 };
                 
                 dropDown.on("change", function() {
-                      var selected = this.value;
+                      selected = this.value;
                       displayOthers = this.checked ? "inline" : "none";
                       display = this.checked ? "none" : "inline";
 
@@ -356,18 +358,14 @@
                 
                 var steps = [
                     "8/18",
-                    "8/25", 
-                    2,
-                    3,
-                    4
-                    
+                    "8/25"
                 ];
 
                 $(function() {
                     $("#slider").slider({
                         value: 1,
                         min: 0,
-                        max: 5,
+                        max: 1,
                         step: 1,
                         slide: function(event, ui) {
                             $("#amount").val(steps[ui.value]);
@@ -399,10 +397,25 @@
                 $( function() {
                     var availableTags = optionsData;
                     $( "#tags" ).autocomplete({
-                      source: availableTags
-                        
+                      source: availableTags,
+                      select: function(event, ui) {
+                          //alert(ui.item.value);
+                          selected = ui.item.value;
+                          
+                          svg.selectAll("line").filter(function(d) {
+                            return selected != d.Country;})
+                            .style("stroke-width", 1.5)
+                            .style("opacity", .5 );
+                          
+                          svg.selectAll("line").filter(function(d) {return selected == d.Country;})
+                            .moveToFront()
+                            .style("opacity", 1)
+                            .style("stroke-width", 6); 
+                      }
                     });
                   } );
+                
+                
                 
                 
             }); 

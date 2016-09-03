@@ -39,17 +39,19 @@ p {
     /*border: 2px solid red;*/
 }
 #selectors1 {
-    width:42vw;
-    /*border: 2px solid yellow;*/
+    width:36vw;
     float: left;
-    margin-left:3vw;
+    margin-left:6vw;
     margin-top: 0px;
 }
 #selectors2 {
-    width:42vw;
-    /*border: 2px solid yellow;*/
+    width:36vw;
     margin-left:55vw;
-    margin-top: 20px;
+    margin-top: 0px;
+}
+#tags {
+    width:35vw;
+    border-radius: 10px;
 }
 #chart {
     width: 90vw;
@@ -136,13 +138,15 @@ select {
 }
 
 #slider{
-    height:3vh;
+    height:2vh;
+    width: 30vw;
+    margin: 0 auto;
 }
 a.ui-slider-handle.ui-state-default.ui-corner-all {
     top: 3px;
     margin-left: 0;
     height:6vh;
-    width:10vw;
+    width:20vw;
 }
 
 input[type="range"]::-webkit-slider-thumb{
@@ -185,14 +189,18 @@ input[type="range"]{
         margin-top: 5vh;
     }
     #selectors1 {
-        width:35vw;
+        width:20vw;
         float: left;
-        margin-left:7vw;
+        margin-left:14vw;
     }
     #selectors2 {
-        width:35vw;
-        margin-left:7vw;
+        width:26vw;
+        margin-left:11vw;
         margin-top: 12vh;
+    }
+    #tags {
+        width:26vw;
+        height: 3vh;
     }
     #chart {
         width: 40vw;
@@ -237,6 +245,11 @@ input[type="range"]{
         margin-left:7.5vw;
         margin-top:10px;
         width: 5vw;
+    }
+    #slider{
+        height:2vh;
+        width: 18vw;
+        margin: 0 auto;
     }
 
 }
