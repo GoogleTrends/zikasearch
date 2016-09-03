@@ -127,17 +127,18 @@
                         //return color2(d.Date);
                     })
                     .attr("stroke-width", 1.5);
-                /*
+                
                 
                 svg.selectAll("line").filter(function(d) {
                     //console.log("8/18" != d.Date, d.Country);
                                 return "8/18" != d.Date;})
-                                    
-                                    .attr("display", "inline");
+                                    .classed('displaylabels',true)
+                                    .classed('showdisplaylabels',false);
                 svg.selectAll("line").filter(function(d) {
-                                return "8/18" == d.Date;})
-                                    .attr("display", "none");
-                */
+                                return "8/25" != d.Date;})
+                                    .classed('displaylabels',false)
+                                    .classed('showdisplaylabels',true);
+                
                 
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
@@ -148,7 +149,7 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labels1 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", -7)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 0;
                     })
@@ -159,7 +160,7 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labels2 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", -7)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 10;
                     })
@@ -170,7 +171,7 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labels3 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", -7)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 20;
                     })
