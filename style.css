@@ -393,7 +393,9 @@ input[type="range"]{
         margin-top: -10px;
     }
     .myButton {
-
+-webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
         background-color:transparent;
         -moz-border-radius:28px;
         -webkit-border-radius:28px;
@@ -411,17 +413,24 @@ input[type="range"]{
         width: 20vw;
         text-align: center;
         margin-top: 10vh;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
     }
     .myButton:focus {
+        -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
         outline:none;
     }
     .myButton:hover {
+        -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
         background-color:transparent;
         outline: none;
     }
     .myButton:active {
+        -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
         outline: none;
         position:relative;
         top:1px;
