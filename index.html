@@ -28,10 +28,11 @@
             <!--<input type="range" name="slider-1" id="slider-1" min="1" max="90" value="1" >-->
         </div>
         <div id="selectors2">
-            <p>Choose a Country</p>
+            <p id="droplabels">Choose a Country</p>
             <!--<input type="text" id="tbCountries" />
             <div id="tbCountries"></div> -->
-            <input id="tags" onchange="updateInput(this.value)">
+            <input id="tags">
+            <!--onchange="updateInput(this.value)"-->
         </div>
         <br>
         
@@ -87,6 +88,8 @@
                 .append('g')
                 .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
             
+            var togglePosition = false;
+            
             
             d3.csv('dataFormatted2.csv', function(d) {
                 data = d;
@@ -114,6 +117,9 @@
                     .attr('class', 'lineclass')
                     .attr("x1", margin.left)
                     .attr("x2", width - margin.right)
+                    .attr("y1", height- margin.top, margin.bottom)
+                    .attr("y2", height- margin.top, margin.bottom)
+                /*
                     .attr("y1", function(d) {
                         return leftScale(parseFloat(d['search_interest']));
                     })
@@ -121,6 +127,7 @@
                         //console.log(d.search_interest-d.raw_incidence_rate < 0 );
                         return rightScale(parseFloat(d['raw_incidence_rate']));
                     })
+                */
                     .attr("stroke", function(d) {
                     //.attr("class", function(d){return d.search_interest-d.raw_incidence_rate < 0 ? "negative" : "positive";})
                         return color(d.search_interest-d.raw_incidence_rate < 0);
@@ -138,6 +145,12 @@
                                 return "8/25" == d.Date;})
                                     .classed('displaylabels',false)
                                     .classed('showdisplaylabels',true);
+                
+                svg.selectAll("line").transition()
+                              .delay(function(d, i) { return i * 5; })
+                              .duration(750)
+                              .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
+                              .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
                 
                 
                 var rightLabels = svg.selectAll(".labels")
@@ -268,17 +281,30 @@
                 
                 svg.append("text")
                     .attr("class", "whiteText")
-                    .style("font-size","1.1em")
+                    .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left) +","+(0)+")")
-                    .text("Search Interest");
+                    .attr("transform", "translate("+ (margin.left -20) +","+(0)+")")
+                    .text("Search");
+                svg.append("text")
+                    .attr("class", "whiteText")
+                    .style("font-size","0.9em")
+                    .attr("text-anchor", "middle")
+                    .attr("transform", "translate("+ (margin.left -20) +","+(12)+")")
+                    .text("Interest");
                 
                 svg.append("text")
                     .attr("class", "whiteText")
-                    .style("font-size","1.1em")
+                    .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left) +","+(0)+")")
-                    .text("Indexed Incidence Rate");
+                    .attr("transform", "translate("+ (width -margin.left +20) +","+(0)+")")
+                    .text("Indexed");
+                svg.append("text")
+                    .attr("class", "whiteText")
+                    .style("font-size","0.9em")
+                    .attr("text-anchor", "middle")
+                    .attr("transform", "translate("+ (width -margin.left +20) +","+(12)+")")
+                    .text("Incidence Rate");
+                
                 
                 console.log(y_domain2);
                 
@@ -424,6 +450,20 @@
                                 .classed('displaylabels',false)
                                     .attr("display", "inline");
                             
+                            svg.selectAll("line")
+                                .attr("y1", height/2)
+                                .attr("y2", height/2)
+                            
+                            
+                            svg.selectAll("line").transition()
+                              .delay(function(d, i) { return i * 5; })
+                              .duration(350)
+                              .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
+                              .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
+                            
+                            
+                            
+                            
                             svg.selectAll("line").filter(function(d) {
                                 //console.log(d.Country);
                                 return  ((countrySelected != d.Country)&&(d.Date==dateSelected));})
@@ -447,19 +487,33 @@
                             
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected != d.Country)&&(d.Date!=dateSelected));})
-                            .classed('displaylabels',true)
-                            .classed('showdisplaylabels',false);
+                            .classed('animoff',true)
+                            .classed('animon',false);
                           
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
-                            .classed('displaylabels',false)
-                            .classed('showdisplaylabels',true);
+                            .classed('animoff',false)
+                            .classed('animon',true);
                             
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
-                            .classed('displaylabels',true)
-                            .classed('showdisplaylabels',false);
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                           /* 
+                          svg.selectAll("line").transition()
+                              .delay(function(d, i) { return i * 50; })
+                              .duration(750)
+                              .attr("y1", (togglePosition = !togglePosition) ?  function(d) {return leftScale(parseFloat(d['search_interest']));} : 0)
+                              .attr("y2", (togglePosition = !togglePosition) ? 0 : function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
                             
+                            .attr("y1", function(d) {
+                                return leftScale(parseFloat(d['search_interest']));
+                            })
+                            .attr("y2", function(d) {
+                                //console.log(d.search_interest-d.raw_incidence_rate < 0 );
+                                return rightScale(parseFloat(d['raw_incidence_rate']));
+                            })
+                            */
                             
                         }
                     });
@@ -491,13 +545,16 @@
                           svg.selectAll(".labelsclass")
                               //.filter(function(d) {
                             //return ((selected3 != d.Country)&&(d.Date!=dateSelected));})
-                            .classed('displaylabels',true)
-                            .classed('showdisplaylabels',false);
+                            .classed('animoff',true)
+                            .classed('animon',false);
                           
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((selected3 == d.Country)&&(d.Date==dateSelected));})
-                            .classed('displaylabels',false)
-                            .classed('showdisplaylabels',true);
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                          
+                        
+                          
                       }
                     });
                   } );
