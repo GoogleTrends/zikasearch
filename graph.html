@@ -39,8 +39,7 @@
         <div id="chart" class="container"></div>
         
         <div id="footer">
-            <p id="designed">Designed by Sevika Singh and Alberto Cairo</p>
-            <p id="powered">Powered by: </p>
+            <p id="designed">Designed by Sevika Singh and Alberto Cairo<br>Powered by: </p>
             <img src="trendslogoWhite.png" alt="Google Trends" id="trendsLogo">
         </div>
         
@@ -91,7 +90,7 @@
             var togglePosition = false;
             
             
-            d3.csv('dataFormatted2.csv', function(d) {
+            d3.csv('dataFormatted2.csv', function setGraph(d) {
                 data = d;
                 
                 
@@ -193,57 +192,7 @@
                         return ("Rate " + d['raw_incidence_rate']);
                     });
                    
-                
-                /*
-                .call(wrap, 100);
-                
-                
-                function wrap(text, width) {
-                      text.each(function() {
-                        var text = d3.select(this),
-                            words = text.text().split(/\s+/).reverse(),
-                            word,
-                            line = [],
-                            lineNumber = 0,
-                            lineHeight = 1.1, // ems
-                            y = text.attr("y"),
-                            dy = (d['search_interest']) + 17,
-                            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
-                        while (word = words.pop()) {
-                          line.push(word);
-                          tspan.text(line.join(" "));
-                          if (tspan.node().getComputedTextLength() > width) {
-                            line.pop();
-                            tspan.text(line.join(" "));
-                            line = [word];
-                            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-                          }
-                        }
-                      });
-                    }
-                    */
-
-                /*
-                var leftLabels = svg.selectAll(".left-labels")
-                    .data(data);
-
-                leftLabels.enter()
-                    .append("text")
-                    .attr("class","left-labels")
-                    .attr("x", margin.left - 65)
-                    .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 4;
-                    })
-                    .text(function (d) {
-                        return d['country'];
-                    })
-                    .style("text-anchor","begin");
-                    */
-                
-                
-                //(function (d) {return (d['raw_incidence_rate']);})
-                
-                //console.log(data_max);
+               
                 
                 var y_domain2 = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
 
@@ -499,21 +448,7 @@
                             return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
                             .classed('animoff',true)
                             .classed('animon',false);
-                           /* 
-                          svg.selectAll("line").transition()
-                              .delay(function(d, i) { return i * 50; })
-                              .duration(750)
-                              .attr("y1", (togglePosition = !togglePosition) ?  function(d) {return leftScale(parseFloat(d['search_interest']));} : 0)
-                              .attr("y2", (togglePosition = !togglePosition) ? 0 : function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
-                            
-                            .attr("y1", function(d) {
-                                return leftScale(parseFloat(d['search_interest']));
-                            })
-                            .attr("y2", function(d) {
-                                //console.log(d.search_interest-d.raw_incidence_rate < 0 );
-                                return rightScale(parseFloat(d['raw_incidence_rate']));
-                            })
-                            */
+                       
                             
                         }
                     });
@@ -564,7 +499,9 @@
                 
             }); 
             
-            
+            window.addEventListener('resize', function(event){
+              setGraph();
+            });
             
        
             

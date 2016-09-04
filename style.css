@@ -1,16 +1,14 @@
-
-body{
-    font-family: sans-serif;
-    color:white;
-    
+html {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#141b33+0,545454+100 */
     background: #141b33; /* Old browsers */
     background: -moz-linear-gradient(60deg,  #141b33 100%, #545454 80%); /* FF3.6-15 */
     background: -webkit-linear-gradient(60deg,  #141b33 100%,#545454 80%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(60deg,  #141b33 20%,#545454 80%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#141b33', endColorstr='#545454',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
+}
+body{
+    font-family: sans-serif;
+    color:white;
 }
 .whiteText line {
     stroke: white;
@@ -347,14 +345,12 @@ input[type="range"]{
         width: 15vw;
         float: none;
         margin: 0 auto;
-        margin-left: -7vw;
     }
     #designed {
         font-size: 1.2em;
     }
     #powered {
         float:left;
-        margin-left:7.5vw;
         margin-top:10px;
         width: 5vw;
     }
