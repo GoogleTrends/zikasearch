@@ -62,10 +62,10 @@
                 .domain([true, false])
                 .range(["#FBBC05", "#4285F4"]);
             
-            var margin = {top: 30, right: 55, bottom: 30, left: 55}
+            var margin = {top: 15, right: 55, bottom: 30, left: 55}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
-                      , height = width*1.4 // placeholder
+                      , height = width*1.3 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
@@ -129,7 +129,7 @@
                 */
                     .attr("stroke", function(d) {
                     //.attr("class", function(d){return d.search_interest-d.raw_incidence_rate < 0 ? "negative" : "positive";})
-                        return color(d.search_interest-d.raw_incidence_rate < 0);
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
                         //return color2(d.Date);
                     })
                     .attr("stroke-width", 1.5);
@@ -232,28 +232,32 @@
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left -20) +","+(0)+")")
-                    .text("Search");
+                    .attr("transform", "translate("+ (margin.left -20) +","+(15)+")")
+                    .text("Search Interest");
+                
+                /*
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
                     .attr("transform", "translate("+ (margin.left -20) +","+(12)+")")
                     .text("Interest");
+                    */
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +20) +","+(0)+")")
-                    .text("Indexed");
+                    .attr("transform", "translate("+ (width -margin.left +20) +","+(15)+")")
+                    .text("Incidence Rate");
+                /*
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
                     .attr("transform", "translate("+ (width -margin.left +20) +","+(12)+")")
-                    .text("Incidence Rate");
-                
+                    .text("Rate");
+                */
                 
                 console.log(y_domain2);
                 
@@ -384,6 +388,21 @@
                             var selected2 = dateSelected;
                             
                             svg.selectAll("line").filter(function(d) {
+                                        return (d.search_interest > 99);})
+                                            .moveToFront()
+                                            .style("opacity", 1)
+                                            .style("stroke-width", 6); 
+
+                            svg.selectAll(".labelsclass")
+                                            .classed('animoff',true)
+                                            .classed('animon',false);
+
+                            svg.selectAll(".labelsclass").filter(function(d) {
+                                            return ((d.search_interest > 99))&&(d.Date=="8/25");})
+                                            .classed('animoff',false)
+                                            .classed('animon',true);
+                            
+                            svg.selectAll("line").filter(function(d) {
                                 //console.log(d.Date, d.Country);
                                 return selected2 != d.Date;})
                                     //.transition()
@@ -494,13 +513,41 @@
                     });
                   } );
                 
+            svg.selectAll("line").filter(function(d) {
+                        return (d.search_interest > 99);})
+                            .moveToFront()
+                            .style("opacity", 1)
+                            .style("stroke-width", 6); 
                 
+            svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+            svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((d.search_interest > 99))&&(d.Date=="8/25");})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                
+                    /*
+            svg.selectAll("rightLabels").filter(function(d) {
+                return (d.search_interest > 99);})
+                            .classed('showdisplaylabels',false)
+                            .classed('displaylabels',true)
+                            .attr("display", "none");
+                
+
+            svg.selectAll("rightLabels").filter(function(d) {
+                return (d.search_interest > 99);})
+                            .classed('showdisplaylabels',true)
+                            .classed('displaylabels',false)
+                            .attr("display", "inline");
+                */
                 
                 
             }); 
             
             window.addEventListener('resize', function(event){
-              setGraph();
+              //setGraph();
             });
             
        

@@ -1,285 +1,371 @@
-html {
-    height: 100%;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#141b33+0,545454+100 */
-    background: #141b33; /* Old browsers */
-    background: -moz-linear-gradient(60deg,  #141b33 100%, #545454 80%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(60deg,  #141b33 100%,#545454 80%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(60deg,  #141b33 20%,#545454 80%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#141b33', endColorstr='#545454',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+html, body {
+  overflow-x: hidden;
 }
-body{
-    font-family: sans-serif;
-    color:white;
+body {
+  position: relative
 }
-.whiteText line {
-    stroke: white;
-}
-text {
-    fill: white;
-}
-#zikaHeader {
-    width: 23vw;
-    margin: 0 auto;
-    display: block;
-}
-h1 {
-    text-align: center;
-    font-size: 2.2em;
-}
-p {
-    text-align: center;
-    font-size: 0.75em;
-}
-.whiteText {
-    fill: white !important;
-    font-size: 1em;
-}
-#intro {
-    width: 100vw;
-    /*border: 2px solid red;*/
-}
-#selectors1 {
-    width:36vw;
-    float: left;
-    margin-left:6vw;
-    margin-top: 0px;
-}
-#selectors2 {
-    width:36vw;
-    margin-left:55vw;
-    margin-top: 0px;
-}
-#tags {
-    width:35vw;
-    border-radius: 10px;
-}
-#chart {
-    width: 99vw;
-    margin: 0 auto;
-    margin-top: -3vh;
-    font-size: 0.8em;
-}
-line.slope-line{
-    stroke:green
-}
-text.slope-label{
-    fill:red;
-    font: 20px Arial;
-}
-.chart-title {
-}
-.axis path {
-  display: none;
-}
-.ui-autocomplete { 
-    cursor:pointer; 
-    margin: 0 auto;
-    overflow-y:scroll;
-} 
-select {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
-    width: 35vw;   
-    height: 3.5vh;
-    font-size: 0.8em;
-    border: 1px solid #AAA;
-    border-radius: 10px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    text-align-last: center;
+
+    html {
+        height: 100%;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#141b33+0,545454+100 */
+        background: #141b33; /* Old browsers */
+        background: -moz-linear-gradient(60deg,  #141b33 100%, #545454 80%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(60deg,  #141b33 100%,#545454 80%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(60deg,  #141b33 20%,#545454 80%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#141b33', endColorstr='#545454',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+    body{
+        font-family: sans-serif;
+        color:white;
+    }
+    .whiteText line {
+        stroke: white;
+    }
+    text {
+        fill: white;
+    }
+    #zikaHeader {
+        width: 23vw;
+        margin: 0 auto;
+        display: block;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2.2em;
+    }
+    p {
+        text-align: center;
+        font-size: 0.75em;
+    }
+    .whiteText {
+        fill: white !important;
+        font-size: 1em;
+    }
+    #intro {
+        width: 100vw;
+        /*border: 2px solid red;*/
+    }
+    #selectors1 {
+        width:36vw;
+        float: left;
+        margin-left:6vw;
+        margin-top: 0px;
+    }
+    #selectors2 {
+        width:36vw;
+        margin-left:55vw;
+        margin-top: 0px;
+    }
+    #tags {
+        width:35vw;
+        border-radius: 10px;
+    }
+    #chart {
+        width: 99vw;
+        margin: 0 auto;
+        margin-top: -3vh;
+        font-size: 0.8em;
+    }
+    line.slope-line{
+        stroke:green
+    }
+    text.slope-label{
+        fill:red;
+        font: 20px Arial;
+    }
+    .chart-title {
+    }
+    .axis path {
+      display: none;
+    }
+    .ui-autocomplete { 
+        cursor:pointer; 
+        margin: 0 auto;
+        overflow-y:scroll;
+    } 
+    select {
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+        width: 35vw;   
+        height: 3.5vh;
+        font-size: 0.8em;
+        border: 1px solid #AAA;
+        border-radius: 10px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        text-align-last: center;
+
+    }
+    #tbCountries {
+        width: 42vw;
+        margin: 0 auto;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: -12px;
+    }
+
+    *:focus {
+        outline: none;
+    }
+    #footer {
+        font-size: 0.6em;
+        text-align: center;
+        margin-top: -5vh;
+    }
+    #trendsLogo {
+        width: 50px;
+        margin-top: -5px;
+        /*
+        float:right;
+        margin-right:32vw;
+        */
+    }
+    #powered {
+        /*
+        float:left;
+        margin-left:32vw;
+        margin-top:0px;
+        */
+    }
+    .chartclass {
+    }
+    .labels1{
+        font-size: 0.75em;
+
+    }
+    .labels2 {
+        font-size: 0.75em;
+
+    }
+    .labels3 {
+        font-size: 0.75em;
+
+    }
+    .displaylabels {
+        font-size: .75em;
+        display: none;
+    }
+    .showdisplaylabels {
+        font-size: .75em;
+        display: inline-block;
+    }
+    .animon {
+        display: inline-block;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+    }
+    .animoff {
+        display: none;
+    }
+
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0; }
+          to { opacity: 1; }
+    }  
+    @keyframes fadeIn {
+        from { opacity: 0; }
+          to { opacity: 1; }
+    }
+
+    #slider{
+        height:6px;
+        width: 30vw;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+    }
+    #sliderlabels {
+        margin-bottom: 2.2vh;
+    }
+    #tags {
+        height:15px;
+        border: none;
+        text-align: center;
+    }
+    #droplabels {
+        margin-bottom: 1vh;
+    }
+    span.ui-slider-handle.ui-state-default.ui-corner-all {
+        height:18px;
+        background: #FBBC05;
+        border: none;
+    }
+    a.ui-slider-handle.ui-state-default.ui-corner-all {
+        top: 3px;
+        margin-left: 0;
+        height:2vh;
+        width:20vw;
+    }
+
+    input[type="range"]::-webkit-slider-thumb{
+               -webkit-appearance:none !important;  
+               width:15%;
+               height:40px;		  
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -wekkit-border-radius: 10px;
+                border:1px solid black;
+                background:green ;
+
+             }
+
+    input[type="range"]{
+        /*background: url('http://earthems.com/bclub_app/new/images/slider400.png') no-repeat center;*/
+        width: 80%;
+        height: 25px;
+        -webkit-appearance: none;
+        border:none;
+        margin-top:10px;
+        margin-bottom:10px;
+
+    }
+
+    .ui-menu .ui-menu-item a{
+        background-color:red;
+        color: green;
+    }
+    #zikaintro {
+        width: 55vw;
+        margin: 0 auto;
+        display: block;
+        margin-top: 15vh;
+    }
+    #textintro {
+        width: 60vw;
+        margin: 0 auto;
+        display: block;
+        font-size: 0.9em;
+        color: #FBBC05;
+    }
+    #intrologo {
+        width: 30vw;
+        margin: 0 auto;
+        display: block;
+        margin-top: -12px;
+    }
+    #footerintro {
+        margin-top: 15vh;
+    }
+    #powered {
+        margin-top: -10px;
+    }
+    .myButton {
+
+        background-color:transparent;
+        -moz-border-radius:28px;
+        -webkit-border-radius:28px;
+        border-radius:28px;
+        border:3px solid #ffffff;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:1.5em;
+        padding:9px 53px;
+        text-decoration:none;
+        margin: 0 auto;
+        display: block;
+        width: 28vw;
+        text-align: center;
+        margin-top: 5vh;
+    }
+    .myButton:focus {
+        outline:none;
+    }
+    .myButton:hover {
+        background-color:transparent;
+        outline: none;
+    }
+    .myButton:active {
+        outline: none;
+        position:relative;
+        top:1px;
+    }
+
+/*------------------Small iPhone styles--------------------*/
+
     
-}
-#tbCountries {
-    width: 42vw;
-    margin: 0 auto;
-    border-radius: 20px;
-    text-align: center;
-    margin-top: -12px;
-}
-
-*:focus {
-    outline: none;
-}
-#footer {
-    font-size: 0.6em;
-    text-align: center;
-    margin-top: -5vh;
-}
-#trendsLogo {
-    width: 50px;
-    margin-top: -5px;
-    /*
-    float:right;
-    margin-right:32vw;
-    */
-}
-#powered {
-    /*
-    float:left;
-    margin-left:32vw;
-    margin-top:0px;
-    */
-}
-.chartclass {
-}
-.labels1{
-    font-size: 0.75em;
+@media only screen 
+  /*and (min-device-width : 320px) */
     
-}
-.labels2 {
-    font-size: 0.75em;
-   
-}
-.labels3 {
-    font-size: 0.75em;
+  and (max-height: 410px)
+  and (max-device-width : 329px) {
+      
+        html, body {
+          overflow-x: hidden;
+        }
+        body {
+          position: relative
+        }
+      p {
+          
+      }
+      
+    #zikaintro {
+        width: 40vw;
+        margin: 0 auto;
+        display: block;
+        margin-top: 10vh;
+    }
+      #zikaHeader {
+          width: 15vw;
+      }
+    #textintro {
+        width: 50vw;
+        margin: 0 auto;
+        display: block;
+        font-size: 0.7em;
+        color: #FBBC05;
+    }
+    #intrologo {
+        width: 18vw;
+        margin: 0 auto;
+        display: block;
+        margin-top: -8px;
+    }
+    #footerintro {
+        margin-top: 20vh;
+        font-size: 0.8em;
+    }
     
+    #powered {
+        margin: 0 auto;
+        display: block;
+        margin-top: -10px;
+    }
+    .myButton {
+        height: 6vh;
+        text-align: center;
+    }
+    #trendsLogo {
+        width: 30vw !important;
+        float: none;
+        margin: 0 auto;
+    }
+    #chart {
+        width: 100vw;
+        font-size: 0.8em;
+        
+    }
+      #footer {
+          margin-top: 0;
+      }
+      #tags {
+          height: 12px;
+      }
+      
 }
-.displaylabels {
-    font-size: .75em;
-    display: none;
-}
-.showdisplaylabels {
-    font-size: .75em;
-    display: inline-block;
-}
-.animon {
-    display: inline-block;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}
-.animoff {
-    display: none;
-}
-
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}  
-@keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-
-#slider{
-    height:1vh;
-    width: 30vw;
-    margin: 0 auto;
-    border: none;
-    border-radius: 10px;
-}
-#sliderlabels {
-    margin-bottom: 2.2vh;
-}
-#tags {
-    height:2.5vh;
-    border: none;
-    text-align: center;
-}
-#droplabels {
-    margin-bottom: 1vh;
-}
-span.ui-slider-handle.ui-state-default.ui-corner-all {
-    height:2.5vh;
-    background: #FBBC05;
-    border: none;
-}
-a.ui-slider-handle.ui-state-default.ui-corner-all {
-    top: 3px;
-    margin-left: 0;
-    height:2vh;
-    width:20vw;
-}
-
-input[type="range"]::-webkit-slider-thumb{
-		   -webkit-appearance:none !important;  
-		   width:15%;
-		   height:40px;		  
-			border-radius: 10px;
-			-moz-border-radius: 10px;
-			-wekkit-border-radius: 10px;
-			border:1px solid black;
-			background:green ;
-		
-		 }
-
-input[type="range"]{
-    /*background: url('http://earthems.com/bclub_app/new/images/slider400.png') no-repeat center;*/
-    width: 80%;
-    height: 25px;
-    -webkit-appearance: none;
-	border:none;
-	margin-top:10px;
-	margin-bottom:10px;
-
-}
-
-.ui-menu .ui-menu-item a{
-    background-color:red;
-    color: green;
-}
-#zikaintro {
-    width: 55vw;
-    margin: 0 auto;
-    display: block;
-    margin-top: 15vh;
-}
-#textintro {
-    width: 60vw;
-    margin: 0 auto;
-    display: block;
-    font-size: 0.9em;
-    color: #FBBC05;
-}
-#intrologo {
-    width: 30vw;
-    margin: 0 auto;
-    display: block;
-    margin-top: -12px;
-}
-#footerintro {
-    margin-top: 15vh;
-}
-#powered {
-    margin-top: -10px;
-}
-.myButton {
     
-	background-color:transparent;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:3px solid #ffffff;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:1.5em;
-	padding:9px 53px;
-	text-decoration:none;
-    margin: 0 auto;
-    display: block;
-    width: 28vw;
-    text-align: center;
-    margin-top: 5vh;
-}
-.myButton:focus {
-    outline:none;
-}
-.myButton:hover {
-	background-color:transparent;
-    outline: none;
-}
-.myButton:active {
-    outline: none;
-	position:relative;
-	top:1px;
-}
+    
+    
+    
 
 
 /*---------------------Desktop styles----------------------*/
 
-@media (min-width: 750px) {
+@media (min-width: 750px) 
+                            {
     p {
         font-size: 0.9em;
     }
