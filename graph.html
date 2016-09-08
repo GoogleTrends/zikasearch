@@ -50,6 +50,7 @@
             var dateSelected = "8/25";
             var countrySelected;
             var selected;
+            var countryOn = false;
             
             //var valMap = ["8/15", "8/28"];
             
@@ -298,11 +299,12 @@
                 
                 
                 
-                
+                /*
                 
                 //OLD DROP DOWN SELECTION
                 dropDown.on("change", function() {
                       selected = this.value;
+                      countrySelected = selected;
                       displayOthers = this.checked ? "inline" : "none";
                       display = this.checked ? "none" : "inline";
 
@@ -354,7 +356,7 @@
                   });
                 
                 
-                
+                */
                 
                 
                 
@@ -387,20 +389,8 @@
                             
                             var selected2 = dateSelected;
                             
-                            svg.selectAll("line").filter(function(d) {
-                                        return (d.search_interest > 99);})
-                                            .moveToFront()
-                                            .style("opacity", 1)
-                                            .style("stroke-width", 6); 
-
-                            svg.selectAll(".labelsclass")
-                                            .classed('animoff',true)
-                                            .classed('animon',false);
-
-                            svg.selectAll(".labelsclass").filter(function(d) {
-                                            return ((d.search_interest > 99))&&(d.Date=="8/25");})
-                                            .classed('animoff',false)
-                                            .classed('animon',true);
+                            
+                            
                             
                             svg.selectAll("line").filter(function(d) {
                                 //console.log(d.Date, d.Country);
@@ -469,6 +459,29 @@
                             .classed('animon',false);
                        
                             
+                            
+                            
+                            if(countryOn == false) {
+                                svg.selectAll("line").filter(function(d) {
+                                        return ((d.search_interest > 99));})
+                                            .moveToFront()
+                                            .style("opacity", 1)
+                                            .style("stroke-width", 6); 
+
+                                svg.selectAll(".labelsclass")
+                                            .classed('animoff',true)
+                                            .classed('animon',false);
+
+                            
+                                svg.selectAll(".labelsclass").filter(function(d) {
+                                           // console.log(d.search_interest, d.Country);
+                                            return ((d.search_interest > 99))&&(d.Date==dateSelected);})
+                                            .classed('animoff',false)
+                                            .classed('animon',true);
+                            }
+                            
+                            
+                            
                         }
                     });
                     $("#amount").val(steps[$("#slider").slider("value")]);
@@ -484,11 +497,12 @@
                           //alert(ui.item.value);
                           selected3 = ui.item.value;
                           countrySelected = selected3;
+                          countryOn = true;
                           
                           svg.selectAll("line").filter(function(d) {
                             return ((selected3 != d.Country)&&(d.Date==dateSelected));})
                             .style("stroke-width", 1.5)
-                            .style("opacity", .5 );
+                            .style("opacity", 1 );
                           
                           svg.selectAll("line").filter(function(d) {
                             return ((selected3 == d.Country)&&(d.Date==dateSelected));})
