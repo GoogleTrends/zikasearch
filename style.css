@@ -282,6 +282,9 @@ body {
         position:relative;
         top:1px;
     }
+    #textintrodesktop {
+        display: none;
+    }
 
 /*------------------Small iPhone styles--------------------*/
 
@@ -354,6 +357,9 @@ body {
       #tags {
           height: 12px;
       }
+    #textintrodesktop {
+        display: none;
+    }
       
 }
     
@@ -394,10 +400,10 @@ body {
         height: 4vh;
     }
     #chart {
-        width: 45vw;
-        margin-left:50vw;
+        width: 48vw;
+        margin-left:47vw;
         font-size: 0.8em;
-        margin-top: -38vw;
+        margin-top: -41vw;
         
     }
     select {
@@ -517,6 +523,11 @@ body {
         outline: none;
         position:relative;
         top:1px;
+    }
+    #textintrodesktop {
+        display: inline;
+        color: #FBBC05;
+        width: 26vw;
     }
 
 }

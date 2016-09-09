@@ -21,6 +21,9 @@
     <body>
         <div id="intro" class="container">
             <img src="zika.png" alt="ZIKA" id="zikaHeader">
+            <p id="textintrodesktop">
+                Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text 
+            </p>
         </div>
         <div id="selectors1">
            <p id="sliderlabels" style="text-align:left;">8/18<span style="text-align:right;float: right;">8/25</span></p>
@@ -369,12 +372,16 @@
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6);
-                        console.log("tapped", d3.select(this));
-                        selectaline();
+                        var countrySend;
+                    d3.select(this).each(function(d){countrySend=(d.Country)});
+                        //console.log(countrySend);
+                        d3.select(this).each(function(d){console.log(d.Country)});
+                        selectaline(countrySend);
                     });
                 
               
-                function selectaline () {
+                function selectaline (countrySend) {
+                    countrySelected = countrySend;
                     svg.selectAll(".labelsclass")
                             .style("opacity", 1)
                             .classed('animoff',true)
