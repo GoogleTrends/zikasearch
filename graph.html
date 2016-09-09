@@ -299,6 +299,8 @@
                 
                 
                 
+                
+                
                 /*
                 
                 //OLD DROP DOWN SELECTION
@@ -358,16 +360,35 @@
                 
                 */
                 
+                svg.selectAll("line")
+                    .on("click", function(){
+                        svg.selectAll("line")
+                            .style("stroke-width", 1.5)
+                            .style("opacity", 1 );
+                        d3.select(this)
+                            .moveToFront()
+                            .style("opacity", 1)
+                            .style("stroke-width", 6);
+                        console.log("tapped", d3.select(this));
+                        selectaline();
+                    });
                 
-                
-                
-                
-                $('#slider').change(function(){
+              
+                function selectaline () {
+                    svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
                     
-                    console.log(val);
-                });
-                
-                
+                    svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                            
+                    svg.selectAll(".labelsclass").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                }
                 
                 
                 var steps = [
