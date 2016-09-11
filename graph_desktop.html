@@ -407,8 +407,8 @@
                             .duration(200)		
                             .style("opacity", 1);		
                         div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                            .style("left", 18 + "px")		
-                            .style("top", (leftScale(parseFloat(d['search_interest']))+175) + "px");
+                            .style("left", 34 + "em")		
+                            .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
                             //.attr("x", 0)
@@ -573,8 +573,8 @@
                                 .duration(200)		
                                 .style("opacity", 1);		
                             div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", 10 + "px")		
-                                .style("top", (leftScale(parseFloat(d['search_interest']))+170) + "px");
+                                .style("left", 34 + "em")		
+                                .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
                       })

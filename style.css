@@ -283,7 +283,30 @@ body {
         top:1px;
     }
     #textintrodesktop {
-        display: none;
+        display: inline;
+        color: #FBBC05;
+        width: 20vw;  
+    }
+    #intro2{
+        width: 60vw;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .labelsclass {
+        width: 20px;
+    }
+    div.tooltip {	
+        position: absolute;			
+        text-align: center;			
+        width: 22vw;					
+        padding: 2px;				
+        font-size: 10px;		
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;			
+    }
+    div.tooltip span {
+        color: #FBBC05;
     }
 
 /*------------------Small iPhone styles--------------------*/
@@ -358,8 +381,17 @@ body {
           height: 12px;
       }
     #textintrodesktop {
-        display: none;
+        display: inline;
+        color: #FBBC05;
+        width: 26vw;  
+        font-size:0.5em;
+        line-height: 90%;
     }
+      #intro2 {
+        width: 70vw;
+        margin:0 auto;
+        text-align: center;
+      }
       
 }
     
@@ -373,27 +405,34 @@ body {
 @media (min-width: 750px) 
                             {
     p {
-        font-size: 0.9em;
+        font-size: 1.2em;
     }
     #zikaHeader {
         width: 20vw;
+        
     }   
     #intro {
         width: 20vw;
         margin-left: 15vw;
         margin-top: 5vh;
     }
+    #intro2 {
+        width: 35vw;
+        margin-left: 7vw;
+        margin-top: 2vh;
+        text-align: center;
+    }
     #selectors1 {
         width:28vw;
         float: left;
         margin-left:10vw;
-        margin-top: 5vh;
+        margin-top: 2vh;
         
     }
     #selectors2 {
         width:26vw;
         margin-left:11vw;
-        margin-top: 25vh;
+        margin-top: 20vh;
     }
     #tags {
         width:26vw;
@@ -527,7 +566,20 @@ body {
     #textintrodesktop {
         display: inline;
         color: #FBBC05;
-        width: 26vw;
+        width: 26vw;  
+    }
+    div.tooltip {	
+        position: absolute;			
+        text-align: center;			
+        width: 22vw;					
+        padding: 2px;				
+        font-size: 14px;		
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;			
+    }
+    div.tooltip span {
+        color: #FBBC05;
     }
 
 }
