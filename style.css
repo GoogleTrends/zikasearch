@@ -439,11 +439,12 @@ body {
         height: 4vh;
     }
     #chart {
-        width: 48vw;
-        margin-left:47vw;
+        width: 46vw;
+        margin-left:45vw;
         font-size: 0.8em;
-        margin-top: -41vw;
-        
+        float: right;
+        display: block;
+        margin-top: -450px;
     }
     select {
        -webkit-appearance: none;
@@ -573,7 +574,7 @@ body {
         text-align: center;			
         width: 22vw;					
         padding: 2px;				
-        font-size: 14px;		
+        font-size: 1.1em;		
         border: 0px;		
         border-radius: 8px;			
         pointer-events: none;			
