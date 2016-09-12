@@ -521,7 +521,8 @@
                                     .moveToFront()
                                     .style("opacity", 1)
                                     .style("stroke-width", 6); 
-                            
+                        
+                            /*
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected != d.Country)&&(d.Date!=dateSelected));})
                             .classed('animoff',true)
@@ -537,7 +538,7 @@
                             .classed('animoff',true)
                             .classed('animon',false);
                        
-                            
+                            */
                             
                             
                             if(countryOn == false) {
@@ -547,6 +548,7 @@
                                             .style("opacity", 1)
                                             .style("stroke-width", 6); 
 
+                                /*
                                 svg.selectAll(".labelsclass")
                                             .classed('animoff',true)
                                             .classed('animon',false);
@@ -557,9 +559,10 @@
                                             return ((d.search_interest > 99))&&(d.Date==dateSelected);})
                                             .classed('animoff',false)
                                             .classed('animon',true);
+                                            */
                             }
                             
-                            
+                            printLabels();
                             
                         }
                     });

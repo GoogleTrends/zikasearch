@@ -45,7 +45,7 @@
         <div id="chart" class="container"></div>
         
         <div id="footer">
-            <p id="designed">Designed by Sevika Singh and Alberto Cairo<br>Powered by: </p>
+            <p id="designed">Designed by <br>Sevika Singh and Alberto Cairo<br>Powered by: </p>
             <img src="trendslogoWhite.png" alt="Google Trends" id="trendsLogo">
         </div>
         
@@ -408,7 +408,7 @@
                             .style("opacity", 1);		
                         div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
                             .style("left", 18 + "px")		
-                            .style("top", (leftScale(parseFloat(d['search_interest']))+175) + "px");
+                            .style("top", (leftScale(parseFloat(d['search_interest']))+180) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
                             //.attr("x", 0)
@@ -522,6 +522,7 @@
                                     .style("opacity", 1)
                                     .style("stroke-width", 6); 
                             
+                            /*
                           svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected != d.Country)&&(d.Date!=dateSelected));})
                             .classed('animoff',true)
@@ -537,7 +538,7 @@
                             .classed('animoff',true)
                             .classed('animon',false);
                        
-                            
+                            */
                             
                             
                             if(countryOn == false) {
@@ -547,6 +548,7 @@
                                             .style("opacity", 1)
                                             .style("stroke-width", 6); 
 
+                                /*
                                 svg.selectAll(".labelsclass")
                                             .classed('animoff',true)
                                             .classed('animon',false);
@@ -557,9 +559,10 @@
                                             return ((d.search_interest > 99))&&(d.Date==dateSelected);})
                                             .classed('animoff',false)
                                             .classed('animon',true);
+                                            */
                             }
                             
-                            
+                            printLabels();
                             
                         }
                     });
@@ -574,7 +577,7 @@
                                 .style("opacity", 1);		
                             div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
                                 .style("left", 10 + "px")		
-                                .style("top", (leftScale(parseFloat(d['search_interest']))+170) + "px");
+                                .style("top", (leftScale(parseFloat(d['search_interest']))+180) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
                       })
