@@ -229,10 +229,10 @@ body {
         width: 55vw;
         margin: 0 auto;
         display: block;
-        margin-top: 15vh;
+        margin-top: 10vh;
     }
     #textintro {
-        width: 60vw;
+        width: 65vw;
         margin: 0 auto;
         display: block;
         font-size: 0.9em;
@@ -283,12 +283,13 @@ body {
         top:1px;
     }
     #textintrodesktop {
-        display: inline;
         color: #FBBC05;
-        width: 20vw;  
+        font-size: 0.7em;
+        margin-top: -5px;
+        margin-bottom: 0;
     }
     #intro2{
-        width: 60vw;
+        width: 70vw;
         margin: 0 auto;
         text-align: center;
     }
@@ -307,6 +308,29 @@ body {
     }
     div.tooltip span {
         color: #FBBC05;
+    }
+
+a {
+    text-decoration: none;
+}
+        /* unvisited link */
+    a:link {
+        color: antiquewhite;
+    }
+
+    /* visited link */
+    a:visited {
+        color: antiquewhite;
+    }
+
+    /* mouse over link */
+    a:hover {
+        color: antiquewhite;
+    }
+
+    /* selected link */
+    a:active {
+        color: antiquewhite;
     }
 
 /*------------------Small iPhone styles--------------------*/
@@ -332,13 +356,13 @@ body {
         width: 40vw;
         margin: 0 auto;
         display: block;
-        margin-top: 10vh;
+        margin-top: 7vh;
     }
       #zikaHeader {
           width: 15vw;
       }
     #textintro {
-        width: 50vw;
+        width: 70vw;
         margin: 0 auto;
         display: block;
         font-size: 0.7em;
@@ -472,7 +496,7 @@ body {
         width:35vw;
         float: left;
         margin-left:7vw;
-        margin-top: -125px;
+        margin-top: -140px;
     }
     #trendsLogo {
         width: 15vw;
@@ -558,8 +582,8 @@ body {
     }
     .myButton:active {
         -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
+       -moz-appearance: none;
+       appearance: none;
         outline: none;
         position:relative;
         top:1px;
@@ -568,6 +592,7 @@ body {
         display: inline;
         color: #FBBC05;
         width: 26vw;  
+        font-size: 1em;
     }
     div.tooltip {	
         position: absolute;			

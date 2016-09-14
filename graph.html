@@ -24,8 +24,7 @@
             
         </div>
         <div id="intro2" class="container">
-            <p id="textintrodesktop">
-                Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text Intro Text 
+            <p id="textintrodesktop">How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a country-by-country level.
             </p>
         </div>
         <div id="selectors1">
@@ -45,7 +44,10 @@
         <div id="chart" class="container"></div>
         
         <div id="footer">
-            <p id="designed">Designed by <br>Sevika Singh and Alberto Cairo<br>Powered by: </p>
+            <p id="designed">
+            <a href="http://www.paho.org/hq/">Source: PAHO/WHO <br>Pan American Health Organization | World Health Organization</a><br><br>
+            Designed by Sevika Singh and Alberto Cairo
+            <br>Powered by: </p>
             <img src="trendslogoWhite.png" alt="Google Trends" id="trendsLogo">
         </div>
         
@@ -273,15 +275,15 @@
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left -20) +","+(12)+")")
-                    .text("Search");
+                    .attr("transform", "translate("+ (margin.left -35) +","+(12)+")")
+                    .text("Zika Search");
                 
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left -20) +","+(22)+")")
+                    .attr("transform", "translate("+ (margin.left -24) +","+(22)+")")
                     .text("Interest");
                     
                 
@@ -289,15 +291,15 @@
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +22) +","+(12)+")")
-                    .text("Zika Cases");
+                    .attr("transform", "translate("+ (width -margin.left +45) +","+(12)+")")
+                    .text("Zika Cases Per");
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","0.9em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +22) +","+(22)+")")
-                    .text("Per 10,000 People");
+                    .attr("transform", "translate("+ (width -margin.left +45) +","+(22)+")")
+                    .text("100,000 People");
                 
                 
                 console.log(y_domain2);
