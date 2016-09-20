@@ -104,7 +104,7 @@
                 .attr("class", "tooltip")				
                 .style("opacity", 0);
             
-            d3.csv('dataFormatted2.csv', function setGraph(d) {
+            d3.csv('data9_19.csv', function setGraph(d) {
                 data = d;
                 
                 
@@ -169,11 +169,11 @@
                 
                 svg.selectAll("line").filter(function(d) {
                     //console.log("8/18" != d.Date, d.Country);
-                                return "8/18" == d.Date;})
+                                return "9/15" != d.Date;})
                                     .classed('displaylabels',true)
                                     .classed('showdisplaylabels',false);
                 svg.selectAll("line").filter(function(d) {
-                                return "8/25" == d.Date;})
+                                return "9/15" == d.Date;})
                                     .classed('displaylabels',false)
                                     .classed('showdisplaylabels',true);
                 
