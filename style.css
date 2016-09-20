@@ -338,6 +338,33 @@ a {
         color: antiquewhite;
     }
 
+    .sliderTickmarks{
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+        height: 100%;
+        width: 25%;    
+        float: left;
+        border-right: 1px solid #888;
+    }
+    .sliderTickmarks span{
+        position: relative;
+        left: 100%;
+        top: 125%;
+        margin-left: -10px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    #slider > div.sliderTickmarks:first-child{
+        border-right: 0;
+        width: 0;
+    }
+    #slider > div.sliderTickmarks:first-child span{
+        margin-left: -5px;
+    }
+    #slider > div.sliderTickmarks:last-of-type{
+         border-right: 0;
+    }
+
 /*------------------Small iPhone styles--------------------*/
 
     

@@ -528,7 +528,12 @@
                     "9/15"
                 ];
                 
-                
+                var ticks  = '<div class="sliderTickmarks "><span></span></div>';
+    ticks += '<div class="sliderTickmarks "><span></span></div>';
+    ticks += '<div class="sliderTickmarks "><span></span></div>';
+    ticks += '<div class="sliderTickmarks "><span></span></div>';
+    ticks += '<div class="sliderTickmarks "><span></span></div>';
+$("#slider").prepend(ticks);
 
                 $(function() {
                     $("#slider").slider({
