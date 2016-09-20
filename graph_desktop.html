@@ -29,7 +29,7 @@
             </p>
         </div>
         <div id="selectors1">
-           <p id="sliderlabels" style="text-align:left;">8/18<span style="text-align:right;float: right;">8/25</span></p>
+           <p id="sliderlabels" style="text-align:left;">8/18<span style="text-align:right;float: right;">9/15</span></p>
             <div id="slider" > </div>
             <!--<input type="range" name="slider-1" id="slider-1" min="1" max="90" value="1" >-->
         </div>
@@ -57,7 +57,7 @@
             
             var optionsData;
             var dropDown;
-            var dateSelected = "8/25";
+            var dateSelected = "9/15";
             var countrySelected;
             var selected;
             var countryOn = false;
@@ -130,6 +130,9 @@
                     .attr('class', 'lineclass')
                     .attr("x1", margin.left)
                     .attr("x2", width - margin.right)
+                    .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
+                    .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} )
+                /*
                     .attr("y1", height- margin.top, margin.bottom)
                     .attr("y2", height- margin.top, margin.bottom)
                 /*
@@ -176,18 +179,19 @@
                                 return "9/15" == d.Date;})
                                     .classed('displaylabels',false)
                                     .classed('showdisplaylabels',true);
-                
+                /*
                 svg.selectAll("line").transition()
                               .delay(function(d, i) { return i * 5; })
                               .duration(750)
                               .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
                               .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
-                
+                */
                 
                 var rightLabels = svg.selectAll(".labels")
                     .data(data);
                 
-               
+               var leftLabels = svg.selectAll(".labels")
+                    .data(data);
                 
 
                 rightLabels.enter()
@@ -237,7 +241,54 @@
                       //  return ("Rate " + d['raw_incidence_rate']);
                    // });
                    
-               
+               //BLUE LABELS
+
+                leftLabels.enter()
+                    .append("text")
+                    //.attr("class","labelsclass labels1 displaylabels")
+                    .attr("class","bluelabels animoff")
+                    .attr("x", width)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 0;
+                    })
+                    .attr("text-anchor", "middle")
+                    .append("tspan").text(function (d) {return (d['Country']);})
+                        
+                        .style("fill","#4285F4");
+                    //.text(function (d) {
+                      //  return (d['Country']);
+                    //});
+                leftLabels.enter()
+                    .append("text")
+                    .attr("class","bluelabels animoff")
+                    .attr("x", width)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
+                    })
+                    .attr("text-anchor", "middle")
+                    .append("tspan").text("Interest ")
+                        .style("fill","#4285F4")
+                    .append("tspan").text(function (d) {return (d['search_interest']);})
+                        .style("fill","white");
+                
+                
+                    //.text(function (d) {
+                      //  return ("Interest " + d['search_interest']);
+                    //});
+                leftLabels.enter()
+                    .append("text")
+                    .attr("class","bluelabels animoff")
+                    .attr("x", width)
+                    .attr("y", function(d) {
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 20;
+                    })
+                    .attr("text-anchor", "middle")
+                    .append("tspan").text("Rate ")
+                        .style("fill","#4285F4")
+                    .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
+                        .style("fill","white");
+                
+                
                 
                 var y_domain2 = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
 
@@ -407,6 +458,10 @@
                 svg.selectAll("line")
                     .on("mouseover", function(d){
                     
+                    svg.selectAll(".bluelabels")
+                                        .classed('animoff',true)
+                                        .classed('animon',false);
+                    
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);		
@@ -432,7 +487,7 @@
                         d3.select(this).each(function(d){console.log(d.Country)});
                         //selectaline(countrySend);
                     });
-                
+                countryOn = true;
               
                 function selectaline (countrySend) {
                     countrySelected = countrySend;
@@ -455,14 +510,17 @@
                 
                 var steps = [
                     "8/18",
-                    "8/25"
+                    "8/25",
+                    "09/01",
+                    "09/08",
+                    "9/15"
                 ];
 
                 $(function() {
                     $("#slider").slider({
-                        value: 1,
+                        value: 4,
                         min: 0,
-                        max: 1,
+                        max: 4,
                         step: 1,
                         slide: function(event, ui) {
                             $("#amount").val(steps[ui.value]);
@@ -473,7 +531,9 @@
                             var selected2 = dateSelected;
                             
                             
-                            
+                 svg.selectAll(".bluelabels")
+                                .classed('animoff',true)
+                                .classed('animon',false);           
                             
                             svg.selectAll("line").filter(function(d) {
                                 //console.log(d.Date, d.Country);
@@ -492,16 +552,17 @@
                                     .attr("display", "inline");
                             
                             svg.selectAll("line")
-                                .attr("y1", height/2)
-                                .attr("y2", height/2)
+                               // .attr("y1", height/2)
+                               // .attr("y2", height/2)
+                            .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
+                              .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
                             
-                            
-                            svg.selectAll("line").transition()
+  /*                          svg.selectAll("line").transition()
                               .delay(function(d, i) { return i * 5; })
                               .duration(350)
                               .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
                               .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
-                            
+   */                         
                             
                             
                             
@@ -547,7 +608,18 @@
                             
                             if(countryOn == false) {
                                 svg.selectAll("line").filter(function(d) {
-                                        return ((d.search_interest > 99));})
+                                        return ((d.search_interest > 99 && dateSelected== d.Date));
+                                
+div.transition()		
+                                        .duration(0)		
+                                        .style("opacity", 1);		
+                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
+                                        .style("left", 5 + "px")		
+                                        .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");                                
+                                
+                                
+                                
+                                })
                                             .moveToFront()
                                             .style("opacity", 1)
                                             .style("stroke-width", 6); 
@@ -674,6 +746,17 @@
                 
                 
             printLabels();
+                
+                svg.selectAll(".bluelabels")
+                              //.filter(function(d) {
+                            //return ((selected3 != d.Country)&&(d.Date!=dateSelected));})
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                          svg.selectAll(".bluelabels").filter(function(d) {
+                            return (("Martinique" == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
                 
                     /*
             svg.selectAll("rightLabels").filter(function(d) {
