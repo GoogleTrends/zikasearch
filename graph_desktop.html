@@ -25,7 +25,7 @@
         </div>
         <div id="intro2" class="container">
             <p id="textintrodesktop">
-                How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a country-by-country level.
+                How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a country-by-country level in the Americas.
             </p>
         </div>
         <div id="selectors1">
@@ -73,7 +73,7 @@
                 .domain([true, false])
                 .range(["#FBBC05", "#4285F4"]);
             
-            var margin = {top: 15, right: 55, bottom: 30, left: 55}
+            var margin = {top: 25, right: 55, bottom: 30, left: 55}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
                       , height = width*1.25 // placeholder
@@ -247,9 +247,10 @@
                     .append("text")
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
+                .style("font-size","1.1em")
                     .attr("x", width)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 0;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + -5;
                     })
                     .attr("text-anchor", "middle")
                     .append("tspan").text(function (d) {return (d['Country']);})
@@ -261,6 +262,7 @@
                 leftLabels.enter()
                     .append("text")
                     .attr("class","bluelabels animoff")
+                .style("font-size","1.1em")
                     .attr("x", width)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
@@ -278,9 +280,10 @@
                 leftLabels.enter()
                     .append("text")
                     .attr("class","bluelabels animoff")
+                .style("font-size","1.1em")
                     .attr("x", width)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 20;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 25;
                     })
                     .attr("text-anchor", "middle")
                     .append("tspan").text("Rate ")
@@ -328,7 +331,7 @@
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left -41) +","+(6)+")")
+                    .attr("transform", "translate("+ (margin.left -41) +","+(-10)+")")
                     .text("Zika Search");
                 
                 
@@ -336,7 +339,7 @@
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (margin.left -28) +","+(20)+")")
+                    .attr("transform", "translate("+ (margin.left -28) +","+(5)+")")
                     .text("Interest");
                     
                 
@@ -344,14 +347,14 @@
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +52) +","+(6)+")")
+                    .attr("transform", "translate("+ (width -margin.left +52) +","+(-10)+")")
                     .text("Zika Cases Per");
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +52) +","+(20)+")")
+                    .attr("transform", "translate("+ (width -margin.left +52) +","+(5)+")")
                     .text("100,000 People");
                 
                 
@@ -466,7 +469,7 @@
                             .duration(200)		
                             .style("opacity", 1);		
                         div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                            .style("left", 36 + "em")		
+                            .style("left", -7 + "em")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
@@ -660,7 +663,7 @@ div.transition()
                                 .duration(200)		
                                 .style("opacity", 1);		
                             div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", 36 + "em")		
+                                .style("left", -7 + "em")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
@@ -1129,12 +1132,12 @@ div.transition()
                 function printLabels () {
                     svg.selectAll("line").filter(function(d) {
                         
-                            div.transition()		
+                            chart.div.transition()		
                                 .duration(200)		
                                 .style("opacity", 1);		
-                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", 36 + "em")		
-                                .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
+                            chart.div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
+                                .style("left", 30 + "px")		
+                                .style("top", (leftScale(parseFloat(d['search_interest']))+20) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
                       })

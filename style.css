@@ -309,7 +309,7 @@ body {
         font-size: 10px;		
         border: 0px;		
         border-radius: 8px;			
-        pointer-events: none;			
+        pointer-events: none;	
     }
     div.tooltip span {
         color: #FBBC05;
@@ -483,12 +483,13 @@ a {
         float: left;
         margin-left:10vw;
         margin-top: 2vh;
-        
     }
     #selectors2 {
         width:26vw;
         margin-left:11vw;
         margin-top: 20vh;
+        
+        margin-bottom: 40px;
     }
     #tags {
         width:26vw;
@@ -500,7 +501,9 @@ a {
         font-size: 0.8em;
         float: right;
         display: block;
-        margin-top: -450px;
+        position:absolute;
+        top: 50px;
+        right:20px;
     }
     select {
        -webkit-appearance: none;
@@ -528,7 +531,7 @@ a {
         width:35vw;
         float: left;
         margin-left:7vw;
-        
+        top: 10px;
     }
     #trendsLogo {
         width: 15vw;
@@ -634,7 +637,7 @@ a {
         font-size: 1.1em;		
         border: 0px;		
         border-radius: 8px;			
-        pointer-events: none;			
+        pointer-events: none;
     }
     div.tooltip span {
         color: #FBBC05;

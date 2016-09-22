@@ -249,6 +249,7 @@
                     .append("text")
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
+                .style("font-size","10px")
                     .attr("x", width)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 0;
@@ -263,6 +264,7 @@
                 leftLabels.enter()
                     .append("text")
                     .attr("class","bluelabels animoff")
+                .style("font-size","10px")
                     .attr("x", width)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
@@ -280,6 +282,7 @@
                 leftLabels.enter()
                     .append("text")
                     .attr("class","bluelabels animoff")
+                .style("font-size","10px")
                     .attr("x", width)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 20;
