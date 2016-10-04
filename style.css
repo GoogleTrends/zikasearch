@@ -53,7 +53,7 @@ body {
     }
     #selectors2 {
         width:36vw;
-        margin-left:55vw;
+        margin-left:60vw;
         margin-top: 0px;
     }
     #tags {
@@ -152,8 +152,10 @@ body {
     .showdisplaylabels {
         font-size: .75em;
         display: inline-block;
+        /*
         -webkit-animation: fadeIn 3s;
         animation: fadeIn 3s;
+        */
     }
     .animon {
         display: inline-block;
@@ -341,8 +343,9 @@ a {
     .sliderTickmarks{
         -webkit-box-sizing: border-box; 
         box-sizing: border-box;
+        
         height: 100%;
-        width: 25%;    
+        width: 16.66667%;    
         float: left;
         border-right: 1px solid #888;
     }
@@ -363,6 +366,47 @@ a {
     }
     #slider > div.sliderTickmarks:last-of-type{
          border-right: 0;
+    }
+    #buttonBar {
+        width: 60%;
+        float: left;
+        margin-top: 18px;
+    }
+    .btn {
+        /*padding: 14px 24px;*/
+        width: 30px;
+        height:30px;
+        border: 1px solid #444;
+        font-size: 10px;
+        font-weight: 700;
+        margin-left: -6px;
+        text-align: center;
+        padding: 0 !important;
+    }
+    #firstbutton {
+        border-radius: 10px 0 0 10px;
+        margin-left: 0px;
+    }
+    #lastbutton {
+        border-radius: 0 10px 10px 0;
+    }
+    .btn:focus, .btn:active:focus, .btn.active:focus {
+        outline: 0 none;
+    }
+
+    .btn-primary {
+        background: #6c6c6c;
+        color: #141b33;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+        background: white;
+        color: #FBBC05;
+    }
+
+    .btn-primary:active, .btn-primary.active {
+        
+        box-shadow: none;
     }
 
 /*------------------Small iPhone styles--------------------*/
@@ -487,7 +531,7 @@ a {
     #selectors2 {
         width:26vw;
         margin-left:11vw;
-        margin-top: 20vh;
+        margin-top: 16vh;
         
         margin-bottom: 40px;
     }
@@ -502,7 +546,7 @@ a {
         float: right;
         display: block;
         position:absolute;
-        top: 50px;
+        top: 80px;
         right:20px;
     }
     select {
@@ -531,7 +575,7 @@ a {
         width:35vw;
         float: left;
         margin-left:7vw;
-        top: 10px;
+        top: 40px;
     }
     #trendsLogo {
         width: 15vw;
@@ -641,6 +685,32 @@ a {
     }
     div.tooltip span {
         color: #FBBC05;
+    }
+    .sliderTickmarks{
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+        margin-top: 7px;
+        height: 50%;
+        width: 16.66667%;    
+        float: left;
+        border-right: 1px solid #666;
+    }
+    #buttonBar {
+        width: 100%;
+        float: left;
+        margin-top: 40px;
+        margin-left:11vw;
+    }
+    .btn {
+        /*padding: 14px 24px;*/
+        width: 3.8vw;
+        height:35px;
+        border: 1px solid #444;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: -6px;
+        text-align: center;
+        padding: 0 !important;
     }
 
 }

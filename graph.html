@@ -16,6 +16,7 @@
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
         
+        
 
    </head>
     <body>
@@ -29,13 +30,27 @@
             </p> 
             -->
         </div>
+        <div class="btn-group" id="buttonBar">
+              <button id="firstbutton" type="button" class="btn btn-primary" value="8/18">8/18</button>
+              <button type="button" class="btn btn-primary" value="8/25">8/25</button>
+              <button type="button" class="btn btn-primary" value="9/1">9/1</button>
+              <button type="button" class="btn btn-primary" value="9/8">9/8</button>                   <button type="button" class="btn btn-primary" value="9/15">9/15</button>    
+              <button type="button" class="btn btn-primary" value="9/22">9/22</button>
+              <button id="lastbutton" type="button" class="btn btn-primary active" value="9/29">9/29</button>
+          </div>
+          
+          <!--
         <div id="selectors1">
+          
            <p id="sliderlabels" style="text-align:left;">8/18<span style="text-align:right;float: right;">9/15</span></p>
             <div id="slider" > </div>
-            <!--<input type="range" name="slider-1" id="slider-1" min="1" max="90" value="1" >-->
+            <!--<input type="range" name="slider-1" id="slider-1" min="1" max="90" value="1" >
         </div>
+        
+        -->
+        
         <div id="selectors2">
-            <p id="droplabels">Choose a Country</p>
+            <p id="droplabels">Choose a Region</p>
             <!--<input type="text" id="tbCountries" />
             <div id="tbCountries"></div> -->
             <input id="tags">
@@ -57,7 +72,7 @@
             
             var optionsData;
             var dropDown;
-            var dateSelected = "9/15";
+            var dateSelected = "9/29";
             var countrySelected;
             var selected;
             var countryOn = false;
@@ -104,7 +119,7 @@
                 .attr("class", "tooltip")				
                 .style("opacity", 0);
             
-            d3.csv('data9_19.csv', function setGraph(d) {
+            d3.csv('data.csv', function setGraph(d) {
                 data = d;
                 
                 
@@ -130,7 +145,9 @@
                     .attr('class', 'lineclass')
                     .attr("x1", margin.left)
                     .attr("x2", width - margin.right)
-                    .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
+                    .attr("y1", function(d) {
+                        return leftScale(parseFloat(d['search_interest']));
+                    })
                     .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} )
                     //.attr("y1", height- margin.top, margin.bottom)
                     //.attr("y2", height- margin.top, margin.bottom)
@@ -171,11 +188,11 @@
                 
                 svg.selectAll("line").filter(function(d) {
                     //console.log("8/18" != d.Date, d.Country);
-                                return "9/15" != d.Date;})
+                                return "9/29" != d.Date;})
                                     .classed('displaylabels',true)
                                     .classed('showdisplaylabels',false);
                 svg.selectAll("line").filter(function(d) {
-                                return "9/15" == d.Date;})
+                                return "9/29" == d.Date;})
                                     .classed('displaylabels',false)
                                     .classed('showdisplaylabels',true);
                 /*
@@ -526,23 +543,29 @@
                 var steps = [
                     "8/18",
                     "8/25",
-                    "09/01",
-                    "09/08",
-                    "9/15"
+                    "9/1",
+                    "9/8",
+                    "9/15",
+                    "9/22",
+                    "9/29"
                 ];
                 
-                var ticks  = '<div class="sliderTickmarks "><span></span></div>';
-    ticks += '<div class="sliderTickmarks "><span></span></div>';
-    ticks += '<div class="sliderTickmarks "><span></span></div>';
-    ticks += '<div class="sliderTickmarks "><span></span></div>';
-    ticks += '<div class="sliderTickmarks "><span></span></div>';
-$("#slider").prepend(ticks);
+                var ticks  = 
+                    '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    ticks += '<div class="sliderTickmarks "><span></span></div>';
+                    
+                    $("#slider").prepend(ticks);
 
                 $(function() {
                     $("#slider").slider({
-                        value: 4,
+                        value: 6,
                         min: 0,
-                        max: 4,
+                        max: 6,
                         step: 1,
                         create: function( event, ui ) {
                           setSliderTicks(event.target);
@@ -642,7 +665,7 @@ $("#slider").prepend(ticks);
                                             printLabels();
                                         });
                                     }
-                                        return ((d.search_interest > 99));
+                                        //return ((d.search_interest > 99));
                                         
                                 
                                     div.transition()		
@@ -655,7 +678,9 @@ $("#slider").prepend(ticks);
                                             .moveToFront()
                                             .style("opacity", 1)
                                             .style("stroke-width", 6); 
-                                console.log(countrySelected);
+                                
+                                return ((d.search_interest > 99 && dateSelected== d.Date));
+                                //console.log(countrySelected);
                                 //printLabels();
 
                                 /*
@@ -679,6 +704,108 @@ $("#slider").prepend(ticks);
                     $("#amount").val(steps[$("#slider").slider("value")]);
                 });
                 
+                
+            $('#buttonBar button').click(function() {
+                $(this).addClass('active').siblings().removeClass('active');
+                dateSelected = this.value;
+                
+
+                var selected2 = dateSelected;
+
+                svg.selectAll(".bluelabels")
+                    .classed('animoff',true)
+                    .classed('animon',false);
+
+
+                svg.selectAll("line").filter(function(d) {
+                    //console.log(d.Date, d.Country);
+                    return selected2 != d.Date;})
+                        //.transition()
+                        //.style("stroke", "red");
+                        .classed('showdisplaylabels',false)
+                        .classed('displaylabels',true)
+                        .attr("display", "none");
+                svg.selectAll("line").filter(function(d) {
+                    return selected2 == d.Date;})
+                        //.transition()
+                        //.style("stroke", "green");
+                    .classed('showdisplaylabels',true)
+                    .classed('displaylabels',false)
+                        .attr("display", "inline");
+
+                svg.selectAll("line")
+                   // .attr("y1", height/2)
+                   // .attr("y2", height/2)
+                .attr("y1", function(d) {
+                    /*
+                    console.log(
+                        d.Country, 
+                        leftScale(parseFloat(d['search_interest']))
+                    );*/
+                    return leftScale(parseFloat(d['search_interest']));
+                })
+                  .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
+                
+
+                if(countryOn==true) {
+                    svg.selectAll("line").filter(function(d) {
+                        //console.log(d.Country);
+                        return  ((countrySelected != d.Country)&&(d.Date==dateSelected));})
+                          //.attr("display", displayOthers);
+                          //.attr("fill", "#884dff")
+                            //.style("stroke", "#884dff")
+                            //.attr("stroke", "green")
+                            .style("stroke-width", 1.5)
+                            .style("opacity", 1 );
+
+                      //doubleChart.selectAll(".circle")
+                    svg.selectAll("line").filter(function(d) {
+                        return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                          //.attr("display", display);
+                            //.attr("fill", "white")
+                            //.style("stroke", "red")
+                            //.attr("stroke", "red")
+                            .moveToFront()
+                            .style("opacity", 1)
+                            .style("stroke-width", 6); 
+                }
+
+
+                if(countryOn == false) {
+                    svg.selectAll("line").filter(function(d) {
+                        if (d.search_interest > 99 && dateSelected== d.Date) {
+                            d3.select(this).each(function(d){
+                                countrySelected = d.Country
+                                //countrySend=(d.Country);
+                                console.log(countrySelected, d.Date);
+                                printLabels();
+                                
+                                div.transition()		
+                            .duration(0)		
+                            .style("opacity", 1);		
+                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
+                            .style("left", 5 + "px")		
+                            .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");
+                            });
+                        }
+                            //return ((d.search_interest > 99));
+
+
+                        
+                    })
+                                .moveToFront()
+                                .style("opacity", 1)
+                                .style("stroke-width", 6); 
+
+                    return ((d.search_interest > 99 && dateSelected== d.Date));
+                }
+
+                printLabels();
+
+            });
+            
+                
+                
                 function setSliderTicks(el) {
                     var $slider =  $(el);
                     var max =  $slider.slider("option", "max");    
@@ -692,6 +819,7 @@ $("#slider").prepend(ticks);
                 }
                 
                 function printLabels () {
+                    
                     svg.selectAll("line").filter(function(d) {
                         
                             div.transition()		
