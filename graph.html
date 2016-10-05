@@ -843,6 +843,8 @@
                     var availableTags = optionsData;
                     $( "#tags" ).autocomplete({
                       source: availableTags,
+                        minLength: 0,
+                        scroll: true,
                       select: function(event, ui) {
                           //alert(ui.item.value);
                           selected3 = ui.item.value;
@@ -903,6 +905,8 @@
                         
                           
                       }
+                    }).focus(function() {
+                        $(this).autocomplete("search", "");
                     });
                   } );
                 

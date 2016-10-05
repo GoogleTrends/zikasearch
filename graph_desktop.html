@@ -110,7 +110,25 @@
                 .attr('class', 'chartclass')
                 .append('g')
                 .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
-            
+            /*
+            var aspect = width / height,
+                chart = d3.select('svg');
+            d3.select(window)
+              .on("resize", function() {
+                console.log("resizing");
+                var targetWidth = chart.node().getBoundingClientRect().width;
+                //chart.attr("width", targetWidth);
+                //chart.attr("height", targetWidth / aspect);
+                chart.style('width', (targetWidth + margin.left + margin.right) + 'px')
+                chart.style('height', (targetWidth / aspect + margin.top + margin.bottom) + 'px')
+                
+                $("#chart").load(document.URL+"#chart");
+                //console.log( "Load was performed." );
+                
+                //$("#chart").html(data);
+                
+              });
+            */
             var togglePosition = false;
             
             var div = d3.select("#chart").append("div")	
@@ -772,7 +790,7 @@
                                     .duration(200)		
                                     .style("opacity", 1);		
                                 div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                    .style("left", -7 + "em")		
+                                    .style("left", -8 + "em")		
                                     .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                                 
                             });
@@ -806,7 +824,7 @@
                                 .duration(200)		
                                 .style("opacity", 1);		
                             div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", -7 + "em")		
+                                .style("left", -8 + "em")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
@@ -820,6 +838,8 @@
                     var availableTags = optionsData;
                     $( "#tags" ).autocomplete({
                       source: availableTags,
+                        minLength: 0,
+                        scroll: true,
                       select: function(event, ui) {
                           //alert(ui.item.value);
                           selected3 = ui.item.value;
@@ -846,36 +866,15 @@
                             .style("stroke-width", 6); 
                           
                           printLabels();
-                         // d3.select(this).each(function(d){console.log(d.Country);});
-                          
-                          
-                          
-                          /*
-                          div.transition()		
-                                .duration(200)		
-                                .style("opacity", 1);		
-                          div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", 20 + "px")		
-                                .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");
-                          
-                          
-                          
-                          svg.selectAll(".labelsclass")
-                              //.filter(function(d) {
-                            //return ((selected3 != d.Country)&&(d.Date!=dateSelected));})
-                            .classed('animoff',true)
-                            .classed('animon',false);
-                          
-                          svg.selectAll(".labelsclass").filter(function(d) {
-                            return ((selected3 == d.Country)&&(d.Date==dateSelected));})
-                            .classed('animoff',false)
-                            .classed('animon',true);
-                            */
+                         
                             
                           
                         
                           
                       }
+                    })
+                    .focus(function() {
+                        $(this).autocomplete("search", "");
                     });
                   } );
                 
