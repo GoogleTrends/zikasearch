@@ -89,7 +89,7 @@
             var margin = {top: 25, right: 55, bottom: 30, left: 55}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
-                      , height = width*1.25 // placeholder
+                      , height = $(window).height()-100 // placeholder
                       , barHeight = 20
                       , spacing = 3
                       , percent = d3.format('%');
@@ -281,11 +281,11 @@
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width)
+                    .attr("x", width-16)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + -5;
                     })
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", "right")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
                         .style("fill","#4285F4");
@@ -296,12 +296,12 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width)
+                    .attr("x", width-13)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
                     })
-                    .attr("text-anchor", "middle")
-                    .append("tspan").text("Interest ")
+                    .attr("text-anchor", "right")
+                    .append("tspan").text("Interest: ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return (d['search_interest']);})
                         .style("fill","white");
@@ -314,12 +314,12 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width)
+                    .attr("x", width-30)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 25;
                     })
-                    .attr("text-anchor", "middle")
-                    .append("tspan").text("Rate ")
+                    .attr("text-anchor", "right")
+                    .append("tspan").text("Rate: ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
@@ -501,8 +501,8 @@
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);		
-                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                            .style("left", -7 + "em")		
+                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/>Incidence Rate: </span>" + d.raw_incidence_rate)	
+                            .style("left", -4 + "em")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
@@ -672,8 +672,8 @@
                                     div.transition()		
                                         .duration(0)		
                                         .style("opacity", 1);		
-                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                        .style("left", 5 + "px")		
+                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
+                                        .style("left", -4 + "em")		
                                         .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");                                
                                     
                                     return ((d.search_interest > 99 && dateSelected== d.Date));
@@ -789,8 +789,8 @@
                                 div.transition()		
                                     .duration(200)		
                                     .style("opacity", 1);		
-                                div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                    .style("left", -8 + "em")		
+                                div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
+                                    .style("left", -4 + "em")		
                                     .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                                 
                             });
@@ -823,8 +823,8 @@
                             div.transition()		
                                 .duration(200)		
                                 .style("opacity", 1);		
-                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", -8 + "em")		
+                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
+                                .style("left", -4 + "em")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                        
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));

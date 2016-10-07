@@ -267,11 +267,11 @@
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
                 .style("font-size","10px")
-                    .attr("x", width)
+                    .attr("x", width-22)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 0;
                     })
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", "right")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
                         .style("fill","#4285F4");
@@ -282,11 +282,11 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","10px")
-                    .attr("x", width)
+                    .attr("x", width-17)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 12;
                     })
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", "right")
                     .append("tspan").text("Interest ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return (d['search_interest']);})
@@ -300,11 +300,11 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","10px")
-                    .attr("x", width)
+                    .attr("x", width-30)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 20;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 24;
                     })
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", "right")
                     .append("tspan").text("Rate ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
@@ -488,8 +488,8 @@
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);		
-                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                            .style("left", 8 + "px")		
+                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
+                            .style("left", 10 + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))+150) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
@@ -671,7 +671,7 @@
                                     div.transition()		
                                         .duration(0)		
                                         .style("opacity", 1);		
-                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
+                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
                                         .style("left", 5 + "px")		
                                         .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");
                                 })
@@ -783,7 +783,7 @@
                                 div.transition()		
                             .duration(0)		
                             .style("opacity", 1);		
-                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
+                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
                             .style("left", 5 + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");
                             });
@@ -825,8 +825,8 @@
                             div.transition()		
                                 .duration(200)		
                                 .style("opacity", 1);		
-                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Interest </span>" + d.search_interest + "<span><br/> Rate </span>" + d.raw_incidence_rate)	
-                                .style("left", 5 + "px")		
+                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
+                                .style("left", 10 + "px")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");
                        
                           
