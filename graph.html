@@ -1033,26 +1033,23 @@
             }); 
             
             
-            window.addEventListener("resize", getTemplate);
-
-            CurrentPage = 'DesktopPage';
-
             function getTemplate() {
             
-            
-            
-             if (screen.width >= 1025 /*&& CurrentPage != 'DesktopPage'*/) {
+                if ($(window).width() >= 1025 /*&& CurrentPage != 'DesktopPage'*/) {
                    // return 
                     window.location.replace("graph_desktop.html");
+                    //alert($(window).width(), "desktop enabled");
                 }
 
-                if (screen.width < 1025 /*&& CurrentPage != 'MobilePage'*/) {
+                 else if ($(window).width() < 1025 /*&& CurrentPage == 'DesktopPage'*/) {
                     //return
                     window.location.replace("graph.html");
+                    //alert($(window).width(), "mobile enabled");
                 }
                 
             
             }
+            window.addEventListener("resize", getTemplate);
 
             //getTemplate();
             
