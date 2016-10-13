@@ -335,9 +335,9 @@
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 4;
                     })
                     .attr("text-anchor", "right")
-                    .append("tspan").text("Search Rank: ")
+                    .append("tspan").text("Zika Rate: ")
                         .style("fill","#4285F4")
-                    .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
+                    .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 /*
                 

@@ -99,7 +99,7 @@
                 .domain([true, false])
                 .range(["#FBBC05", "#4285F4"]);
             
-            var margin = {top: 15, right: 55, bottom: 30, left: 55}
+            var margin = {top: 15, right: 68, bottom: 30, left: 68}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
                       , height = width*1.25 // placeholder
@@ -232,7 +232,7 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels1 displaylabels wrapthis")
-                    .attr("x", 35)
+                    .attr("x", 38)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 12;
                     })
@@ -249,7 +249,7 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels2 displaylabels")
-                    .attr("x", 35)
+                    .attr("x", 38)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 20;
                     })
@@ -328,9 +328,9 @@
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 8;
                     })
                     .attr("text-anchor", "right")
-                    .append("tspan").text("Search Rank: ")
+                    .append("tspan").text("Zika Rate: ")
                         .style("fill","#4285F4")
-                    .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
+                    .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 /*
                 
