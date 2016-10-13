@@ -46,12 +46,19 @@
         </div>
         -->
         
+        
         <div id="selectors2">
-            <p id="droplabels">Choose a Region</p>
+            <p id="droplabels">Enter country or region name</p>
             <!--<input type="text" id="tbCountries" />
             <div id="tbCountries"></div> -->
             <input id="tags">
             <!--onchange="updateInput(this.value)"-->
+        </div>
+        
+        <div id="helpbox">
+            <p>Hover over a line to select or enter a country or date above. 
+        Values shown include zika search interest for a country ranked  against other countries versus rate of infection.
+            </p>
         </div>
         <br>
         
@@ -59,11 +66,15 @@
         
         <div id="footer">
            <p id="designed">
-            <a href="http://www.paho.org/hq/">Source: PAHO/WHO <br>Pan American Health Organization | World Health Organization</a><br><br>
-            Designed by Sevika Singh and Alberto Cairo
-            <br>Powered by: </p>
+            <a href="http://www.paho.org/hq/index.php?option=com_content&view=article&id=12390&Itemid=42090&lang=en" target="_blank">Source: PAHO/WHO <br>Pan American Health Organization | World Health Organization</a><br><br>
+            Designed by 
+            <a href="http://www.sevika.co/" target="_blank">Sevika Singh</a> and 
+            <a href="http://www.albertocairo.com/" target="_blank">Alberto Cairo</a>
+            <br><br>Powered by: </p>
             
-            <img src="trendslogoWhite.png" alt="Google Trends" id="trendsLogo">
+            <a href="http://www.google.com/trends/" target="_blank">
+                <img src="trendslogoWhite.png" alt="Google Trends" id="trendsLogo">
+            </a>
         </div>
         
         <script type="text/javascript">
@@ -86,7 +97,7 @@
                 .domain([true, false])
                 .range(["#FBBC05", "#4285F4"]);
             
-            var margin = {top: 25, right: 55, bottom: 30, left: 55}
+            var margin = {top: 25, right: 65, bottom: 30, left: 120}
                       , width = parseInt(d3.select('#chart').style('width'), 10)
                       , width = width - margin.left - margin.right
                       , height = $(window).height()-100 // placeholder
@@ -132,6 +143,10 @@
             var togglePosition = false;
             
             var div = d3.select("#chart").append("div")	
+                .attr("class", "tooltip")				
+                .style("opacity", 0);
+            
+            var div2 = d3.select("#chart").append("div2")	
                 .attr("class", "tooltip")				
                 .style("opacity", 0);
             
@@ -230,31 +245,48 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels1 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", 90)
                     .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 0;
+                        return leftScale(parseFloat(d['search_interest'])) + 8;
                     })
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
-                        .style("fill","#FBBC05");
+                    .style("fill","#FBBC05");
                     //.text(function (d) {
                       //  return (d['Country']);
                     //});
+                    
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels2 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", 90)
                     .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 10;
+                        return leftScale(parseFloat(d['search_interest'])) + 19;
                     })
-                    .attr("text-anchor", "middle")
-                    .append("tspan").text("Interest ")
+                    .attr("text-anchor", "end")
+                    .append("tspan").text("Search Rank: ")
                         .style("fill","#FBBC05")
-                    .append("tspan").text(function (d) {return (d['search_interest']);})
+                    .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
                         .style("fill","white");
+                    
+                    function ordinal_suffix_of(i) {
+                        var j = i % 10,
+                            k = i % 100;
+                        if (j == 1 && k != 11) {
+                            return i + "st";
+                        }
+                        if (j == 2 && k != 12) {
+                            return i + "nd";
+                        }
+                        if (j == 3 && k != 13) {
+                            return i + "rd";
+                        }
+                        return i + "th";
+                    }
+                    
                 
-                
+                /*
                     //.text(function (d) {
                       //  return ("Interest " + d['search_interest']);
                     //});
@@ -273,7 +305,7 @@
                     //.text(function (d) {
                       //  return ("Rate " + d['raw_incidence_rate']);
                    // });
-                   
+                   */
                //BLUE LABELS
 
                 leftLabels.enter()
@@ -281,14 +313,16 @@
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width-16)
+                    .attr("x", width-50)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + -5;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + -7;
                     })
                     .attr("text-anchor", "right")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
                         .style("fill","#4285F4");
+                    
+                    
                     //.text(function (d) {
                       //  return (d['Country']);
                     //});
@@ -296,16 +330,16 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width-13)
+                    .attr("x", width-50)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 10;
+                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 4;
                     })
                     .attr("text-anchor", "right")
-                    .append("tspan").text("Interest: ")
+                    .append("tspan").text("Search Rank: ")
                         .style("fill","#4285F4")
-                    .append("tspan").text(function (d) {return (d['search_interest']);})
+                    .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
                         .style("fill","white");
-                
+                /*
                 
                     //.text(function (d) {
                       //  return ("Interest " + d['search_interest']);
@@ -324,7 +358,7 @@
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 
-                
+                */
                 
                 var y_domain2 = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
 
@@ -356,7 +390,7 @@
                     .call(yAxisLeft);
                 
                 svg.append("svg:g")
-                    .attr("transform", "translate(" + (width-margin.left-5) + " ,0)")	
+                    .attr("transform", "translate(" + (width-margin.left+50) + " ,0)")	
                     .attr("class", "y axis whiteText")
                     .call(yAxisRight);
                 
@@ -380,14 +414,14 @@
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +52) +","+(-10)+")")
+                    .attr("transform", "translate("+ (width -margin.left +90) +","+(-10)+")")
                     .text("Zika Cases Per");
                 
                 svg.append("text")
                     .attr("class", "whiteText")
                     .style("font-size","1.1em")
                     .attr("text-anchor", "middle")
-                    .attr("transform", "translate("+ (width -margin.left +52) +","+(5)+")")
+                    .attr("transform", "translate("+ (width -margin.left +90) +","+(5)+")")
                     .text("100,000 People");
                 
                 
@@ -498,11 +532,15 @@
                                         .classed('animoff',true)
                                         .classed('animon',false);
                     
+                    svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                    
                         div.transition()		
                             .duration(200)		
-                            .style("opacity", 1);		
-                        div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/>Incidence Rate: </span>" + d.raw_incidence_rate)	
-                            .style("left", -4 + "em")		
+                            .style("opacity", 1);
+                        div.html("<span>"+d.Country+"</span>" + "<span><br/>Search Rank: </span>"+ ordinal_suffix_of(101-d.search_interest) +"<br/><span>Interest: </span>" + d.search_interest + "<span><br/> Zika Rate: </span>" + d.raw_incidence_rate)	
+                            .style("left", 50 + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
@@ -533,7 +571,7 @@
                             .style("opacity", 1)
                             .classed('animoff',true)
                             .classed('animon',false);
-                    
+                    /*
                     svg.selectAll(".labelsclass").filter(function(d) {
                             return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
                             .classed('animoff',false)
@@ -543,6 +581,7 @@
                             return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
                             .classed('animoff',true)
                             .classed('animon',false);
+                            */
                 }
                 
                 
@@ -555,165 +594,14 @@
                     "9/22",
                     "9/29"
                 ];
-                
-                var ticks  = 
-                    '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    ticks += '<div class="sliderTickmarks "><span></span></div>';
-                    
-                    $("#slider").prepend(ticks);
-
-                $(function() {
-                    $("#slider").slider({
-                        value: 6,
-                        min: 0,
-                        max: 6,
-                        step: 1,
-                        slide: function(event, ui) {
-                            $("#amount").val(steps[ui.value]);
-                            dateSelected= steps[ui.value];
-                            //console.log(dateSelected);
-                            
-                            
-                            var selected2 = dateSelected;
-                            
-                            
-                            svg.selectAll(".bluelabels")
-                                .classed('animoff',true)
-                                .classed('animon',false);           
-                            
-                            svg.selectAll("line").filter(function(d) {
-                                //console.log(d.Date, d.Country);
-                                return dateSelected != d.Date;})
-                                    //.transition()
-                                    //.style("stroke", "red");
-                                    .classed('showdisplaylabels',false)
-                                    .classed('displaylabels',true)
-                                    .attr("display", "none");
-                            svg.selectAll("line").filter(function(d) {
-                                return dateSelected == d.Date;})
-                                    //.transition()
-                                    //.style("stroke", "green");
-                                .classed('showdisplaylabels',true)
-                                .classed('displaylabels',false)
-                                    .attr("display", "inline");
-                            
-                            svg.selectAll("line")
-                               // .attr("y1", height/2)
-                               // .attr("y2", height/2)
-                            .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
-                              .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
-                            
-  /*                          svg.selectAll("line").transition()
-                              .delay(function(d, i) { return i * 5; })
-                              .duration(350)
-                              .attr("y1", function(d) {return leftScale(parseFloat(d['search_interest']));})
-                              .attr("y2", function(d) {return rightScale(parseFloat(d['raw_incidence_rate']));} );
-   */                         
-                            
-                            
-                            
-                            svg.selectAll("line").filter(function(d) {
-                                //console.log(d.Country);
-                                return  ((countrySelected != d.Country)&&(d.Date==dateSelected));})
-                                  //.attr("display", displayOthers);
-                                  //.attr("fill", "#884dff")
-                                    //.style("stroke", "#884dff")
-                                    //.attr("stroke", "green")
-                                    .style("stroke-width", 1.5)
-                                    .style("opacity", 1 );
-
-                              //doubleChart.selectAll(".circle")
-                            svg.selectAll("line").filter(function(d) {
-                                return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
-                                  //.attr("display", display);
-                                    //.attr("fill", "white")
-                                    //.style("stroke", "red")
-                                    //.attr("stroke", "red")
-                                    .moveToFront()
-                                    .style("opacity", 1)
-                                    .style("stroke-width", 6); 
-                        
-                            /*
-                          svg.selectAll(".labelsclass").filter(function(d) {
-                            return ((countrySelected != d.Country)&&(d.Date!=dateSelected));})
-                            .classed('animoff',true)
-                            .classed('animon',false);
-                          
-                          svg.selectAll(".labelsclass").filter(function(d) {
-                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
-                            .classed('animoff',false)
-                            .classed('animon',true);
-                            
-                          svg.selectAll(".labelsclass").filter(function(d) {
-                            return ((countrySelected == d.Country)&&(d.Date!=dateSelected));})
-                            .classed('animoff',true)
-                            .classed('animon',false);
-                       
-                            */
-                            
-                            
-                            if(countryOn == false) {
-                                svg.selectAll("line").filter(function(d) {
-                                    if (d.search_interest > 99 && dateSelected== d.Date) {
-                                        d3.select(this).each(function(d){
-                                            countrySelected = d.Country
-                                            //countrySend=(d.Country);
-                                            //console.log(countrySelected, "poop", d.Date);
-                                            //printLabels();
-                                        });
-                                    }
-                                        
-                                    
-                                    div.transition()		
-                                        .duration(0)		
-                                        .style("opacity", 1);		
-                                    div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
-                                        .style("left", -4 + "em")		
-                                        .style("top", (leftScale(parseFloat(d['search_interest']))+100) + "px");                                
-                                    
-                                    return ((d.search_interest > 99 && dateSelected== d.Date));
-                                
-                                    
-                                
-                                
-                                
-                                })
-                                            .moveToFront()
-                                            .style("opacity", 1)
-                                            .style("stroke-width", 6); 
-
-                                /*
-                                svg.selectAll(".labelsclass")
-                                            .classed('animoff',true)
-                                            .classed('animon',false);
-
-                            
-                                svg.selectAll(".labelsclass").filter(function(d) {
-                                           // console.log(d.search_interest, d.Country);
-                                            return ((d.search_interest > 99))&&(d.Date==dateSelected);})
-                                            .classed('animoff',false)
-                                            .classed('animon',true);
-                                            */
-                            printLabels();
-                            }
-                            
-                            printLabels();
-                            
-                        }
-                    });
-                    $("#amount").val(steps[$("#slider").slider("value")]);
-                });
+              
                     
                     
                   
             $('#buttonBar button').click(function() {
                 $(this).addClass('active').siblings().removeClass('active');
                 dateSelected = this.value;
+                
                 
 
                 var selected2 = dateSelected;
@@ -774,11 +662,8 @@
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
-                }
-
-
-                if(countryOn == false) {
-                    svg.selectAll("line").filter(function(d) {
+                    /*
+                     svg.selectAll("line").filter(function(d) {
                         if (d.search_interest > 99 && dateSelected== d.Date) {
                             d3.select(this).each(function(d){
                                 countrySelected = d.Country
@@ -789,46 +674,78 @@
                                 div.transition()		
                                     .duration(200)		
                                     .style("opacity", 1);		
-                                div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
-                                    .style("left", -4 + "em")		
+                                div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Zika Rate: </span>" + d.raw_incidence_rate)	
+                                    .style("left", 5 + "em")		
                                     .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                                 
                             });
                         }
+                         
                             //return ((d.search_interest > 99));
 
 
                         
-                    })
+                    }) 
                                 .moveToFront()
                                 .style("opacity", 1)
                                 .style("stroke-width", 6); 
 
-                    return ((d.search_interest > 99 && dateSelected== d.Date));
+                    return ((d.search_interest > 99 && dateSelected== d.Date));*/
+                    printLabels();
                 }
 
-                printLabels();
+
+                 else if(countryOn == false) {
+                      svg.selectAll("line").filter(function(d) {
+                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%4 == 0))&&(d.search_interest > 30)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.raw_incidence_rate>5000)&&(d.Date==dateSelected)&&(d.search_interest%2 == 1));
+            
+            })
+                            .moveToFront()
+                            .style("opacity", 1)
+                            .style("stroke-width", 6); 
+                     
+                    svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+                    svg.selectAll(".labelsclass").filter(function(d) {
+                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%4 == 0)&&(d.search_interest > 30))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                    
+                          svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                          svg.selectAll(".bluelabels").filter(function(d) {
+                            return (d.Country== "Martinique")&&(d.Date==dateSelected)||(d.search_interest%2 == 1)&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected);})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                   
+                }
+
+                
 
             });
             
-               
-                    
-                
+               /*
+                 function (d) {return ordinal_suffix_of(101-d['search_interest']);}   
+                    ordinal_suffix_of(101-d.search_interest)
+                */
                 function printLabels () {
-                    if (countryOn == false) {
-                            
-                    }
-                    svg.selectAll("line").filter(function(d) {
-                        
-                            div.transition()		
-                                .duration(200)		
-                                .style("opacity", 1);		
-                            div.html("<span>"+d.Country+"</span>" + "<span><br/> Search Interest: </span>" + d.search_interest + "<span><br/> Incidence Rate: </span>" + d.raw_incidence_rate)	
-                                .style("left", -4 + "em")		
-                                .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
-                       
-                        return ((countrySelected == d.Country)&&(d.Date==dateSelected));
-                      })
+                    
+                        svg.selectAll("line").filter(function(d) {
+
+                                div.transition()		
+                                    .duration(200)		
+                                    .style("opacity", 1);		
+                                div.html("<span>"+d.Country+"</span>" + "<span><br/>Search Rank: </span>"+ ordinal_suffix_of(101-d.search_interest) +"<br/><span>Interest: </span>" + d.search_interest + "<span><br/> Zika Rate: </span>" + d.raw_incidence_rate)	
+                                    .style("left", 50 + "px")		
+                                    .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
+
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));
+                          })
+                    
                     
                             
                 }
@@ -845,6 +762,14 @@
                           selected3 = ui.item.value;
                           countrySelected = selected3;
                           countryOn = true;
+                          
+                          svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                          svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
                           
                           svg.selectAll("line").filter(function(d) {
                             return ((selected3 != d.Country)&&(d.Date==dateSelected));
@@ -879,34 +804,32 @@
                   } );
                 
             svg.selectAll("line").filter(function(d) {
-                        return (d.search_interest > 99);
+                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%4 == 0))&&(d.search_interest > 30)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
             
             })
                             .moveToFront()
                             .style("opacity", 1)
                             .style("stroke-width", 6); 
-                /*
+                
             svg.selectAll(".labelsclass")
                             .classed('animoff',true)
                             .classed('animon',false);
                 
             svg.selectAll(".labelsclass").filter(function(d) {
-                            return ((d.search_interest > 99))&&(d.Date=="8/25");})
+                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%4 == 0)&&(d.search_interest > 30))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
-                */
                 
                 
-            printLabels();
                 
-                svg.selectAll(".bluelabels")
-                              //.filter(function(d) {
-                            //return ((selected3 != d.Country)&&(d.Date!=dateSelected));})
+           // printLabels();
+                
+                        svg.selectAll(".bluelabels")
                             .classed('animoff',true)
                             .classed('animon',false);
                           
                           svg.selectAll(".bluelabels").filter(function(d) {
-                            return (("Martinique" == d.Country)&&(d.Date==dateSelected));})
+                            return (d.search_interest%2 == 1)&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                 
@@ -927,6 +850,10 @@
                 
                 
             }); 
+                
+                
+                
+                
             
             }
             
@@ -935,6 +862,39 @@
 
               // Redraw based on the new size whenever the browser window is resized.
              // window.addEventListener("resize", redraw);
+            /*
+             CurrentPage = 'DesktopPage';
+                if (screen.width >= 775 && CurrentPage != 'DesktopPage') {
+                   // return 
+                    window.location.replace("graph_desktop.html");
+                }
+
+                if (screen.width < 775 && CurrentPage != 'MobilePage') {
+                    //return
+                    window.location.replace("graph.html");
+                }
+                */
+            
+            window.addEventListener("resize", getTemplate);
+
+            CurrentPage = 'DesktopPage';
+
+            function getTemplate() {
+            
+            
+            
+             if (screen.width > 1024 /*&& CurrentPage != 'DesktopPage'*/) {
+                   // return 
+                    window.location.replace("graph_desktop.html");
+                }
+
+                if (screen.width <= 1024 /*&& CurrentPage != 'MobilePage'*/) {
+                    //return
+                    window.location.replace("graph.html");
+                }
+                
+            
+            }
 
         </script>
         

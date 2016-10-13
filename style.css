@@ -45,6 +45,10 @@ body {
         width: 100vw;
         /*border: 2px solid red;*/
     }
+#helpbox {
+    margin-top: -40px;
+    font-size: 12px;
+}
     #selectors1 {
         width:36vw;
         float: left;
@@ -111,10 +115,10 @@ body {
     #footer {
         font-size: 0.6em;
         text-align: center;
-        margin-top: -5vh;
+        /*margin-top: -5vh;*/
     }
     #trendsLogo {
-        width: 50px;
+        width: 70px;
         margin-top: -5px;
         /*
         float:right;
@@ -144,6 +148,7 @@ body {
     }
     .bluelabels {
         font-size: 0.75em;
+        display: none;
     }
     .displaylabels {
         font-size: .75em;
@@ -159,8 +164,8 @@ body {
     }
     .animon {
         display: inline-block;
-        -webkit-animation: fadeIn 3s;
-        animation: fadeIn 3s;
+        /*-webkit-animation: fadeIn 3s;
+        animation: fadeIn 3s;*/
     }
     .animoff {
         display: none;
@@ -246,7 +251,7 @@ body {
         color: #FBBC05;
     }
     #intrologo {
-        width: 30vw;
+        width: 90px;
         margin: 0 auto;
         display: block;
         margin-top: -12px;
@@ -305,7 +310,7 @@ body {
     }
     div.tooltip {	
         position: absolute;			
-        text-align: left;			
+        text-align: right;			
         width: 22vw;					
         padding: 2px;				
         font-size: 10px;		
@@ -316,6 +321,7 @@ body {
     div.tooltip span {
         color: #FBBC05;
     }
+
 
 a {
     text-decoration: none;
@@ -495,14 +501,81 @@ a {
       
 }
     
+/*--------------------iPad Styles--------------------------*/
+
+@media (min-width: 450px) and (max-width: 1024px) {
+     p {
+        font-size: 1.2em;
+    }
+    #chart {
+        width: 80vw;
+        font-size: 0.8em;
+        margin-top: 5px;
+    }
+    #selectors1 {
+        width:50vw;
+        float: left;
+        margin-left:8vw;
+        margin-top: 0px;
+    }
+    #selectors2 {
+        width:36vw;
+        margin-left:52vw;
+        margin-top: -10px;
+    }
+    #tags {
+        width:40vw;
+        height: 3vh;
+        border-radius: 15px;
+    }
+    #buttonBar {
+        width: 45%;
+        float: left;
+        margin-top: 25px;
+        margin-left:5vw;
+    }
+    .btn {
+        /*padding: 14px 24px;*/
+        width: 45px;
+        height:40px;
+        border: 1px solid #444;
+        font-size: 14px;
+        font-weight: 700;
+        margin-left: -6px;
+        text-align: center;
+        padding: 0 !important;
+    }
+    #firstbutton {
+        border-radius: 15px 0 0 15px;
+        margin-left: 0px;
+    }
+    #lastbutton {
+        border-radius: 0 15px 15px 0;
+    }
+    .displaylabels {
+        font-size: 11px;
+    }
+    #zikaintro {
+        width: 30vh;
+    }
+    #intrologo {
+        width: 200px;
+    }
+    #textintro {
+        font-size: 20px;
+    }
+    #trendsLogo {
+        width: 130px;
+    }
     
+}
     
     
 
 
 /*---------------------Desktop styles----------------------*/
 
-@media (min-width: 750px) 
+@media (min-width: 1025px) 
                             {
     html, body {
       overflow-x: visible;
@@ -511,9 +584,15 @@ a {
         font-size: 1.2em;
     }
     #zikaHeader {
-        width: 20vw;
+        width: 16vw;
         
     }   
+    .displaylabels {
+        font-size: 12px;
+    }
+    .bluelabels {
+        font-size:12px !important;
+    }
     #intro {
         width: 20vw;
         margin-left: 15vw;
@@ -534,23 +613,22 @@ a {
     #selectors2 {
         width:26vw;
         margin-left:11vw;
-        margin-top: 16vh;
+        margin-top: 14vh;
         
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
     #tags {
         width:26vw;
         height: 4vh;
     }
     #chart {
-        width: 46vw;
-        margin-left:45vw;
+        width: 56vw;
         font-size: 0.8em;
         float: right;
         display: block;
         position:absolute;
-        top: 50px;
-        right:20px;
+        top: 40px;
+        right:0px;
     }
     select {
        -webkit-appearance: none;
@@ -577,8 +655,7 @@ a {
         text-align: center;
         width:35vw;
         float: left;
-        margin-left:7vw;
-        top: 40px;
+        margin-left: -32vw;
     }
     #trendsLogo {
         width: 15vw;
@@ -674,9 +751,22 @@ a {
         display: inline;
         color: #FBBC05;
         width: 26vw;  
-        font-size: 1em;
+        font-size: 0.9em;
     }
     div.tooltip {	
+        position: absolute;			
+        text-align: right;			
+        width: 12vw;					
+        padding: 2px;				
+        font-size: 1.1em;		
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;
+    }
+    div.tooltip span {
+        color: #FBBC05;
+    }
+    div2.tooltip {	
         position: absolute;			
         text-align: left;			
         width: 12vw;					
@@ -686,7 +776,7 @@ a {
         border-radius: 8px;			
         pointer-events: none;
     }
-    div.tooltip span {
+    div2.tooltip span {
         color: #FBBC05;
     }
     .sliderTickmarks{
@@ -701,7 +791,7 @@ a {
     #buttonBar {
         width: 100%;
         float: left;
-        margin-top: 40px;
+        margin-top: 25px;
         margin-left:11vw;
     }
     .btn {
@@ -715,5 +805,16 @@ a {
         text-align: center;
         padding: 0 !important;
     }
+    input#tags.ui-autocomplete-input {
+        font-size: 18px;
+    }
+#helpbox {
+    width:30vw;
+    float: left;
+    font-size: 0.7em;
+    margin-left:9vw;
+    margin-bottom: 20px;
+}
+                                
 
 }

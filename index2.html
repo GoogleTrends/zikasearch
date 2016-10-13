@@ -20,23 +20,33 @@
 
    </head>
     <body>
-    
-    <script>
+        <div id="frontpage" class="container">
+            <img src="zika.png" alt="ZIKA" id="zikaintro">
+            <p id="textintro">
+                How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a region-by-region level in the Americas. 
+            </p>
+            <a href="graph.html" class="myButton">BEGIN</a>
+        </div>
         
-        //CurrentPage = 'MobilePage';
-                if (screen.width > 1024 /*&& CurrentPage != 'DesktopPage'*/) {
+        <div id="footerintro">
+            <p id="designed">Designed by Sevika Singh and Alberto Cairo <br><br>Powered by: </p>
+            <img src="trendslogoWhite.png" alt="Google Trends" id="intrologo">
+        </div>
+    </body>
+    <script>
+    
+        /*
+     CurrentPage = 'MobilePage';
+                if (screen.width >= 775 && CurrentPage != 'DesktopPage') {
                    // return 
                     window.location.replace("graph_desktop.html");
                 }
 
-                if (screen.width <= 1024 /*&& CurrentPage != 'MobilePage'*/) {
+                if (screen.width < 775 && CurrentPage != 'MobilePage') {
                     //return
-                    window.location.replace("index2.html");
+                    window.location.replace("graph.html");
                 }
+    */
     
-        
     </script>
-    
-    
-    </body>
 </html>
