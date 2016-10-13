@@ -877,18 +877,18 @@
             
             window.addEventListener("resize", getTemplate);
 
-            CurrentPage = 'DesktopPage';
+            //CurrentPage = 'DesktopPage';
 
             function getTemplate() {
             
             
             
-             if (screen.width > 1024 /*&& CurrentPage != 'DesktopPage'*/) {
+             if (screen.width >= 1025 /*&& CurrentPage != 'DesktopPage'*/) {
                    // return 
                     window.location.replace("graph_desktop.html");
                 }
 
-                if (screen.width <= 1024 /*&& CurrentPage != 'MobilePage'*/) {
+                if (screen.width < 1025 /*&& CurrentPage != 'MobilePage'*/) {
                     //return
                     window.location.replace("graph.html");
                 }
