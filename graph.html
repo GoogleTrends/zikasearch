@@ -17,6 +17,8 @@
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
         
         
+        
+        
 
    </head>
     <body>
@@ -223,18 +225,22 @@
                     .data(data);
                 
                
+                
                 //YELLOW LABELS
+             
 
                 rightLabels.enter()
                     .append("text")
-                    .attr("class","labelsclass labels1 displaylabels")
-                    .attr("x", 50)
+                    .attr("class","labelsclass labels1 displaylabels wrapthis")
+                    .attr("x", 35)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 12;
                     })
+                .attr("dy", ".1em")
                     .attr("text-anchor", "end")
-                    .append("tspan").text(function (d) {return (d['Country']);})
-                        
+                    //.append("tspan")
+                    .text(function (d) {return (d['Country']);})
+                    
                         .style("fill","#FBBC05");
                     //.text(function (d) {
                       //  return (d['Country']);
@@ -243,12 +249,12 @@
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels2 displaylabels")
-                    .attr("x", 50)
+                    .attr("x", 35)
                     .attr("y", function(d) {
                         return leftScale(parseFloat(d['search_interest'])) + 20;
                     })
                     .attr("text-anchor", "end")
-                    .append("tspan").text("Interest: ")
+                    .append("tspan").text("Search Rank: ")
                         .style("fill","#FBBC05")
                     .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
                         .style("fill","white");
@@ -300,7 +306,7 @@
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
                 .style("font-size","10px")
-                    .attr("x", width-48)
+                    .attr("x", width-45)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 0;
                     })
@@ -317,12 +323,12 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","10px")
-                    .attr("x", width-48)
+                    .attr("x", width-45)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 8;
                     })
                     .attr("text-anchor", "right")
-                    .append("tspan").text("Interest ")
+                    .append("tspan").text("Search Rank: ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
                         .style("fill","white");
@@ -813,7 +819,7 @@
 
                 if(countryOn == false) {
                    svg.selectAll("line").filter(function(d) {
-                                                return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%5 == 0))&&(d.search_interest >34)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.Country== "Martinique")&&(d.Date==dateSelected)||((d.search_interest%2 == 1)&&(d.search_interest>15))&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
+                                                return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%7.5 == 0))&&(d.search_interest >34)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.Country== "Martinique")&&(d.Date==dateSelected)||((d.search_interest%2 == 1)&&(d.search_interest>15))&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
                     })
                                 .moveToFront()
                                 .style("opacity", 1)
@@ -824,7 +830,7 @@
                             .classed('animon',false);
                 
                     svg.selectAll(".labelsclass").filter(function(d) {
-                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%5 == 0)&&(d.search_interest >34))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
+                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%7.5 == 0)&&(d.search_interest >34))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                     
@@ -998,7 +1004,7 @@
                 
                    
                       svg.selectAll("line").filter(function(d) {
-                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%5 == 0))&&(d.search_interest >34)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.Country== "Martinique")&&(d.Date==dateSelected)||((d.search_interest%2 == 1)&&(d.search_interest>15))&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
+                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%7.5 == 0))&&(d.search_interest >34)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.Country== "Martinique")&&(d.Date==dateSelected)||((d.search_interest%2 == 1)&&(d.search_interest>15))&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
             
             })
                             .moveToFront()
@@ -1010,7 +1016,7 @@
                             .classed('animon',false);
                 
                     svg.selectAll(".labelsclass").filter(function(d) {
-                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%5 == 0)&&(d.search_interest >34))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
+                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%7.5 == 0)&&(d.search_interest >34))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                 

@@ -151,7 +151,7 @@ body {
         display: none;
     }
     .displaylabels {
-        font-size: .75em;
+        font-size: .7em;
         display: none;
     }
     .showdisplaylabels {
@@ -415,6 +415,11 @@ a {
         box-shadow: none;
     }
 
+.wrapthis tspan {
+    width: 40px;
+    border: 1px solid #000000;
+    word-wrap: break-word;
+}
 /*------------------Small iPhone styles--------------------*/
 
     
