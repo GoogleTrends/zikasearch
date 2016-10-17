@@ -24,12 +24,12 @@
     <script>
         
         //CurrentPage = 'MobilePage';
-                if (screen.width > 1024 /*&& CurrentPage != 'DesktopPage'*/) {
+                if ($(window).width() > 1024 /*&& CurrentPage != 'DesktopPage'*/) {
                    // return 
                     window.location.replace("graph_desktop.html");
                 }
 
-                if (screen.width <= 1024 /*&& CurrentPage != 'MobilePage'*/) {
+                if ($(window).width() <= 1024 /*&& CurrentPage != 'MobilePage'*/) {
                     //return
                     window.location.replace("index2.html");
                 }

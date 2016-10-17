@@ -58,11 +58,12 @@ body {
     #selectors2 {
         width:36vw;
         margin-left:60vw;
-        margin-top: 0px;
+        margin-top: -5px;
     }
     #tags {
         width:35vw;
         border-radius: 10px;
+
     }
     #chart {
         width: 99vw;
@@ -81,11 +82,6 @@ body {
     }
     .axis path {
       display: none;
-    }
-    .ui-autocomplete { 
-        cursor:pointer; 
-        margin: 0 auto;
-        overflow-y:scroll;
     } 
     select {
        -webkit-appearance: none;
@@ -151,7 +147,7 @@ body {
         display: none;
     }
     .displaylabels {
-        font-size: .7em;
+        font-size: .75em;
         display: none;
     }
     .showdisplaylabels {
@@ -191,12 +187,13 @@ body {
         margin-bottom: 2.2vh;
     }
     #tags {
-        height:15px;
+        height:25px;
         border: none;
         text-align: center;
     }
     #droplabels {
         margin-bottom: 1vh;
+        margin-left: -5px;
     }
     span.ui-slider-handle.ui-state-default.ui-corner-all {
         height:18px;
@@ -313,13 +310,13 @@ body {
         text-align: right;			
         width: 22vw;					
         padding: 2px;				
-        font-size: 10px;		
+        font-size: 0.75em;		
         border: 0px;		
         border-radius: 8px;			
         pointer-events: none;	
     }
     div.tooltip span {
-        color: #FBBC05;
+        color: white;
     }
 
 
@@ -420,6 +417,18 @@ a {
     border: 1px solid #000000;
     word-wrap: break-word;
 }
+.ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;   /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index:1000 !important;
+      }
+.ui-autocomplete .ui-menu-item {
+    font-size: 11px;
+}
+
+
+
 /*------------------Small iPhone styles--------------------*/
 
     
@@ -502,6 +511,12 @@ a {
         margin:0 auto;
         text-align: center;
       }
+      .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;   /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index:1000 !important;
+      }
       
 }
     
@@ -524,26 +539,30 @@ a {
     }
     #selectors2 {
         width:36vw;
-        margin-left:52vw;
+        margin-left:54vw;
         margin-top: -10px;
     }
     #tags {
         width:40vw;
-        height: 3vh;
+        height: 30px;
         border-radius: 15px;
     }
+    #droplabels {
+        margin-bottom: 1vh;
+        margin-left: 20px;
+    }
     #buttonBar {
-        width: 45%;
+        width: 50%;
         float: left;
         margin-top: 25px;
-        margin-left:5vw;
+        margin-left:1.5vw;
     }
     .btn {
         /*padding: 14px 24px;*/
-        width: 45px;
-        height:40px;
+        width: 6.4vw;
+        height:4vh;
         border: 1px solid #444;
-        font-size: 14px;
+        font-size: 0.8em;
         font-weight: 700;
         margin-left: -6px;
         text-align: center;
@@ -571,6 +590,15 @@ a {
     #trendsLogo {
         width: 130px;
     }
+    .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;   /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index:1000 !important;
+    }
+    .ui-autocomplete .ui-menu-item {
+        font-size: 14px;
+    }
     
 }
     
@@ -592,10 +620,10 @@ a {
         
     }   
     .displaylabels {
-        font-size: 12px;
+        font-size: 0.9em;
     }
     .bluelabels {
-        font-size:12px !important;
+        font-size: 0.9em !important;
     }
     #intro {
         width: 20vw;
@@ -659,7 +687,8 @@ a {
         text-align: center;
         width:35vw;
         float: left;
-        margin-left: -32vw;
+        margin-left: -33vw;
+        margin-top: 2vh;
     }
     #trendsLogo {
         width: 15vw;
@@ -762,20 +791,20 @@ a {
         text-align: right;			
         width: 12vw;					
         padding: 2px;				
-        font-size: 1.1em;		
+        font-size: 0.9em;		
         border: 0px;		
         border-radius: 8px;			
         pointer-events: none;
     }
     div.tooltip span {
-        color: #FBBC05;
+        color: white;
     }
     div2.tooltip {	
         position: absolute;			
         text-align: left;			
         width: 12vw;					
         padding: 2px;				
-        font-size: 1.1em;		
+        font-size: 12px;		
         border: 0px;		
         border-radius: 8px;			
         pointer-events: none;
@@ -819,6 +848,60 @@ a {
     margin-left:9vw;
     margin-bottom: 20px;
 }
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;   /* prevent horizontal scrollbar */
+    overflow-x: hidden; /* add padding to account for vertical scrollbar */
+    z-index:1000 !important;
+}     
+.ui-autocomplete .ui-menu-item {
+    font-size: 14px;
+}
                                 
 
+}
+
+
+
+/*----------------XL desktop font--------------------*/
+
+@media (min-width: 1800px) {
+    p {
+        font-size: 2em;
+    }
+    /*
+    .displaylabels {
+        font-size: 1.1em;
+    }
+    .bluelabels {
+        font-size: 1.1em !important;
+    }
+    div.tooltip {					
+        font-size: 1.1em;
+    }*/
+    #textintrodesktop {
+        display: inline;
+        color: #FBBC05;
+        width: 20vw;  
+        font-size: 2em;
+    }
+    .btn {
+        /*padding: 14px 24px;*/
+        width: 3.8vw;
+        height:45px;
+        border: 1px solid #444;
+        font-size: 1em;
+        font-weight: 700;
+        margin-left: -6px;
+        text-align: center;
+        padding: 0 !important;
+    }
+    #footer {
+        font-size: 1.2em;
+        text-align: center;
+        width:35vw;
+        float: left;
+        margin-left: -33vw;
+    }
+    
 }

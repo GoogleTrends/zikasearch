@@ -1,351 +1,351 @@
-Country,Date,search_interest,raw_incidence_rate
-Trinidad and Tobago,8/18,90,10.92
-Puerto Rico,8/18,54,290.41
-Guadeloupe,8/18,47,5711.04
-Jamaica,8/18,40,162.08
-Nicaragua,8/18,28,22.21
-Honduras,8/18,21,367.36
-Guatemala,8/18,17,15.29
-United States,8/18,14,0
-Costa Rica,8/18,13,33.6
-Canada,8/18,9,0
-Dominican Republic,8/18,9,49.84
-Mexico,8/18,9,1.26
-Venezuela,8/18,4,178.25
-Brazil,8/18,3,120.45
-Colombia,8/18,3,208.96
-Ecuador,8/18,2,16.47
-Peru,8/18,2,0.3
-Chile,8/18,2,0
-Argentina,8/18,1,4.03
-Aruba,8/18,23,18.42
-Anguilla,8/18,38,111.76
-Antigua and Barbuda,8/18,80,20.21
-Saint Barthelemy,8/18,37,4788.89
-Belize,8/18,37,1.36
-Bermuda,8/18,64,0
-Bolivia,8/18,2,1.16
-Barbados,8/18,32,192.44
-Cuba,8/18,18,0.03
-Cayman Islands,8/18,68,3.51
-Dominica,8/18,43,1237.84
-Grenada,8/18,87,250.45
-French Guiana,8/18,12,3555.43
-Guyana,8/18,9,0.78
-Haiti,8/18,9,19.63
-Saint Kitts and Nevis,8/18,23,0
-Saint Lucia,8/18,54,448.78
-Saint Martin,8/18,68,5652.78
-Montserrat,8/18,26,0
-Martinique,8/18,19,8667.17
-Panama,8/18,4,39.22
-Paraguay,8/18,1,4.24
-El Salvador,8/18,3,179.19
-Suriname,8/18,6,620.8
-Turks and Caicos,8/18,76,3.92
-Uruguay,8/18,1,0
-Saint Vincent,8/18,100,190.2
-The Bahamas,8/18,32,0.25
-Curacao,8/18,23,139.6
-British Virgin Islands,8/18,70,0
-U.S. Virgin Islands,8/18,87,534.95
-Trinidad and Tobago,8/25,67,18.61
-Puerto Rico,8/25,40,358.22
-Guadeloupe,8/25,30,6039.07
-Jamaica,8/25,34,162.08
-Nicaragua,8/25,20,25.27
-Honduras,8/25,15,370.16
-Guatemala,8/25,13,16.82
-United States,8/25,14,0
-Costa Rica,8/25,8,41.55
-Canada,8/25,7,0
-Dominican Republic,8/25,6,50.33
-Mexico,8/25,10,1.46
-Venezuela,8/25,3,183.38
-Brazil,8/25,3,120.45
-Colombia,8/25,2,209.86
-Ecuador,8/25,2,16.83
-Peru,8/25,1,0.3
-Chile,8/25,1,0
-Argentina,8/25,1,4.03
-Aruba,8/25,23,18.42
-Anguilla,8/25,13,123.53
-Antigua and Barbuda,8/25,66,20.21
-Saint Barthelemy,8/25,23,6122.22
-Belize,8/25,22,1.36
-Bermuda,8/25,42,0
-Bolivia,8/25,2,1.16
-Barbados,8/25,34,194.16
-Cuba,8/25,19,0.03
-Cayman Islands,8/25,71,5.26
-Dominica,8/25,20,1252.7
-Grenada,8/25,64,285.59
-French Guiana,8/25,10,3602.54
-Guyana,8/25,9,0.78
-Haiti,8/25,8,27.29
-Saint Kitts and Nevis,8/25,25,0
-Saint Lucia,8/25,48,448.78
-Saint Martin,8/25,44,6041.67
-Montserrat,8/25,23,0
-Martinique,8/25,12,8831.31
-Panama,8/25,4,42.21
-Paraguay,8/25,1,4.24
-El Salvador,8/25,3,180.05
-Suriname,8/25,6,623.91
-Turks and Caicos,8/25,75,3.92
-Uruguay,8/25,1,0
-Saint Vincent,8/25,73,190.2
-The Bahamas,8/25,68,0.76
-Curacao,8/25,20,139.6
-British Virgin Islands,8/25,100,0
-U.S. Virgin Islands,8/25,56,534.95
-Trinidad and Tobago,9/1,38,24.47
-Puerto Rico,9/1,26,389.41
-Guadeloupe,9/1,17,6166.45
-Jamaica,9/1,21,167.04
-Nicaragua,9/1,10,27.01
-Honduras,9/1,9,378.02
-Guatemala,9/1,8,17
-United States,9/1,8,0.01
-Costa Rica,9/1,6,48.34
-Canada,9/1,5,0
-Dominican Republic,9/1,5,50.96
-Mexico,9/1,7,1.66
-Venezuela,9/1,2,183.38
-Brazil,9/1,2,131.41
-Colombia,9/1,1,210.34
-Ecuador,9/1,1,17.75
-Peru,9/1,1,0.3
-Chile,9/1,1,0
-Argentina,9/1,1,4.06
-Aruba,9/1,11,18.42
-Anguilla,9/1,12,129.41
-Antigua and Barbuda,9/1,49,20.21
-Saint Barthelemy,9/1,11,6622.22
-Belize,9/1,19,1.36
-Bermuda,9/1,23,0
-Bolivia,9/1,1,1.16
-Barbados,9/1,20,194.16
-Cuba,9/1,11,0.03
-Cayman Islands,9/1,49,8.77
-Dominica,9/1,17,1416.22
-Grenada,9/1,40,343.24
-French Guiana,9/1,4,3629.71
-Guyana,9/1,4,0.78
-Haiti,9/1,5,27.29
-Saint Kitts and Nevis,9/1,18,0
-Saint Lucia,9/1,24,504.88
-Saint Martin,9/1,30,6083.33
-Montserrat,9/1,5,0
-Martinique,9/1,8,8899.49
-Panama,9/1,2,43.48
-Paraguay,9/1,1,7.99
-El Salvador,9/1,2,180.75
-Suriname,9/1,3,626.28
-Turks and Caicos,9/1,35,3.92
-Uruguay,9/1,1,0
-Saint Vincent,9/1,40,190.2
-The Bahamas,9/1,35,1.53
-Curacao,9/1,12,139.6
-British Virgin Islands,9/1,100,14.71
-U.S. Virgin Islands,9/1,47,738.83
-Trinidad and Tobago,9/8,45,24.47
-Puerto Rico,9/8,33,449.25
-Guadeloupe,9/8,22,6253.5
-Jamaica,9/8,29,179.41
-Nicaragua,9/8,12,28.54
-Honduras,9/8,11,378.02
-Guatemala,9/8,10,17.48
-United States,9/8,10,0.01
-Costa Rica,9/8,9,54.91
-Canada,9/8,7,0
-Dominican Republic,9/8,6,50.96
-Mexico,9/8,10,1.86
-Venezuela,9/8,3,183.38
-Brazil,9/8,2,131.41
-Colombia,9/8,2,210.99
-Ecuador,9/8,2,17.77
-Peru,9/8,1,0.31
-Chile,9/8,2,0
-Argentina,9/8,1,4.11
-Aruba,9/8,17,18.42
-Anguilla,9/8,12,141.18
-Antigua and Barbuda,9/8,75,24.47
-Saint Barthelemy,9/8,15,7288.89
-Belize,9/8,35,1.36
-Bermuda,9/8,23,0
-Bolivia,9/8,2,1.16
-Barbados,9/8,33,194.16
-Cuba,9/8,19,0.03
-Cayman Islands,9/8,63,8.77
-Dominica,9/8,19,1421.62
-Grenada,9/8,40,343.24
-French Guiana,9/8,7,3640.58
-Guyana,9/8,7,0.78
-Haiti,9/8,7,27.29
-Saint Kitts and Nevis,9/8,52,0
-Saint Lucia,9/8,29,504.88
-Saint Martin,9/8,41,6347.22
-Montserrat,9/8,12,0
-Martinique,9/8,9,8987.88
-Panama,9/8,2,45.16
-Paraguay,9/8,1,7.99
-El Salvador,9/8,3,181.4
-Suriname,9/8,5,626.28
-Turks and Caicos,9/8,38,3.92
-Uruguay,9/8,1,0
-Saint Vincent,9/8,44,190.2
-The Bahamas,9/8,62,2.04
-Curacao,9/8,22,139.6
-British Virgin Islands,9/8,100,14.71
-U.S. Virgin Islands,9/8,60,738.83
-Trinidad and Tobago,9/15,39,27.47
-Puerto Rico,9/15,31,485.49
-Guadeloupe,9/15,20,6335.24
-Jamaica,9/15,25,179.41
-Nicaragua,9/15,11,30
-Honduras,9/15,10,380.13
-Guatemala,9/15,10,17.86
-United States,9/15,8,0.01
-Costa Rica,9/15,9,54.91
-Canada,9/15,6,0
-Dominican Republic,9/15,7,51.21
-Mexico,9/15,9,2.16
-Venezuela,9/15,3,187.78
-Brazil,9/15,2,131.41
-Colombia,9/15,1,211.57
-Ecuador,9/15,2,17.77
-Peru,9/15,1,0.31
-Chile,9/15,1,0
-Argentina,9/15,1,4.11
-Aruba,9/15,18,22.81
-Anguilla,9/15,37,158.82
-Antigua and Barbuda,9/15,73,24.47
-Saint Barthelemy,9/15,16,7677.78
-Belize,9/15,33,1.36
-Bermuda,9/15,21,0
-Bolivia,9/15,2,1.16
-Barbados,9/15,35,196.91
-Cuba,9/15,22,0.03
-Cayman Islands,9/15,48,15.79
-Dominica,9/15,17,1558.11
-Grenada,9/15,32,352.25
-French Guiana,9/15,10,3664.13
-Guyana,9/15,6,0.78
-Haiti,9/15,5,27.29
-Saint Kitts and Nevis,9/15,96,0
-Saint Lucia,9/15,39,504.88
-Saint Martin,9/15,31,6569.44
-Montserrat,9/15,12,0
-Martinique,9/15,10,9042.17
-Panama,9/15,2,46.87
-Paraguay,9/15,1,7.99
-El Salvador,9/15,2,181.97
-Suriname,9/15,3,628.47
-Turks and Caicos,9/15,31,3.92
-Uruguay,9/15,1,0
-Saint Vincent,9/15,41,190.2
-The Bahamas,9/15,46,2.54
-Curacao,9/15,18,216.11
-British Virgin Islands,9/15,100,14.71
-U.S. Virgin Islands,9/15,57,854.37
-Trinidad and Tobago,9/22,22,30.18
-Puerto Rico,9/22,20,542.43
-Guadeloupe,9/22,15,6418.05
-Jamaica,9/22,16,179.41
-Nicaragua,9/22,9,30.89
-Honduras,9/22,7,387.75
-Guatemala,9/22,7,17.86
-United States,9/22,5,0.01
-Costa Rica,9/22,5,60.94
-Canada,9/22,3,0
-Dominican Republic,9/22,4,51.21
-Mexico,9/22,7,2.34
-Venezuela,9/22,2,188.29
-Brazil,9/22,2,131.41
-Colombia,9/22,1,212.83
-Ecuador,9/22,1,18.06
-Peru,9/22,1,0.33
-Chile,9/22,1,0
-Argentina,9/22,1,4.17
-Aruba,9/22,12,22.81
-Anguilla,9/22,16,176.47
-Antigua and Barbuda,9/22,62,24.47
-Saint Barthelemy,9/22,12,8177.78
-Belize,9/22,22,1.36
-Bermuda,9/22,8,0
-Bolivia,9/22,1,1.16
-Barbados,9/22,24,196.91
-Cuba,9/22,13,0.03
-Cayman Islands,9/22,35,15.79
-Dominica,9/22,13,1558.11
-Grenada,9/22,22,354.05
-French Guiana,9/22,5,3693.12
-Guyana,9/22,5,0.78
-Haiti,9/22,6,27.29
-Saint Kitts and Nevis,9/22,100,5.77
-Saint Lucia,9/22,20,504.88
-Saint Martin,9/22,25,6847.22
-Montserrat,9/22,8,0
-Martinique,9/22,7,9119.19
-Panama,9/22,2,46.87
-Paraguay,9/22,1,7.99
-El Salvador,9/22,2,182.7
-Suriname,9/22,3,629.2
-Turks and Caicos,9/22,34,3.92
-Uruguay,9/22,0,0
-Saint Vincent,9/22,26,190.2
-The Bahamas,9/22,26,2.8
-Curacao,9/22,14,216.11
-British Virgin Islands,9/22,63,14.71
-U.S. Virgin Islands,9/22,44,1029.13
-Trinidad and Tobago,9/29,16,30.18
-Puerto Rico,9/29,14,607.39
-Guadeloupe,9/29,11,6477.49
-Jamaica,9/29,12,208.28
-Nicaragua,9/29,5,31.61
-Honduras,9/29,5,388.27
-Guatemala,9/29,5,17.86
-United States,9/29,3,0.01
-Costa Rica,9/29,4,68.97
-Canada,9/29,3,0
-Dominican Republic,9/29,3,51.48
-Mexico,9/29,6,2.54
-Venezuela,9/29,1,188.29
-Brazil,9/29,1,142.59
-Colombia,9/29,1,213.66
-Ecuador,9/29,1,21.66
-Peru,9/29,1,0.34
-Chile,9/29,1,0
-Argentina,9/29,0,4.17
-Aruba,9/29,7,22.81
-Anguilla,9/29,12,200
-Antigua and Barbuda,9/29,56,24.47
-Saint Barthelemy,9/29,8,8733.33
-Belize,9/29,36,1.36
-Bermuda,9/29,6,0
-Bolivia,9/29,2,1.16
-Barbados,9/29,17,210.31
-Cuba,9/29,7,0.03
-Cayman Islands,9/29,31,15.79
-Dominica,9/29,7,1558.11
-Grenada,9/29,14,356.76
-French Guiana,9/29,6,3703.99
-Guyana,9/29,3,0.78
-Haiti,9/29,4,27.29
-Saint Kitts and Nevis,9/29,100,5.77
-Saint Lucia,9/29,10,504.88
-Saint Martin,9/29,14,7083.33
-Montserrat,9/29,9,0
-Martinique,9/29,5,9159.6
-Panama,9/29,2,49.65
-Paraguay,9/29,1,7.99
-El Salvador,9/29,2,183.11
-Suriname,9/29,2,629.2
-Turks and Caicos,9/29,14,3.92
-Uruguay,9/29,0,0
-Saint Vincent,9/29,13,190.2
-The Bahamas,9/29,20,3.82
-Curacao,9/29,9,216.11
-British Virgin Islands,9/29,57,14.71
-U.S. Virgin Islands,9/29,35,1129.13
+Country,Date,search_interest,raw_incidence_rate,search_rank
+Argentina,8/18,1,4.03,50
+Paraguay,8/18,1,4.24,49
+Uruguay,8/18,1,0,48
+Bolivia,8/18,2,1.16,47
+Chile,8/18,2,0,46
+Ecuador,8/18,2,16.47,45
+Peru,8/18,2,0.3,44
+Brazil,8/18,3,120.45,43
+Colombia,8/18,3,208.96,42
+El Salvador,8/18,3,179.19,41
+Panama,8/18,4,39.22,40
+Venezuela,8/18,4,178.25,39
+Suriname,8/18,6,620.8,38
+Canada,8/18,9,0,37
+Dominican Republic,8/18,9,49.84,36
+Guyana,8/18,9,0.78,35
+Haiti,8/18,9,19.63,34
+Mexico,8/18,9,1.26,33
+French Guiana,8/18,12,3555.43,32
+Costa Rica,8/18,13,33.6,31
+United States,8/18,14,0,30
+Guatemala,8/18,17,15.29,29
+Cuba,8/18,18,0.03,28
+Martinique,8/18,19,8667.17,27
+Honduras,8/18,21,367.36,26
+Aruba,8/18,23,18.42,25
+Curacao,8/18,23,139.6,24
+Saint Kitts and Nevis,8/18,23,0,23
+Montserrat,8/18,26,0,22
+Nicaragua,8/18,28,22.21,21
+Barbados,8/18,32,192.44,20
+The Bahamas,8/18,32,0.25,19
+Belize,8/18,37,1.36,18
+Saint Barthelemy,8/18,37,4788.89,17
+Anguilla,8/18,38,111.76,16
+Jamaica,8/18,40,162.08,15
+Dominica,8/18,43,1237.84,14
+Guadeloupe,8/18,47,5711.04,13
+Puerto Rico,8/18,54,290.41,12
+Saint Lucia,8/18,54,448.78,11
+Bermuda,8/18,64,0,10
+Cayman Islands,8/18,68,3.51,9
+Saint Martin,8/18,68,5652.78,8
+British Virgin Islands,8/18,70,0,7
+Turks and Caicos,8/18,76,3.92,6
+Antigua and Barbuda,8/18,80,20.21,5
+Grenada,8/18,87,250.45,4
+U.S. Virgin Islands,8/18,87,534.95,3
+Trinidad and Tobago,8/18,90,10.92,2
+Saint Vincent,8/18,100,190.2,1
+Argentina,8/25,1,4.03,50
+Chile,8/25,1,0,49
+Paraguay,8/25,1,4.24,48
+Peru,8/25,1,0.3,47
+Uruguay,8/25,1,0,46
+Bolivia,8/25,2,1.16,45
+Colombia,8/25,2,209.86,44
+Ecuador,8/25,2,16.83,43
+Brazil,8/25,3,120.45,42
+El Salvador,8/25,3,180.05,41
+Venezuela,8/25,3,183.38,40
+Panama,8/25,4,42.21,39
+Dominican Republic,8/25,6,50.33,38
+Suriname,8/25,6,623.91,37
+Canada,8/25,7,0,36
+Costa Rica,8/25,8,41.55,35
+Haiti,8/25,8,27.29,34
+Guyana,8/25,9,0.78,33
+French Guiana,8/25,10,3602.54,32
+Mexico,8/25,10,1.46,31
+Martinique,8/25,12,8831.31,30
+Anguilla,8/25,13,123.53,29
+Guatemala,8/25,13,16.82,28
+United States,8/25,14,0,27
+Honduras,8/25,15,370.16,26
+Cuba,8/25,19,0.03,25
+Curacao,8/25,20,139.6,24
+Dominica,8/25,20,1252.7,23
+Nicaragua,8/25,20,25.27,22
+Belize,8/25,22,1.36,21
+Aruba,8/25,23,18.42,20
+Montserrat,8/25,23,0,19
+Saint Barthelemy,8/25,23,6122.22,18
+Saint Kitts and Nevis,8/25,25,0,17
+Guadeloupe,8/25,30,6039.07,16
+Barbados,8/25,34,194.16,15
+Jamaica,8/25,34,162.08,14
+Puerto Rico,8/25,40,358.22,13
+Bermuda,8/25,42,0,12
+Saint Martin,8/25,44,6041.67,11
+Saint Lucia,8/25,48,448.78,10
+U.S. Virgin Islands,8/25,56,534.95,9
+Grenada,8/25,64,285.59,8
+Antigua and Barbuda,8/25,66,20.21,7
+Trinidad and Tobago,8/25,67,18.61,6
+The Bahamas,8/25,68,0.76,5
+Cayman Islands,8/25,71,5.26,4
+Saint Vincent,8/25,73,190.2,3
+Turks and Caicos,8/25,75,3.92,2
+British Virgin Islands,8/25,100,0,1
+Argentina,9/1,1,4.06,50
+Bolivia,9/1,1,1.16,49
+Chile,9/1,1,0,48
+Colombia,9/1,1,210.34,47
+Ecuador,9/1,1,17.75,46
+Paraguay,9/1,1,7.99,45
+Peru,9/1,1,0.3,44
+Uruguay,9/1,1,0,43
+Brazil,9/1,2,131.41,42
+El Salvador,9/1,2,180.75,41
+Panama,9/1,2,43.48,40
+Venezuela,9/1,2,183.38,39
+Suriname,9/1,3,626.28,38
+French Guiana,9/1,4,3629.71,37
+Guyana,9/1,4,0.78,36
+Canada,9/1,5,0,35
+Dominican Republic,9/1,5,50.96,34
+Haiti,9/1,5,27.29,33
+Montserrat,9/1,5,0,32
+Costa Rica,9/1,6,48.34,31
+Mexico,9/1,7,1.66,30
+Guatemala,9/1,8,17,29
+Martinique,9/1,8,8899.49,28
+United States,9/1,8,0.01,27
+Honduras,9/1,9,378.02,26
+Nicaragua,9/1,10,27.01,25
+Aruba,9/1,11,18.42,24
+Cuba,9/1,11,0.03,23
+Saint Barthelemy,9/1,11,6622.22,22
+Anguilla,9/1,12,129.41,21
+Curacao,9/1,12,139.6,20
+Dominica,9/1,17,1416.22,19
+Guadeloupe,9/1,17,6166.45,18
+Saint Kitts and Nevis,9/1,18,0,17
+Belize,9/1,19,1.36,16
+Barbados,9/1,20,194.16,15
+Jamaica,9/1,21,167.04,14
+Bermuda,9/1,23,0,13
+Saint Lucia,9/1,24,504.88,12
+Puerto Rico,9/1,26,389.41,11
+Saint Martin,9/1,30,6083.33,10
+The Bahamas,9/1,35,1.53,9
+Turks and Caicos,9/1,35,3.92,8
+Trinidad and Tobago,9/1,38,24.47,7
+Grenada,9/1,40,343.24,6
+Saint Vincent,9/1,40,190.2,5
+U.S. Virgin Islands,9/1,47,738.83,4
+Antigua and Barbuda,9/1,49,20.21,3
+Cayman Islands,9/1,49,8.77,2
+British Virgin Islands,9/1,100,14.71,1
+Argentina,9/8,1,4.11,50
+Paraguay,9/8,1,7.99,49
+Peru,9/8,1,0.31,48
+Uruguay,9/8,1,0,47
+Bolivia,9/8,2,1.16,46
+Brazil,9/8,2,131.41,45
+Chile,9/8,2,0,44
+Colombia,9/8,2,210.99,43
+Ecuador,9/8,2,17.77,42
+Panama,9/8,2,45.16,41
+El Salvador,9/8,3,181.4,40
+Venezuela,9/8,3,183.38,39
+Suriname,9/8,5,626.28,38
+Dominican Republic,9/8,6,50.96,37
+Canada,9/8,7,0,36
+French Guiana,9/8,7,3640.58,35
+Guyana,9/8,7,0.78,34
+Haiti,9/8,7,27.29,33
+Costa Rica,9/8,9,54.91,32
+Martinique,9/8,9,8987.88,31
+Guatemala,9/8,10,17.48,30
+Mexico,9/8,10,1.86,29
+United States,9/8,10,0.01,28
+Honduras,9/8,11,378.02,27
+Anguilla,9/8,12,141.18,26
+Montserrat,9/8,12,0,25
+Nicaragua,9/8,12,28.54,24
+Saint Barthelemy,9/8,15,7288.89,23
+Aruba,9/8,17,18.42,22
+Cuba,9/8,19,0.03,21
+Dominica,9/8,19,1421.62,20
+Curacao,9/8,22,139.6,19
+Guadeloupe,9/8,22,6253.5,18
+Bermuda,9/8,23,0,17
+Jamaica,9/8,29,179.41,16
+Saint Lucia,9/8,29,504.88,15
+Barbados,9/8,33,194.16,14
+Puerto Rico,9/8,33,449.25,13
+Belize,9/8,35,1.36,12
+Turks and Caicos,9/8,38,3.92,11
+Grenada,9/8,40,343.24,10
+Saint Martin,9/8,41,6347.22,9
+Saint Vincent,9/8,44,190.2,8
+Trinidad and Tobago,9/8,45,24.47,7
+Saint Kitts and Nevis,9/8,52,0,6
+U.S. Virgin Islands,9/8,60,738.83,5
+The Bahamas,9/8,62,2.04,4
+Cayman Islands,9/8,63,8.77,3
+Antigua and Barbuda,9/8,75,24.47,2
+British Virgin Islands,9/8,100,14.71,1
+Argentina,9/15,1,4.11,50
+Chile,9/15,1,0,49
+Colombia,9/15,1,211.57,48
+Paraguay,9/15,1,7.99,47
+Peru,9/15,1,0.31,46
+Uruguay,9/15,1,0,45
+Bolivia,9/15,2,1.16,44
+Brazil,9/15,2,131.41,43
+Ecuador,9/15,2,17.77,42
+El Salvador,9/15,2,181.97,41
+Panama,9/15,2,46.87,40
+Suriname,9/15,3,628.47,39
+Venezuela,9/15,3,187.78,38
+Haiti,9/15,5,27.29,37
+Canada,9/15,6,0,36
+Guyana,9/15,6,0.78,35
+Dominican Republic,9/15,7,51.21,34
+United States,9/15,8,0.01,33
+Costa Rica,9/15,9,54.91,32
+Mexico,9/15,9,2.16,31
+French Guiana,9/15,10,3664.13,30
+Guatemala,9/15,10,17.86,29
+Honduras,9/15,10,380.13,28
+Martinique,9/15,10,9042.17,27
+Nicaragua,9/15,11,30,26
+Montserrat,9/15,12,0,25
+Saint Barthelemy,9/15,16,7677.78,24
+Dominica,9/15,17,1558.11,23
+Aruba,9/15,18,22.81,22
+Curacao,9/15,18,216.11,21
+Guadeloupe,9/15,20,6335.24,20
+Bermuda,9/15,21,0,19
+Cuba,9/15,22,0.03,18
+Jamaica,9/15,25,179.41,17
+Puerto Rico,9/15,31,485.49,16
+Saint Martin,9/15,31,6569.44,15
+Turks and Caicos,9/15,31,3.92,14
+Grenada,9/15,32,352.25,13
+Belize,9/15,33,1.36,12
+Barbados,9/15,35,196.91,11
+Anguilla,9/15,37,158.82,10
+Saint Lucia,9/15,39,504.88,9
+Trinidad and Tobago,9/15,39,27.47,8
+Saint Vincent,9/15,41,190.2,7
+The Bahamas,9/15,46,2.54,6
+Cayman Islands,9/15,48,15.79,5
+U.S. Virgin Islands,9/15,57,854.37,4
+Antigua and Barbuda,9/15,73,24.47,3
+Saint Kitts and Nevis,9/15,96,0,2
+British Virgin Islands,9/15,100,14.71,1
+Uruguay,9/22,0,0,50
+Argentina,9/22,1,4.17,49
+Bolivia,9/22,1,1.16,48
+Chile,9/22,1,0,47
+Colombia,9/22,1,212.83,46
+Ecuador,9/22,1,18.06,45
+Paraguay,9/22,1,7.99,44
+Peru,9/22,1,0.33,43
+Brazil,9/22,2,131.41,42
+El Salvador,9/22,2,182.7,41
+Panama,9/22,2,46.87,40
+Venezuela,9/22,2,188.29,39
+Canada,9/22,3,0,38
+Suriname,9/22,3,629.2,37
+Dominican Republic,9/22,4,51.21,36
+Costa Rica,9/22,5,60.94,35
+French Guiana,9/22,5,3693.12,34
+Guyana,9/22,5,0.78,33
+United States,9/22,5,0.01,32
+Haiti,9/22,6,27.29,31
+Guatemala,9/22,7,17.86,30
+Honduras,9/22,7,387.75,29
+Martinique,9/22,7,9119.19,28
+Mexico,9/22,7,2.34,27
+Bermuda,9/22,8,0,26
+Montserrat,9/22,8,0,25
+Nicaragua,9/22,9,30.89,24
+Aruba,9/22,12,22.81,23
+Saint Barthelemy,9/22,12,8177.78,22
+Cuba,9/22,13,0.03,21
+Dominica,9/22,13,1558.11,20
+Curacao,9/22,14,216.11,19
+Guadeloupe,9/22,15,6418.05,18
+Anguilla,9/22,16,176.47,17
+Jamaica,9/22,16,179.41,16
+Puerto Rico,9/22,20,542.43,15
+Saint Lucia,9/22,20,504.88,14
+Belize,9/22,22,1.36,13
+Grenada,9/22,22,354.05,12
+Trinidad and Tobago,9/22,22,30.18,11
+Barbados,9/22,24,196.91,10
+Saint Martin,9/22,25,6847.22,9
+Saint Vincent,9/22,26,190.2,8
+The Bahamas,9/22,26,2.8,7
+Turks and Caicos,9/22,34,3.92,6
+Cayman Islands,9/22,35,15.79,5
+U.S. Virgin Islands,9/22,44,1029.13,4
+Antigua and Barbuda,9/22,62,24.47,3
+British Virgin Islands,9/22,63,14.71,2
+Saint Kitts and Nevis,9/22,100,5.77,1
+Argentina,9/29,0,4.17,50
+Uruguay,9/29,0,0,49
+Brazil,9/29,1,142.59,48
+Chile,9/29,1,0,47
+Colombia,9/29,1,213.66,46
+Ecuador,9/29,1,21.66,45
+Paraguay,9/29,1,7.99,44
+Peru,9/29,1,0.34,43
+Venezuela,9/29,1,188.29,42
+Bolivia,9/29,2,1.16,41
+El Salvador,9/29,2,183.11,40
+Panama,9/29,2,49.65,39
+Suriname,9/29,2,629.2,38
+Canada,9/29,3,0,37
+Dominican Republic,9/29,3,51.48,36
+Guyana,9/29,3,0.78,35
+United States,9/29,3,0.01,34
+Costa Rica,9/29,4,68.97,33
+Haiti,9/29,4,27.29,32
+Guatemala,9/29,5,17.86,31
+Honduras,9/29,5,388.27,30
+Martinique,9/29,5,9159.6,29
+Nicaragua,9/29,5,31.61,28
+Bermuda,9/29,6,0,27
+French Guiana,9/29,6,3703.99,26
+Mexico,9/29,6,2.54,25
+Aruba,9/29,7,22.81,24
+Cuba,9/29,7,0.03,23
+Dominica,9/29,7,1558.11,22
+Saint Barthelemy,9/29,8,8733.33,21
+Curacao,9/29,9,216.11,20
+Montserrat,9/29,9,0,19
+Saint Lucia,9/29,10,504.88,18
+Guadeloupe,9/29,11,6477.49,17
+Anguilla,9/29,12,200,16
+Jamaica,9/29,12,208.28,15
+Saint Vincent,9/29,13,190.2,14
+Grenada,9/29,14,356.76,13
+Puerto Rico,9/29,14,607.39,12
+Saint Martin,9/29,14,7083.33,11
+Turks and Caicos,9/29,14,3.92,10
+Trinidad and Tobago,9/29,16,30.18,9
+Barbados,9/29,17,210.31,8
+The Bahamas,9/29,20,3.82,7
+Cayman Islands,9/29,31,15.79,6
+U.S. Virgin Islands,9/29,35,1129.13,5
+Belize,9/29,36,1.36,4
+Antigua and Barbuda,9/29,56,24.47,3
+British Virgin Islands,9/29,57,14.71,2
+Saint Kitts and Nevis,9/29,100,5.77,1

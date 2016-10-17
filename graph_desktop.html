@@ -25,7 +25,8 @@
         </div>
         <div id="intro2" class="container">
             <p id="textintrodesktop">
-                How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a region-by-region level in the Americas.
+               Use this visualization to explore Zika search interest and Zika infection rates in the Americas.
+                <!--How does Google search interest in Zika relate to actual outbreak levels? Use this visualization to explore Zika search interest and Zika infection rates on a region-by-region level in the Americas.-->
             </p>
         </div>
         
@@ -51,13 +52,12 @@
             <p id="droplabels">Enter country or region name</p>
             <!--<input type="text" id="tbCountries" />
             <div id="tbCountries"></div> -->
-            <input id="tags">
+            <input type="search" id="tags">
             <!--onchange="updateInput(this.value)"-->
         </div>
         
         <div id="helpbox">
-            <p>Hover over a line to select or enter a country or date above. 
-        Values shown include zika search interest for a country ranked  against other countries versus rate of infection.
+            <p>Hover over a line or select a region above. For each region, you can see Google search interest in Zika and actual Zika infection rate.
             </p>
         </div>
         <br>
@@ -85,6 +85,22 @@
             var countrySelected;
             var selected;
             var countryOn = false;
+            
+            var windowLeft;
+            
+            if ($(window).width() < 1300) {
+                windowLeft = 50;
+            } else if (($(window).width() >= 1300)&&($(window).width() < 1500)) {
+                windowLeft = 0;
+            } else if (($(window).width() >= 1500)&&($(window).width() < 1700)) {
+                windowLeft = -50;
+            } else if (($(window).width() >= 1700)&&($(window).width() < 2000)) {
+                windowLeft = -75;
+            }  else if ($(window).width() >= 2000) {
+                windowLeft = -100;
+            }
+            
+            
             
             //var valMap = ["8/15", "8/28"];
             
@@ -247,7 +263,7 @@
                     .attr("class","labelsclass labels1 displaylabels")
                     .attr("x", 90)
                     .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 8;
+                        return leftScale(parseFloat(d['search_interest'])) + 7;
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
@@ -262,12 +278,15 @@
                     .attr("class","labelsclass labels2 displaylabels")
                     .attr("x", 90)
                     .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 19;
+                        return leftScale(parseFloat(d['search_interest'])) + 18;
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Search Rank: ")
                         .style("fill","#FBBC05")
-                    .append("tspan").text(function (d) {return ordinal_suffix_of(101-d['search_interest']);})
+                    .append("tspan").text(function (d) {
+                        console.log(d);
+                        return ordinal_suffix_of(d['search_rank']);
+                    })
                         .style("fill","white");
                     
                     function ordinal_suffix_of(i) {
@@ -286,26 +305,26 @@
                     }
                     
                 
-                /*
+                
                     //.text(function (d) {
                       //  return ("Interest " + d['search_interest']);
                     //});
                 rightLabels.enter()
                     .append("text")
                     .attr("class","labelsclass labels3 displaylabels")
-                    .attr("x", 10)
+                    .attr("x", 90)
                     .attr("y", function(d) {
-                        return leftScale(parseFloat(d['search_interest'])) + 20;
+                        return leftScale(parseFloat(d['search_interest'])) + 29;
                     })
-                    .attr("text-anchor", "middle")
-                    .append("tspan").text("Rate ")
+                    .attr("text-anchor", "end")
+                    .append("tspan").text("Zika Rate: ")
                         .style("fill","#FBBC05")
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                     //.text(function (d) {
                       //  return ("Rate " + d['raw_incidence_rate']);
                    // });
-                   */
+                   
                //BLUE LABELS
 
                 leftLabels.enter()
@@ -313,11 +332,15 @@
                     //.attr("class","labelsclass labels1 displaylabels")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width-50)
+                   /* .attr("x", width-50)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + -7;
+                    })*/
+                    .attr("x", 90)
+                    .attr("y", function(d) {
+                        return leftScale(parseFloat(d['search_interest'])) + 7;
                     })
-                    .attr("text-anchor", "right")
+                    .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
                         .style("fill","#4285F4");
@@ -330,16 +353,22 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
+                /*
                     .attr("x", width-50)
                     .attr("y", function(d) {
                         return rightScale(parseFloat(d['raw_incidence_rate'])) + 4;
                     })
-                    .attr("text-anchor", "right")
-                    .append("tspan").text("Zika Rate: ")
+                    */
+                    .attr("x", 90)
+                    .attr("y", function(d) {
+                        return leftScale(parseFloat(d['search_interest'])) + 18;
+                    })
+                    .attr("text-anchor", "end")
+                    .append("tspan").text("Search Rank: ")
                         .style("fill","#4285F4")
-                    .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
+                    .append("tspan").text(function (d) {return (d['search_rank']);})
                         .style("fill","white");
-                /*
+                
                 
                     //.text(function (d) {
                       //  return ("Interest " + d['search_interest']);
@@ -348,17 +377,17 @@
                     .append("text")
                     .attr("class","bluelabels animoff")
                 .style("font-size","1.1em")
-                    .attr("x", width-30)
+                    .attr("x", 90)
                     .attr("y", function(d) {
-                        return rightScale(parseFloat(d['raw_incidence_rate'])) + 25;
+                        return leftScale(parseFloat(d['search_interest'])) + 29;
                     })
-                    .attr("text-anchor", "right")
-                    .append("tspan").text("Rate: ")
+                    .attr("text-anchor", "end")
+                    .append("tspan").text("Zika Rate: ")
                         .style("fill","#4285F4")
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 
-                */
+                
                 
                 var y_domain2 = d3.extent(data, function(d) {return d['raw_incidence_rate']; });
 
@@ -539,8 +568,9 @@
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);
-                        div.html("<span>"+d.Country+"</span>" + "<span><br/>Search Rank: </span>"+ ordinal_suffix_of(101-d.search_interest) +"<br/><span>Interest: </span>" + d.search_interest + "<span><br/> Zika Rate: </span>" + d.raw_incidence_rate)	
-                            .style("left", 50 + "px")		
+                        div.html(d.Country+"<br/>Search Rank: <span>"+ ordinal_suffix_of(d.search_rank) + "</span><br/> Zika Rate: <span>" + d.raw_incidence_rate+"</span>")
+                        .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))
+                            .style("left", windowLeft + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
@@ -550,7 +580,7 @@
                     
                         svg.selectAll("line")
                             .style("stroke-width", 1.5)
-                            .style("opacity", 1 );
+                            .style("opacity", 0.4 );
                         d3.select(this)
                             .moveToFront()
                             .style("opacity", 1)
@@ -650,7 +680,7 @@
                             //.style("stroke", "#884dff")
                             //.attr("stroke", "green")
                             .style("stroke-width", 1.5)
-                            .style("opacity", 1 );
+                            .style("opacity", 0.4 );
 
                       //doubleChart.selectAll(".circle")
                     svg.selectAll("line").filter(function(d) {
@@ -697,7 +727,7 @@
 
                  else if(countryOn == false) {
                       svg.selectAll("line").filter(function(d) {
-                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%4 == 0))&&(d.search_interest > 30)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.raw_incidence_rate>5000)&&(d.Date==dateSelected)&&(d.search_interest%2 == 1));
+                        return ((d.search_rank==1)&& d.Date==dateSelected||(d.search_rank==5)&& d.Date==dateSelected||(d.Country== "Martinique")&&(d.Date==dateSelected));
             
             })
                             .moveToFront()
@@ -709,7 +739,7 @@
                             .classed('animon',false);
                 
                     svg.selectAll(".labelsclass").filter(function(d) {
-                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%4 == 0)&&(d.search_interest > 30))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
+                            return ((d.search_rank==1)&& d.Date==dateSelected||(d.search_rank==5)&& d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                     
@@ -718,7 +748,7 @@
                             .classed('animon',false);
                           
                           svg.selectAll(".bluelabels").filter(function(d) {
-                            return (d.Country== "Martinique")&&(d.Date==dateSelected)||(d.search_interest%2 == 1)&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected);})
+                            return (d.Country== "Martinique")&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                    
@@ -739,8 +769,9 @@
                                 div.transition()		
                                     .duration(200)		
                                     .style("opacity", 1);		
-                                div.html("<span>"+d.Country+"</span>" + "<span><br/>Search Rank: </span>"+ ordinal_suffix_of(101-d.search_interest) +"<br/><span>Interest: </span>" + d.search_interest + "<span><br/> Zika Rate: </span>" + d.raw_incidence_rate)	
-                                    .style("left", 50 + "px")		
+                                div.html(d.Country+"<br/>Search Rank: <span>"+ ordinal_suffix_of(d.search_rank) + "</span><br/> Zika Rate: <span>" + d.raw_incidence_rate+"</span>")
+                        .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))	
+                                    .style("left", windowLeft + "px")		
                                     .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
 
                             return ((countrySelected == d.Country)&&(d.Date==dateSelected));
@@ -775,7 +806,7 @@
                             return ((selected3 != d.Country)&&(d.Date==dateSelected));
                           })
                             .style("stroke-width", 1.5)
-                            .style("opacity", 1 );
+                            .style("opacity", 0.4 );
                         
                           
                           svg.selectAll("line").filter(function(d) {
@@ -804,7 +835,7 @@
                   } );
                 
             svg.selectAll("line").filter(function(d) {
-                        return (d.search_interest!=40&&d.search_interest!=68&&((d.search_interest%4 == 0))&&(d.search_interest > 30)||(d.search_interest ==100)&&(d.Date==dateSelected)||(d.raw_incidence_rate>5000)&&(d.Date==dateSelected));
+                        return ((d.search_rank==1)&& d.Date==dateSelected||(d.search_rank==5)&& d.Date==dateSelected||((d.Country== "Martinique")&&(d.Date==dateSelected)));
             
             })
                             .moveToFront()
@@ -816,7 +847,7 @@
                             .classed('animon',false);
                 
             svg.selectAll(".labelsclass").filter(function(d) {
-                            return (d.search_interest!=40&&d.search_interest!=68&&(d.search_interest%4 == 0)&&(d.search_interest > 30))&&(d.Date==dateSelected)||(d.search_interest ==100)&&(d.Date==dateSelected);})
+                            return ((d.search_rank==1)&& d.Date==dateSelected||(d.search_rank==5)&& d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                 
@@ -829,24 +860,10 @@
                             .classed('animon',false);
                           
                           svg.selectAll(".bluelabels").filter(function(d) {
-                            return (d.search_interest%2 == 1)&&(d.raw_incidence_rate>5000)&&(d.Date==dateSelected);})
+                            return (d.Country== "Martinique")&&(d.Date==dateSelected);})
                             .classed('animoff',false)
                             .classed('animon',true);
                 
-                    /*
-            svg.selectAll("rightLabels").filter(function(d) {
-                return (d.search_interest > 99);})
-                            .classed('showdisplaylabels',false)
-                            .classed('displaylabels',true)
-                            .attr("display", "none");
-                
-
-            svg.selectAll("rightLabels").filter(function(d) {
-                return (d.search_interest > 99);})
-                            .classed('showdisplaylabels',true)
-                            .classed('displaylabels',false)
-                            .attr("display", "inline");
-                */
                 
                 
             }); 
@@ -896,6 +913,8 @@
             
             }
             window.addEventListener("resize", getTemplate);
+            
+            
 
         </script>
         
