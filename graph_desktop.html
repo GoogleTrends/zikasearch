@@ -268,7 +268,9 @@
                     .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
-                    .style("fill","#FBBC05");
+                    .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     //.text(function (d) {
                       //  return (d['Country']);
                     //});
@@ -282,9 +284,11 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Search Rank: ")
-                        .style("fill","#FBBC05")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {
-                        console.log(d);
+                        //console.log(d);
                         return ordinal_suffix_of(d['search_rank']);
                     })
                         .style("fill","white");
@@ -318,7 +322,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Zika Rate: ")
-                        .style("fill","#FBBC05")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                     //.text(function (d) {
@@ -343,7 +349,9 @@
                     .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
-                        .style("fill","#4285F4");
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    });
                     
                     
                     //.text(function (d) {
@@ -365,7 +373,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Search Rank: ")
-                        .style("fill","#4285F4")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['search_rank']);})
                         .style("fill","white");
                 
@@ -383,7 +393,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Zika Rate: ")
-                        .style("fill","#4285F4")
+                    .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 
@@ -565,6 +577,7 @@
                             .classed('animoff',true)
                             .classed('animon',false);
                     
+                    /*
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);
@@ -572,6 +585,9 @@
                         .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))
                             .style("left", windowLeft + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
+                    */
+                    
+                    
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
                             //.attr("x", 0)
@@ -593,6 +609,30 @@
                         //selectaline(countrySend);
                     
                 countryOn = true;
+                    
+                    if (d.search_interest-(d.raw_incidence_rate/100) < 0) {
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                        svg.selectAll(".bluelabels").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                
+                        
+                    } else if (d.search_interest-(d.raw_incidence_rate/100) > 0) {
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+                        svg.selectAll(".labelsclass").filter(function(d) {
+                            //console.log("printed");
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);  
+                    }
+                    
                     });
               
                 function selectaline (countrySend) {
@@ -766,6 +806,7 @@
                     
                         svg.selectAll("line").filter(function(d) {
 
+                            /*
                                 div.transition()		
                                     .duration(200)		
                                     .style("opacity", 1);		
@@ -773,11 +814,61 @@
                         .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))	
                                     .style("left", windowLeft + "px")		
                                     .style("top", (leftScale(parseFloat(d['search_interest']))) + "px");
-
+*/
                             return ((countrySelected == d.Country)&&(d.Date==dateSelected));
-                          })
+                          });
+                    
+                        if (d.search_interest-(d.raw_incidence_rate/100) < 0) {
+                            console.log("blue");
+                        } else if (d.search_interest-(d.raw_incidence_rate/100) > 0) {
+                            console.log("yellow");
+                        }
+                    
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                    
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                        svg.selectAll(".bluelabels").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
                     
                     
+                    
+                    
+                //if (d.search_interest-(d.raw_incidence_rate/100) < 0) {
+                      /*  
+                    } else if (d.search_interest-(d.raw_incidence_rate/100) > 0) {
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+                        svg.selectAll(".labelsclass").filter(function(d) {
+                            console.log("printed");
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);  
+                    }
+                    */
+                
+                
+                
+           /*
+                
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                          svg.selectAll(".bluelabels").filter(function(d) {
+                            return (d.Country== "Martinique")&&(d.Date==dateSelected);})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                    
+                    */
                             
                 }
                 

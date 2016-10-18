@@ -251,7 +251,9 @@
                     //.append("tspan")
                     .text(function (d) {return (d['Country']);})
                     
-                        .style("fill","#FBBC05");
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    });
                     //.text(function (d) {
                       //  return (d['Country']);
                     //});
@@ -265,7 +267,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Search Rank: ")
-                        .style("fill","#FBBC05")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return ordinal_suffix_of(d['search_rank']);})
                         .style("fill","white");
                 
@@ -301,7 +305,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Zika Rate: ")
-                        .style("fill","#FBBC05")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                     //.text(function (d) {
@@ -328,7 +334,9 @@
                     .attr("text-anchor", "end")
                     .append("tspan").text(function (d) {return (d['Country']);})
                         
-                        .style("fill","#4285F4");
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    });
                 
                 
                     //.text(function (d) {
@@ -350,7 +358,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Search Rank: ")
-                        .style("fill","#4285F4")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['search_rank']);})
                         .style("fill","white");
                 
@@ -368,7 +378,9 @@
                     })
                     .attr("text-anchor", "end")
                     .append("tspan").text("Zika Rate: ")
-                        .style("fill","#4285F4")
+                        .style("fill",function(d) {
+                        return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
+                    })
                     .append("tspan").text(function (d) {return (d['raw_incidence_rate']);})
                         .style("fill","white");
                 
@@ -550,6 +562,30 @@
                             .classed('animoff',true)
                             .classed('animon',false);
                     
+                    if (d.search_interest-(d.raw_incidence_rate/100) < 0) {
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                        svg.selectAll(".bluelabels").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                
+                        
+                    } else if (d.search_interest-(d.raw_incidence_rate/100) > 0) {
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+                        svg.selectAll(".labelsclass").filter(function(d) {
+                            //console.log("printed");
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);  
+                    }
+                    
+                    /*
                         div.transition()		
                             .duration(200)		
                             .style("opacity", 1);		
@@ -557,6 +593,7 @@
                         .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))
                             .style("left", tooltipWidth + "px")		
                             .style("top", (leftScale(parseFloat(d['search_interest']))+tooltipHeight) + "px");
+                    */
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
                             //.attr("x", 0)
@@ -597,6 +634,30 @@
                             .classed('animoff',true)
                             .classed('animon',false);
                     
+                    if (d.search_interest-(d.raw_incidence_rate/100) < 0) {
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                        svg.selectAll(".bluelabels").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
+                
+                        
+                    } else if (d.search_interest-(d.raw_incidence_rate/100) > 0) {
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                
+                        svg.selectAll(".labelsclass").filter(function(d) {
+                            //console.log("printed");
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);  
+                    }
+                    
+                    /*
                         div.transition()		
                                 .duration(200)		
                                 .style("opacity", 1);		
@@ -604,7 +665,7 @@
                         .style("color", color(d.search_interest-(d.raw_incidence_rate/100) < 0))
                                 .style("left", tooltipWidth + "px")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))+tooltipHeight) + "px");
-                       
+                       */
                             //.style("left", (d3.event.pageX) + "px")		
                             //.style("top", (d3.event.pageY - 28) + "px");
                             //.attr("x", 0)
@@ -823,6 +884,10 @@
                 
 
                 var selected2 = dateSelected;
+                
+                svg.selectAll(".labelsclass")
+                    .classed('animoff',true)
+                    .classed('animon',false);
 
                 svg.selectAll(".bluelabels")
                     .classed('animoff',true)
@@ -936,7 +1001,7 @@
                 function printLabels () {
                     
                     svg.selectAll("line").filter(function(d) {
-                        
+                        /*
                             div.transition()		
                                 .duration(200)		
                                 .style("opacity", 1);		
@@ -945,11 +1010,24 @@
                                 .style("left", tooltipWidth + "px")		
                                 .style("top", (leftScale(parseFloat(d['search_interest']))+tooltipHeight) + "px");
                        
-                          
+                          */
                        // console.log((countrySelected == d.Country)&&(d.Date==dateSelected));
                         
                         return ((countrySelected == d.Country)&&(d.Date==dateSelected));
                       })
+                    
+                        svg.selectAll(".labelsclass")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                    
+                        svg.selectAll(".bluelabels")
+                            .classed('animoff',true)
+                            .classed('animon',false);
+                          
+                        svg.selectAll(".bluelabels").filter(function(d) {
+                            return ((countrySelected == d.Country)&&(d.Date==dateSelected));})
+                            .classed('animoff',false)
+                            .classed('animon',true);
                     
                             
                 }
