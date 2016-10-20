@@ -35,18 +35,18 @@ body {
     }
     p {
         text-align: center;
-        font-size: 0.75em;
+        font-size: 0.7em;
     }
     .whiteText {
         fill: white !important;
-        font-size: 1em;
+        font-size: 0.9em;
     }
     #intro {
         width: 100vw;
         /*border: 2px solid red;*/
     }
 #helpbox {
-    margin-top: -40px;
+    margin-top: -20px;
     font-size: 12px;
 }
     #selectors1 {
@@ -58,7 +58,7 @@ body {
     #selectors2 {
         width:36vw;
         margin-left:60vw;
-        margin-top: -5px;
+        margin-top: 32px;
     }
     #tags {
         width:35vw;
@@ -193,7 +193,8 @@ body {
     }
     #droplabels {
         margin-bottom: 1vh;
-        margin-left: -5px;
+        margin-top: -25px;
+        
     }
     span.ui-slider-handle.ui-state-default.ui-corner-all {
         height:18px;
@@ -377,10 +378,10 @@ a {
     }
     .btn {
         /*padding: 14px 24px;*/
-        width: 30px;
+        width: 6.2vw;
         height:30px;
         border: 1px solid #444;
-        font-size: 10px;
+        font-size: 7px;
         font-weight: 700;
         margin-left: -6px;
         text-align: center;
@@ -517,6 +518,10 @@ a {
         overflow-x: hidden; /* add padding to account for vertical scrollbar */
         z-index:1000 !important;
       }
+      .whiteText {
+        fill: white !important;
+        font-size: 0.6em !important;
+      }
       
 }
     
@@ -538,12 +543,12 @@ a {
         margin-top: 0px;
     }
     #selectors2 {
-        width:36vw;
-        margin-left:54vw;
-        margin-top: -10px;
+        width:30vw;
+        margin-left:62vw;
+        margin-top: 20px;
     }
     #tags {
-        width:40vw;
+        width:32vw;
         height: 30px;
         border-radius: 15px;
     }
@@ -552,14 +557,14 @@ a {
         margin-left: 20px;
     }
     #buttonBar {
-        width: 50%;
+        width: 60%;
         float: left;
         margin-top: 25px;
         margin-left:1.5vw;
     }
     .btn {
         /*padding: 14px 24px;*/
-        width: 6.4vw;
+        width: 6.5vw;
         height:4vh;
         border: 1px solid #444;
         font-size: 0.8em;
@@ -829,10 +834,10 @@ a {
     }
     .btn {
         /*padding: 14px 24px;*/
-        width: 3.8vw;
+        width: 3vw;
         height:35px;
         border: 1px solid #444;
-        font-size: 12px;
+        font-size: 0.8em;
         font-weight: 700;
         margin-left: -6px;
         text-align: center;
@@ -887,10 +892,10 @@ a {
     }
     .btn {
         /*padding: 14px 24px;*/
-        width: 3.8vw;
+        width: 3vw;
         height:45px;
         border: 1px solid #444;
-        font-size: 1em;
+        font-size: 1.2em;
         font-weight: 700;
         margin-left: -6px;
         text-align: center;

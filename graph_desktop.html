@@ -36,7 +36,9 @@
               <button type="button" class="btn btn-primary" value="9/1">9/1</button>
               <button type="button" class="btn btn-primary" value="9/8">9/8</button>                   <button type="button" class="btn btn-primary" value="9/15">9/15</button>    
               <button type="button" class="btn btn-primary" value="9/22">9/22</button>
-              <button id="lastbutton" type="button" class="btn btn-primary active" value="9/29">9/29</button>
+              <button type="button" class="btn btn-primary" value="9/29">9/29</button>
+              <button type="button" class="btn btn-primary" value="10/6">10/6</button>
+              <button id="lastbutton" type="button" class="btn btn-primary active" value="10/13">10/13</button>
           </div>
           
         <!--
@@ -376,7 +378,7 @@
                         .style("fill",function(d) {
                         return color(d.search_interest-(d.raw_incidence_rate/100) < 0);
                     })
-                    .append("tspan").text(function (d) {return (d['search_rank']);})
+                    .append("tspan").text(function (d) {return ordinal_suffix_of(d['search_rank']);})
                         .style("fill","white");
                 
                 
@@ -995,7 +997,7 @@
                     //alert($(window).width(), "desktop enabled");
                 }
 
-                 else if ($(window).width() < 1025 /*&& CurrentPage == 'DesktopPage'*/) {
+                 else if ($(window).width() < 1025 ) {
                     //return
                     window.location.replace("graph.html");
                     //alert($(window).width(), "mobile enabled");
